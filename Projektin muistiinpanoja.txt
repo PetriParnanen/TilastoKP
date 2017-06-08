@@ -1,0 +1,6 @@
+Projektiryhmä: Jarkko Lehto, Mohammed el Uharani, Petri Pärnänen, Jere Veijalainen
+Ryhmän nimi: ?
+Projektin nimi: KPTilasto
+Projektin kuvaus: Koripallo-ottelun tilastojen merkintä.
+Projekti GitHubissa nimellä KPTilasto
+	- GitHub Desktop asennetaan omalle koneelle.

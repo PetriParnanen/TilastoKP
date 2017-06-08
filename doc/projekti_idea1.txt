@@ -1,0 +1,49 @@
+Koripallo-ottelun tilastointi
+
+Pitäisi tilastoida ottelun tapahtumat ja säilyttää useamman ottelun tilastot. Tilastoitavat tiedot; per pelaaja, on sisään ja ohi menneet heitot (vapaa-, 2-pisteen ja 3-pisteen), levypallot (puolustus ja hyökkäys), virheet, pallon riistot, menetykset ja heiton torjunnat. Ottelun jälkeen tiedot tallennetaan. Järjestelmästä voi hakea aikaisempien otteluiden tiedot ja saada raportti kaikista kauden otteluista.
+
+Ominaisuudet
+1. Joukkueen lisäys
+	- Lisätä joukkueen pelaajat
+		- Tiedot pelaajista: Nimi ja pelinro
+3. Ottelun lisäys
+	- Ottelun meta tiedot:
+		- päivä, vastustaja ja mahdollisuus valita pelaajat, jotka osallistuvat otteluun.
+			- Pelaajien pitää kuulua joukkueen pelaajien listaan, joka luodaan joukkueen lisäys kohdassa.
+			- jos käyttäjällä useampi joukkue, niin voi valita joukkueen/kauden (myöhempi toiminnallisuus)
+	- Kun on nuo meta tiedot annettu, niin aukeaa ottelu sivu
+4. Ottelu sivu
+	- Seuraavia tietoja pidetään yllä per pelaaja
+		- onnistuneet 2 pisteen heitot
+		- ohimenneet 2 pisteen heitot
+		- onnistuneet 3 pisteen heitot
+		- ohimenneet 3 pisteen heitot
+		- onnistuneet vapaa heitot
+		- epäonnistuneet vapaa heitot
+		- virheet (F)
+		- puolustus levypallot (DR)
+		- hyökkäys levypallot (OR)
+		- koriin johtaneet syötöt (Ass)
+		- pallon menetykset (T.O)
+		- riistot (St)
+		- heiton torjunnat (Bl)
+		- Järjestelmä voi automaattisesti laskea mukana pisteitä, mutta ei pakko
+	- 1:lle riville tulee 1. pelaajan tiedot eli kokonaisuutena tulee matriisi/taulu
+		- Painamalla taulun solua (solussa näkyy sen hetkinen arvo) käyttäjä voi lisätä kyseisen tapahtuman pelaajalle
+		- right click:llä voi poistaa tapahtuman (ei voi mennä alle nollan, eli tapahtumia pitää olla vähintään 0)
+	- Ottelun jälkeen käyttäjä voi tallentaa tiedot napilla, jolloin tiedot tallennetaan tietokantaan.
+5. Raportit (optio)
+	- Raportit sivulla näkyy pelatut ottelut
+		- Pelattujen otteluiden tilastoja voi muokata
+	- Voi ottaa kaikkien otteluiden keskiarvot eli laskea arvot yhteen
+
+Lisätoimintoja:
+1. Pelaajien tilan muutos (poistuu joukkueesta tai tulee joukkueeseen kesken kauden)
+2. Useampi joukkue per käyttäjä
+3. Useampi kausi
+4. Kirjautuminen
+5. Vastustajan tilastojen ylläpito (joukkue tasolla ei pelaajakohtaisesti)
+6. Tietojen tallennus cookie/storage kesken ottelut, jos selain kaatuu niin voi selaimen uudelleen käynnistyksen jälkeen jatkaa ottelun tilastointia.
+7. Lisätä peliaika tilastoitaviin tietoihin, eli pelikello näkyviin ja ottelun aikana pitäisi pystyä merkitä tapahtuneet vaihdot pitäen kirjaa pelaajakohtaisista peliajoista.
+8. Heittokartta, hakea netistä kuva puolikkaasta kp kentästä ja merkitä ottelun aikana mistä jokainen 2- tai 3-pisteen heitto lähti. Nämä tiedot myös säilytetään, joten pelaajalta pitäisi pystyä hakemaan koko kauden osalta tieto siitä mistä hänen jokainen heitto on lähtenyt. Tämä nyt taitaa mennä jo vähän yliampumiseksi nyt näin alkuun. 
+
