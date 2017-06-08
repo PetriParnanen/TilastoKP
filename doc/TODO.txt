@@ -11,14 +11,17 @@
 				- aloita ottelu
 				- raportit
 		- PELAAJALISTA
+			- pelaajien lisäys ja poisto joukkueesta
 		- ALOITA OTTELU
+			- annetaan ottelun pvm, vastustaja ja pelaajat
 			- ottelusivu
 		- OTTELUSIVU
+			- kirjataan ottelutapahtumat
 			- tallenna ottelun jälkeen siirtymä?
 		- RAPORTIT
 			- edellisten otteluiden näkymät (OTTELUSIVU, generoidaan vähän eri tavalla)
 		- (JOUKKUEET)
-			- pelaajalista
+			- lista joukkueista, joita kyseinen käyttäjä hallitsee? vai laitetaanko etusivulle?
 	- sivujen väliset siirtymät
 	- html sivujen teko
 		- sama stylesheet kaikkiin sivuihin
