@@ -9,7 +9,7 @@ numero: int
 tilasto: array &lt;Tapahtumalista&gt;
 --
 lisaaPelaaja()
-muutaPelaaja()
+muokkaaPelaajaa()
 
 
 
@@ -23,15 +23,13 @@ id: int
 nimi: string
 vastustaja: vastustaja 
 pvm: date
-joukkue: &lt;joukkue&gt;
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>92</x><y>110</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>15</x><y>25</y><w>170</w><h>100</h></coordinates><panel_attributes>Joukkue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>92</x><y>120</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>15</x><y>25</y><w>170</w><h>110</h></coordinates><panel_attributes>Joukkue
 
 --
 nimi: string
-pelaajat: array &lt;Pelaaja&gt;
 --
 lisaaPelaajaJoukkueseen()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>175</x><y>240</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;19;80;20</additional_attributes></element><element><id>Relation</id><coordinates><x>365</x><y>290</y><w>30</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;210</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>60</y><w>120</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;15</additional_attributes></element><element><id>UMLClass</id><coordinates><x>255</x><y>225</y><w>400</w><h>80</h></coordinates><panel_attributes>Tapahtumalista
+poistaPelaajaJoukkueesta()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>175</x><y>240</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;19;80;20</additional_attributes></element><element><id>Relation</id><coordinates><x>365</x><y>290</y><w>30</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;210</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>10</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;60;10;15</additional_attributes></element><element><id>UMLClass</id><coordinates><x>255</x><y>225</y><w>400</w><h>80</h></coordinates><panel_attributes>Tapahtumalista
 --
 ottelu_id: int
 tapahtumat: array &lt;tapahtuma: Tapahtuma, value: int&gt;
