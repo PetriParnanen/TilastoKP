@@ -1,0 +1,32 @@
+<diagram program="umletino" version="14.2"><zoom_level>10</zoom_level><help_text>Tapahtumalista
+--
+ottelu_id: int 
+tapahtumat: array&lt;Tapahtuma&gt;
+</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>219</y><w>190</w><h>100</h></coordinates><panel_attributes>Pelaaja
+--
+nimi: string
+numero: int
+tilasto: array &lt;Tapahtumalista&gt;
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>499</y><w>100</w><h>70</h></coordinates><panel_attributes>Tapahtuma
+--
+nimi: string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>265</x><y>15</y><w>210</w><h>110</h></coordinates><panel_attributes>Ottelu
+--
+id: int
+nimi: string
+vastustaja: vastustaja 
+pvm: date
+joukkue: &lt;joukkue&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>92</x><y>110</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>15</x><y>55</y><w>170</w><h>70</h></coordinates><panel_attributes>Joukkue
+
+--
+nimi: string
+pelaajat: array &lt;Pelaaja&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>175</x><y>250</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>365</x><y>290</y><w>30</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;210</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>60</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>255</x><y>235</y><w>400</w><h>70</h></coordinates><panel_attributes>Tapahtumalista
+--
+ottelu_id: int
+tapahtumat: array &lt;tapahtuma: Tapahtuma, value: int&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>110</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element></diagram>
