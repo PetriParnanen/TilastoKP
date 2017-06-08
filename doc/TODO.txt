@@ -1,0 +1,17 @@
+- Tietokanta
+	- taulujen rakenteen suunnittelu
+	- Kannan luonti
+	- taulujen luonti
+- Front end
+	- mitä html sivuja tarvitaan
+	- sivujen väliset siirtymät
+	- html sivujen teko
+		- sama stylesheet kaikkiin sivuihin
+- back end
+	- kannan ja html sivujen välinen yhteys ja miten dataa siirretään niiden välillä?
+	- (raporttisivun yhteenvetosivun laskutoimitukset)
+	
+- työmäärien arviointi
+	- töiden sijoittelu aikatauluun
+	- mitäköhän dokumentteja tarvitaa?
+	
