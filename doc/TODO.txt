@@ -4,6 +4,21 @@
 	- taulujen luonti
 - Front end
 	- mitä html sivuja tarvitaan
+		- (kirjautumissivu)
+		- ETUSIVU
+			- siirtymät:
+				- pelaajalista
+				- aloita ottelu
+				- raportit
+		- PELAAJALISTA
+		- ALOITA OTTELU
+			- ottelusivu
+		- OTTELUSIVU
+			- tallenna ottelun jälkeen siirtymä?
+		- RAPORTIT
+			- edellisten otteluiden näkymät (OTTELUSIVU, generoidaan vähän eri tavalla)
+		- (JOUKKUEET)
+			- pelaajalista
 	- sivujen väliset siirtymät
 	- html sivujen teko
 		- sama stylesheet kaikkiin sivuihin

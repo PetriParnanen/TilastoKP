@@ -1,0 +1,28 @@
+Database
+
+Pelaaja:
+- id: int (pk)
+- joukkue_id: int
+- nimi: string
+- nro: string
+
+Joukkue:
+- id: int (pk)
+- nimi: string
+
+Ottelu:
+- id: int (pk)
+- vastustaja: string
+- pvm: date
+
+Tapahtuma:
+- id: int (pk)
+- laji: string
+- kuvaus: string
+
+Tapahtumalista:
+- ottelu_id: int
+- pelaaja_id: int
+- tapahtuma_id: int
+- arvo: int
+* pk: ottelu_id, pelaaja_id
