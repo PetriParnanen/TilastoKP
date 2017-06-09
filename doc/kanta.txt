@@ -6,6 +6,12 @@ Pelaaja:
 - nimi: string
 - nro: string
 
+PelaajaJoukkue
+- pelaaja_id: int
+- joukkue_id: int
+- aktiivinen: boolean
+- lahto_pvm: date
+
 Joukkue:
 - id: int (pk)
 - nimi: string
