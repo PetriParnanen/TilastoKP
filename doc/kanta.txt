@@ -25,6 +25,7 @@ Tapahtuma:
 - id: int (pk)
 - laji: string
 - kuvaus: string
+- lyhenne: string
 
 Tapahtumalista:
 - ottelu_id: int
