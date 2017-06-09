@@ -6,22 +6,61 @@
 	- mitä html sivuja tarvitaan
 		- (kirjautumissivu)
 		- ETUSIVU
+			- joukkue-valikko, josta voi valita joukkueen, jolla pelataan.
 			- siirtymät:
 				- pelaajalista
 				- aloita ottelu
-				- raportit
+				- raportit	
 		- PELAAJALISTA
-			- pelaajien lisäys ja poisto joukkueesta
+			- Näytetään joukkeen nimi, jota voi editoida
+			- Listataan pelaajat pelinumerojärjestyksessä
+			- Pelaajien lisäys joukkueeseen
+				- Syötetään pelaajan nimi ja pelinumero. 
+				- Molemmat pakollisia tietoja
+				- Pelinumerossa saa olla vain numeraalisia merkkejä. Etunolla sallittu.
+			- Pelaajien poisto joukkueesta
+				- Poisto tapahtuu ruksaamalla poista-checkbox pelaajan vieressä. Kun ruksattu, tulee näkyviin pvmkenttä, johon voi merkitä poistumispäivämäärän. Jos pvm on tämä päivä tai aiempi, pelaaja tulkitaan poistetuksi ja merkitään vaikka eri värillä tms. Jos pvm tulevaisuudessa, silloin pelaaja tulkitaan joukkueeseen kuuluvaksi siihen päivään asti.
+			- (kausien lisääminen joukkueille)
 		- ALOITA OTTELU
-			- annetaan ottelun pvm, vastustaja ja pelaajat
-			- ottelusivu
+			- Annetaan ottelun pvm, vastustaja ja pelaajat
+				- Pvm ja pelaajat pakollisia tietoja
+				- Pvm oletuksena tämä päivä, mutta tulevaisuuden pvm ei sallittu. 
+				- Menneisyyden pvm sallittu, esim menneen ottelun videotarkistuksia varten.
+			- Valitaan pelaajat checkboxilla listasta, joka tulee pelaajalistasivun pelaajista. (Listaa ei voi muokata tässä.)
+				- Otteluun valittuja pelaajia pitää olla 5-12.
+				- Oletuksena kaikki checkboxit ruksattu.
+				- Jos pelaaja on poistettu (poistumispvm sama kuin ottelupvm tai aiemmin)
+					- Poistetut pelaajat näytetään aktiivisten pelaajien alapuolella, checkbox disabloituina ja ei ruksittuina
+					- Erikoistapaus (esim. videotarkistus): Mikäli ottelun pvm:ksi valitaan on myöhäisempi kuin pelaajan poistamispvm, checboxin disablointi poistetaan (mutta ei ruksata automaattisesti).
+					TAI
+					- Poistetut pelaajat piilotetaan ja jos pvmehto täyttyy, ne tulevat näkyviin valittaviksi.
+			- Siirtymä: Ottelusivu
+				- Ottelusivulle pääsee siirtymään vain jos ottelun pakolliset tiedot täytetty.
 		- OTTELUSIVU
-			- kirjataan ottelutapahtumat
-			- tallenna ottelun jälkeen siirtymä?
+			- Kirjataan ottelutapahtumat
+			- Sivun yläosassa näytetään ottelun metatiedot: pvm ja vastustaja.
+			- Taulukko
+				- Riviotsikkoina pelaajien numero ja nimi jos mahtuu.
+				- Sarakeotsikkoina tapahtumien lyhenteet
+					- Tapahtumat haetaan tietokannasta
+				- Taulukon joka solussa näytetään kyseisen tapahtuman senhetkinen määrä pelaajalla
+					- Oletusarvo ja myös minimiarvo on 0.
+					- Hiiren vasen painike lisää arvoa yhdellä ja oikea painike vähentää. Alle nollan ei pääse.
+					- Kosketusnäytöllä omat vastaavat toiminnot. Pitää selvittää mitkä ne ovat. (JavaScriptin eventtejä)
+			- Ottelun aikana tapahtumia ei tallenneta kantaan. Ne säilyvät ruudulla. Jos sivulta yritetään poistua tallentamatta, annetaan confirm-ilmoitus "Haluatko varmasti poistua? Tallentamattomat tiedot menetetään." tms.
+			- (Jatkokehityksenä ottelun aikaiset tiedot voidaan tallentaa selaimen storageen tai cookieen.)
+			- Tallenna ottelun jälkeen siirtymä
+				- Kuittaussivu, joka on sama näkymä kuin pelatun ottelun raportissa. Lisäksi teksti käyttäjälle "Tiedot tallennettu" tms.
 		- RAPORTIT
-			- edellisten otteluiden näkymät (OTTELUSIVU, generoidaan vähän eri tavalla)
+			- Edellisten otteluiden näkymät (OTTELUSIVU, generoidaan vähän eri tavalla)
+			- Näytetään aiemmat ottelut pvmjärjestyksessä (pvm ja vastustaja jos tallennettu)
+				- Pvm (ja vastustaja jos löytyy) on linkki, josta pääsee ottelusivun raporttinäkymään
+			- Ottelun raporttinäkymä
+				- Valitun ottelun tilastot taulukossa, kuten ottelusivulla. Ei voi muokata.
 		- (JOUKKUEET)
 			- lista joukkueista, joita kyseinen käyttäjä hallitsee? vai laitetaanko etusivulle?
+	
+	- Tarvitaanko navigaatiopalkkia?			
 	- sivujen väliset siirtymät
 	- html sivujen teko
 		- sama stylesheet kaikkiin sivuihin
