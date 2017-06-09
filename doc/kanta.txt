@@ -3,8 +3,8 @@ Database
 Pelaaja:
 - id: int (pk)
 - joukkue_id: int
-- nimi: string
-- nro: string
+- nimi: string (50)
+- nro: string (2)
 
 PelaajaJoukkue
 - pelaaja_id: int
@@ -14,18 +14,18 @@ PelaajaJoukkue
 
 Joukkue:
 - id: int (pk)
-- nimi: string
+- nimi: string (40)
 
 Ottelu:
 - id: int (pk)
-- vastustaja: string
+- vastustaja: string (40)
 - pvm: date
 
 Tapahtuma:
 - id: int (pk)
-- laji: string
-- kuvaus: string
-- lyhenne: string
+- laji: string (30)
+- kuvaus: string (50)
+- lyhenne: string (10)
 
 Tapahtumalista:
 - ottelu_id: int
