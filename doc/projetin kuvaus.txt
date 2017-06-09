@@ -1,41 +1,47 @@
+Projektiryhmä: Petri Pärnänen, Jere Veijalainen
+
+Projektissa tehtävän sovelluksen kuvaus
+
 Koripallo-ottelun tilastointi
 
-Pitäisi tilastoida ottelun tapahtumat ja säilyttää useamman ottelun tilastot. Tilastoitavat tiedot; per pelaaja, on sisään ja ohi menneet heitot (vapaa-, 2-pisteen ja 3-pisteen), levypallot (puolustus ja hyökkäys), virheet, pallon riistot, menetykset ja heiton torjunnat. Ottelun jälkeen tiedot tallennetaan. Järjestelmästä voi hakea aikaisempien otteluiden tiedot ja saada raportti kaikista kauden otteluista.
+Pitäisi tilastoida ottelun tapahtumat ja säilyttää useamman ottelun tilastot. Tilastoitavat tiedot; per pelaaja, on sisään ja ohi menneet heitot (vapaa-, 2-pisteen ja 3-pisteen), levypallot (puolustus ja hyökkäys), virheet, pallon riistot, menetykset ja heiton torjunnat. Ottelun jälkeen tiedot tallennetaan. Järjestelmästä voi hakea aikaisempien otteluiden tiedot ja saada raportti kaikista kauden otteluista. Tämä sovellus tulisi joukkueiden omaan käyttöön valmennuksen avuksi ja pelaajien uteliaisuuden tyydyttämiseksi.
 
 Ominaisuudet
 1. Joukkueen lisäys
 	- Lisätä joukkueen pelaajat
 		- Tiedot pelaajista: Nimi ja pelinro
 3. Ottelun lisäys
-	- Ottelun meta tiedot:
+	- Ottelun metatiedot:
 		- päivä, vastustaja ja mahdollisuus valita pelaajat, jotka osallistuvat otteluun.
 			- Pelaajien pitää kuulua joukkueen pelaajien listaan, joka luodaan joukkueen lisäys kohdassa.
 			- jos käyttäjällä useampi joukkue, niin voi valita joukkueen/kauden (myöhempi toiminnallisuus)
-	- Kun on nuo meta tiedot annettu, niin aukeaa ottelu sivu
+	- Kun on nuo metatiedot annettu, niin aukeaa ottelusivu
 4. Ottelu sivu
 	- Seuraavia tietoja pidetään yllä per pelaaja
 		- onnistuneet 2 pisteen heitot
-		- ohimenneet 2 pisteen heitot
+		- ohi menneet 2 pisteen heitot
 		- onnistuneet 3 pisteen heitot
-		- ohimenneet 3 pisteen heitot
-		- onnistuneet vapaa heitot
-		- epäonnistuneet vapaa heitot
-		- virheet (F)
-		- puolustus levypallot (DR)
-		- hyökkäys levypallot (OR)
-		- koriin johtaneet syötöt (Ass)
-		- pallon menetykset (T.O)
-		- riistot (St)
-		- heiton torjunnat (Bl)
+		- ohi menneet 3 pisteen heitot
+		- onnistuneet vapaaheitot
+		- epäonnistuneet vapaaheitot
+		- virheet (V)
+		- puolustus levypallot (PL)
+		- hyökkäys levypallot (HL)
+		- koriin johtaneet syötöt (S)
+		- pallon menetykset (M)
+		- riistot (R)
+		- heiton torjunnat (T)
 		- Järjestelmä voi automaattisesti laskea mukana pisteitä, mutta ei pakko
 	- 1:lle riville tulee 1. pelaajan tiedot eli kokonaisuutena tulee matriisi/taulu
 		- Painamalla taulun solua (solussa näkyy sen hetkinen arvo) käyttäjä voi lisätä kyseisen tapahtuman pelaajalle
 		- right click:llä voi poistaa tapahtuman (ei voi mennä alle nollan, eli tapahtumia pitää olla vähintään 0)
 	- Ottelun jälkeen käyttäjä voi tallentaa tiedot napilla, jolloin tiedot tallennetaan tietokantaan.
-5. Raportit (optio)
+5. Raportit
 	- Raportit sivulla näkyy pelatut ottelut
-		- Pelattujen otteluiden tilastoja voi muokata
-	- Voi ottaa kaikkien otteluiden keskiarvot eli laskea arvot yhteen
+		- Pelattujen otteluiden tilastoja voi
+			a) katsella
+			b) muokata (optio)
+	- Voi ottaa kaikkien otteluiden keskiarvot eli laskea arvot yhteen (optio)
 
 Lisätoimintoja:
 1. Pelaajien tilan muutos (poistuu joukkueesta tai tulee joukkueeseen kesken kauden)
