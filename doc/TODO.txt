@@ -2,6 +2,7 @@
 	- taulujen rakenteen suunnittelu
 	- Kannan luonti
 	- taulujen luonti
+
 - Front end
 	- mitä html sivuja tarvitaan
 		- (kirjautumissivu)
@@ -47,11 +48,16 @@
 					- Oletusarvo ja myös minimiarvo on 0.
 					- Hiiren vasen painike lisää arvoa yhdellä ja oikea painike vähentää. Alle nollan ei pääse.
 					- Kosketusnäytöllä omat vastaavat toiminnot. Pitää selvittää mitkä ne ovat. (JavaScriptin eventtejä)
-			- Ottelun aikana tapahtumia ei tallenneta kantaan. Ne säilyvät ruudulla. Jos sivulta yritetään poistua tallentamatta, annetaan confirm-ilmoitus "Haluatko varmasti poistua? Tallentamattomat tiedot menetetään." tms.
+			- Ottelun aikana tapahtumia ei tallenneta kantaan. Ne säilyvät ruudulla. Jos sivulta yritetään poistua tallentamatta, annetaan confirm-ilmoitus
+			"Haluatko varmasti poistua? Tallentamattomat tiedot menetetään." tms.
+			- Taulukon joka solulle generoidaan uniikki id, joka on ydistelmä pelaajan ja tapahtuman id:stä esim: "18_4". Näitä tietoja käytetään tallennuksessa.
 			- (Jatkokehityksenä ottelun aikaiset tiedot voidaan tallentaa selaimen storageen tai cookieen.)
+			- Tallenna-toiminto
+				- Käy läpi kaikki taulukon solujen id:t ja välittää ne back endille avain/arvo-pareina. Back erotelee avaimesta (yhdistelmäid) pelaajan ja tapahtuman id:t ja tallentaa ne kantaan, kuten arvon myös.
+				- Otteluid luodaan tallennettaessa back end -puolella.
 			- Tallenna ottelun jälkeen siirtymä
 				- Kuittaussivu, joka on sama näkymä kuin pelatun ottelun raportissa. Lisäksi teksti käyttäjälle "Tiedot tallennettu" tms.
-		- RAPORTIT
+		- RAPORTIT (vaihtoehtoinen nimi Tilastot)
 			- Edellisten otteluiden näkymät (OTTELUSIVU, generoidaan vähän eri tavalla)
 			- Näytetään aiemmat ottelut pvmjärjestyksessä (pvm ja vastustaja jos tallennettu)
 				- Pvm (ja vastustaja jos löytyy) on linkki, josta pääsee ottelusivun raporttinäkymään
@@ -59,16 +65,69 @@
 				- Valitun ottelun tilastot taulukossa, kuten ottelusivulla. Ei voi muokata.
 		- (JOUKKUEET)
 			- lista joukkueista, joita kyseinen käyttäjä hallitsee? vai laitetaanko etusivulle?
-	
-	- Tarvitaanko navigaatiopalkkia?			
+
+	- Sivujen rakenne
+		- Ylätunniste: Otsikko tms.
+		- Vasen sivupalkki: navigaatiolinkit
+			- Etusivu
+			- Pelaajalista
+			- Aloita ottelu
+			- Raportit (/Tilastot)
+		- Sisältö: sisältö
+		- Alatunniste: Alaviiva tms. jos tarvitaan
+		- Ottelusivulla on vain sisältöosio, koska se vie tilaa jo muutenkin.
+			
+	- Navigaatiopalkki (tarvitaanko?)
+		- Sivupalkki
+		- Voisi näkyä kaikilla muilla sivuilla paitsi ottelusivulla.
+		- Muilla sivuilla, joilla on talletettavaa dataa, jos navigaatiolinkkejä klikkaa tallentamatta, annetaan ilmoitus kuten ottelusivulla.
 	- sivujen väliset siirtymät
 	- html sivujen teko
-		- sama stylesheet kaikkiin sivuihin
+		- sama stylesheet kaikkiin sivuihin		
+		
+
 - back end
 	- kannan ja html sivujen välinen yhteys ja miten dataa siirretään niiden välillä?
 	- (raporttisivun yhteenvetosivun laskutoimitukset)
 	
 - työmäärien arviointi
-	- töiden sijoittelu aikatauluun
-	- mitäköhän dokumentteja tarvitaa?
+- töiden sijoittelu aikatauluun
+	- koulutusohjelmataulukko, johon on lisätty alusvat sisällöt etäpäiville.
+	- 4 seuraavaa projektipäivää (6.7. alkaen)
+		Front end
+		- HTML-sivut kaikille näkymille. Ensin pakollisille ja jos aikaa jää, myös lisäominaisuuksille.
+		- CSS stylesheet
+		- AngularJS-toiminnallisuudet sivuihin niin pitkälle kuin pystyy ilman back endiä.
+	- 5 seuraavaa projektipäivää (1.8. alkaen)
+		Back end
+		- MongoDB
+		- Kannan ja taulujen luominen
+		- Testidatan lisääminen kantaan
+			- Oletusjoukkue
+			- Pelaajat
+			- Tapahtumat
+		- NodeJS-tiedostot
+			- Moduuleja/luokkia?
+			- Tiedon välittäminen kannan ja front endin välillä.
+		- Express
+		- Testausta toteutuksen aikana sekä lopuksi muuten kun järjestelmä "valmis".
+	- Viimeinen projektipäivää
+		- Dokumentit ja hakemistot julkaisukuntoon
+		- "tulipalojen" sammuttelu järjestelmässä
+		
+		
+- mitäköhän dokumentteja tarvitaan?
+	
+Git hakemistorakenne
+TilastoKP
+	doc - dokumentit
+		- mahdollisesti alihakemistoja tarpeen mukaan
+		img - dokumentteihin liittyvät kuvat
+	src - source code
+		html
+		css
+		lib - moduuleje, funktioita yms yleiskäytöisiä koodinpätkiä
+		...
+		
+	
 	
