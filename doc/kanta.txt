@@ -23,6 +23,7 @@ Team:
 
 Match:
 - id: int (pk)  // Ottelun uniikki id, järjestelmän luoma
+- tid: int // ottelun kirjaa pitävä joukkue
 - opponent: string (40)  // vastustajan nimi
 - date: date  // Ottelun pvm
 
