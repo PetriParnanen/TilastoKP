@@ -4,7 +4,7 @@ angular.module('StatFactory', []).factory('TeamFactory', function(){
 	var factory={};
 
 // joukkueet
-	teams = [
+teams = [
 	{id:1, name:"Skuuppi joukkue"},
 	{id:2, name:"Kikka joukkue"}
 ];
