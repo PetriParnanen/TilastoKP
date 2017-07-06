@@ -4,37 +4,37 @@ create_time/user, modify_time/user, delete_time/user
 
 
 Player:
-- id: int (pk)  // uniikki id, j‰rjestelm‰n luoma
+- id: int (pk)  // uniikki id, j√§rjestelm√§n luoma
 - name: string (50) // pelaajan nimi
 
 PlayerTeam
-- player_id: int // liitos player.id kentt‰‰n
-- team_id: int  // liitos team.id kentt‰‰n
+- player_id: int // liitos player.id kentt√§√§n
+- team_id: int  // liitos team.id kentt√§√§n
 - number: string (2) // Pelaajan peli numero
-- active: boolean  // Onko pelaaja aktiivinen (l‰htenyt tai loukkaantunut)
-- leaving_date: date  // jos l‰htenyt joukkueesta niin l‰htˆ pvm
+- active: boolean  // Onko pelaaja aktiivinen (l√§htenyt tai loukkaantunut)
+- leaving_date: date  // jos l√§htenyt joukkueesta niin l√§ht√∂ pvm
 * pk: player_id, team_id (primary key, uniikki)
 
 Team:
-- id: int (pk)  // joukkueen uniikki id, j‰rjestelm‰n luoma
+- id: int (pk)  // joukkueen uniikki id, j√§rjestelm√§n luoma
 - name: string (40)  // Joukkueen nimi
 
 Match:
-- id: int (pk)  // Ottelun uniikki id, j‰rjestelm‰n luoma
+- id: int (pk)  // Ottelun uniikki id, j√§rjestelm√§n luoma
 - opposition: string (40)  // vastustajan nimi
 - date: date  // Ottelun pvm
 
 Event:
-- id: int (pk)  // tapahtuman uniikki id, j‰rjestelm‰n luoma
+- id: int (pk)  // tapahtuman uniikki id, j√§rjestelm√§n luoma
 - sport: string (30)  // lajin teksti
 - desc: string (50)  // Pidempi tarkempi kuvaus tapahtumasta
-- abbr: string (10)  // Lyhempi kuvaus, n‰kyy ottelusivulla
-- order: int  // J‰rjestys, monesko kentt‰ tapahtumien listalla
-- sumfield: string(30)  // lasketaanko kentt‰‰n automaattisesti joku summa muista kentist‰ (default null)
+- abbr: string (10)  // Lyhempi kuvaus, n√§kyy ottelusivulla
+- order: int  // J√§rjestys, monesko kentt√§ tapahtumien listalla
+- sumfield: string(30)  // lasketaanko kentt√§√§n automaattisesti joku summa muista kentist√§ (default null)
 
 MatchEvent:
-- match_id: int  // liitos match.id kentt‰‰n
-- player_id: int  // liitos player.id kentt‰‰n
-- event_id: int  // liitos event.id kentt‰‰n
-- value: int  // kent‰n arvo
+- match_id: int  // liitos match.id kentt√§√§n
+- player_id: int  // liitos player.id kentt√§√§n
+- event_id: int  // liitos event.id kentt√§√§n
+- value: int  // kent√§n arvo
 * pk: match_id, player_id, event_id (primary key, uniikki)
