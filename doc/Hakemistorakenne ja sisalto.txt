@@ -1,0 +1,34 @@
+TilastoKP
+	doc - Dokumentaatio		
+	src - Kähdekoodit
+		app - kaikki AngularJS + front end -koodit
+			css - Tyylitiedostot
+			scripts - AngularJS-koodit. Jos jotain alihakemistoa ei tarvita, poistetaan myöhemmin.
+				controllers
+					TeamController.js
+						- Ohjaa joukkueen tietoja.
+					PlayerController.js
+						- Pelaajan lisääminen ja muokkaaminen.
+					GameController.js
+						- Ottelun ohjaus
+				directives
+				factories
+				services
+			views - Näkymät
+				index.html
+					- Etusivu
+					- Näytetään kaikkien muiden sivujen yhteydessä paitsi ottelusivulla (game.html)
+				team.html
+					- Joukkuen nimen tulostus (joukkuevalikko myöhemmin jos aikaa)
+					- Joukkueet: joukkueiden käsittely (toteutetaan myöhemmin jos aikaa)
+				player_list.html
+					- Pelaajalista
+				start_game.html
+					- Ottelun aloitus
+				game.html
+					- Ottelusivu
+				reports.html				
+				
+		server - Back end -koodit (NodeJS jne.)
+			
+		
