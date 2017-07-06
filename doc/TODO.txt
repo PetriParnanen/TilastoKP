@@ -6,8 +6,10 @@
 - Front end
 	- mitä html sivuja tarvitaan
 		- (kirjautumissivu)
-		- ETUSIVU
-			- joukkue-valikko, josta voi valita joukkueen, jolla pelataan.
+		- ETUSIVU (JOUKKUE-SIVU)
+			- Joukkue-valikko, josta voi valita joukkueen, jolla pelataan.
+				- Oletuksena valikon ensimmäinen valinta. Tämä valinta (joukkueen id) säilyy muille sivuille.
+			- tämä on ensimmäinen sivu, johon järjestelmä tulee
 			- siirtymät:
 				- pelaajalista
 				- aloita ottelu
@@ -118,7 +120,7 @@
 		
 - mitäköhän dokumentteja tarvitaan?
 	
-Git hakemistorakenne
+Git hakemistorakenne - ks. tiedosto Hakemistorakenne ja sisalto.txt
 TilastoKP
 	doc - dokumentit
 		- mahdollisesti alihakemistoja tarpeen mukaan
@@ -128,6 +130,7 @@ TilastoKP
 		css
 		lib - moduuleje, funktioita yms yleiskäytöisiä koodinpätkiä
 		...
+		
 		
 	
 	
