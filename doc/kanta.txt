@@ -5,15 +5,17 @@ create_time/user, modify_time/user, delete_time/user
 
 Player:
 - id: int (pk)  // uniikki id, järjestelmän luoma
-- name: string (50) // pelaajan nimi
+- firstname: string (20) // pelaajan etunimi
+- lastname: string (50) // pelaajan sukunimi
 
 PlayerTeam
 - player_id: int // liitos player.id kenttään
 - team_id: int  // liitos team.id kenttään
-- number: string (2) // Pelaajan peli numero
+- nickname: string (30) // pelaajan kutsumanimi, default
+- number: string (2) // Pelaajan pelinumero
 - active: boolean  // Onko pelaaja aktiivinen (lähtenyt tai loukkaantunut)
 - leaving_date: date  // jos lähtenyt joukkueesta niin lähtö pvm
-* pk: player_id, team_id (primary key, uniikki)
+- joining_date: date // koska tullut joukkueeseen
 
 Team:
 - id: int (pk)  // joukkueen uniikki id, järjestelmän luoma
@@ -21,14 +23,15 @@ Team:
 
 Match:
 - id: int (pk)  // Ottelun uniikki id, järjestelmän luoma
-- opposition: string (40)  // vastustajan nimi
+- opponent: string (40)  // vastustajan nimi
 - date: date  // Ottelun pvm
 
+// jos aletaan tukemaan uusia lajeja tai tekemään tästä useampi kielistä niin tämä taulu muuttuu
 Event:
 - id: int (pk)  // tapahtuman uniikki id, järjestelmän luoma
 - sport: string (30)  // lajin teksti
-- desc: string (50)  // Pidempi tarkempi kuvaus tapahtumasta
-- abbr: string (10)  // Lyhempi kuvaus, näkyy ottelusivulla
+- description: string (50)  // Pidempi tarkempi kuvaus tapahtumasta
+- abbreviation: string (10)  // Lyhempi kuvaus, näkyy ottelusivulla
 - order: int  // Järjestys, monesko kenttä tapahtumien listalla
 - sumfield: string(30)  // lasketaanko kenttään automaattisesti joku summa muista kentistä (default null)
 

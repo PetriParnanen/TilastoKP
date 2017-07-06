@@ -1,12 +1,12 @@
-angular.module('StatFactory', []).factory('teamFactory', function(){
+angular.module('StatFactory', []).factory('TeamFactory', function(){
 
-// yhden joukkueen tietoja käsitellään
-// Functiot muuttuvat resource kutsuiksi myöhemmin elämässä
 
 	var factory={};
 
-teams = [
-	{id:1, name:"Skuuppi joukkue"}
+// joukkueet
+	teams = [
+	{id:1, name:"Skuuppi joukkue"},
+	{id:2, name:"Kikka joukkue"}
 ];
 
 // joukkue funktiot, näistä vain haut nyt alkuun käytössä
@@ -14,6 +14,7 @@ teams = [
 		return teams;
 	};
 
+//yksittäinen joukkue
 	factory.getTeam = function(id){
 		var l = teams.length;
 		for (var i = 0; i < l; i++) {
@@ -24,12 +25,13 @@ teams = [
 		return {};
 	};
 
+//Lisää joukkue
 	factory.addTeam = function(newTeam) {
-		console.log("New team" + newTeam);
+		console.log("New team:" + newTeam);
 		teams.push(newTeam);
 	};
 
-// Listaa lajin tapahtumat
+// Listaa lajin tapahtumat, resourcen tullessa haku ehdossa on mukana laji-id
 var events = [
 	{id:1, desc:"Onnistunut 2P heitto", abbr:"O2P", order:"1"},
 	{id:2, desc:"2P heittoyritys", abbr:"H2P", order:"2"},
@@ -54,6 +56,7 @@ var events = [
 		return events;
 	};
 
+//Yksittäinen tapahtuma
 	factory.getEvent = function(id){
 		var l = events.length;
 		for (var i = 0; i < l; i++) {
@@ -64,26 +67,26 @@ var events = [
 		return {};
 	};
 
+//uusi tapahtuma
 	factory.addEvent = function(newEvent) {
-		console.log("New event" + newEvent);
+		console.log("New event:" + newEvent);
 		events.push(newEvent);
 	};
 
-// Listaa pelaajat kyseisessä joukkueessa
+// Listaa kaikki pelaajat
 
 var players = [ 
-	{id: 1, name:"kalle", number="00", active:"true"},
-	{id: 2, name:"pekka", number="0", active:"true"},
-	{id: 3, name:"timo", number="5", active:"true"},
-	{id: 4, name:"samu", number="8", active:"true"},
-	{id: 5, name:"veikko", number="10", active:"true"},
-	{id: 6, name:"pekka p", number="19", active:"true"},
-	{id: 7, name:"simon", number="4", active:"true"},
-	{id: 8, name:"reiska", number="78", active:"true"},
-	{id: 9, name:"timothy", number="25", active:"true"},
-	{id: 10, name:"repoman", number="78", active:"false", ldate="2017-01-01"},
-	{id: 11, name:"repman", number="1", active:"false",
-	 ldate="2017-03-02"}
+	{id: 1, fname:"kalle", lname:"kalle"},
+	{id: 2, fname:"pekka", lname:"piru"},
+	{id: 3, fname:"timo", lname:"juolevi"},
+	{id: 4, fname:"samu", lname:"sirkka"},
+	{id: 5, fname:"veikko", lname:"hakulinen"},
+	{id: 6, fname:"pekka", lname:"saapuvi"},
+	{id: 7, fname:"simon", lname:"says"},
+	{id: 8, fname:"reiska", lname:"ripeä"},
+	{id: 9, fname:"timothy", lname:"dalton"},
+	{id: 10, fname:"repo", lname:"man"},
+	{id: 11, fname:"rep", lname:"man"}
 ];
 
 // pelaaja funktiot
@@ -92,6 +95,7 @@ var players = [
 		return players;
 	};
 
+//Yksittäinen pelaaja
 	factory.getPlayer = function(id){
 		var l = players.length;
 		for (var i = 0; i < l; i++) {
@@ -102,9 +106,46 @@ var players = [
 		return {};
 	};
 
+//Lisää pelaaja
 	factory.addPlayer = function(newPlayer) {
-		console.log("New player" + newPlayer);
+		console.log("New player:" + newPlayer);
 		players.push(newPlayer);
+	};
+
+// joukkueen pelaajat
+
+var teamsplayers = [
+	{tid: 1, pid:1, nick:"tuplakalle", number:"00", active:"true", jdate:"2015-01-01"},
+	{tid: 1, pid:2, nick:"piru", number:"0", active:"true"},
+	{tid: 1, pid:3, nick:"timppa", number:"5", active:"true"},
+	{tid: 1, pid:4, number:"8", active:"true"},
+	{tid: 1, pid:5, number:"10", active:"true"},
+	{tid: 1, pid:6, number:"19", active:"true"},
+	{tid: 1, pid:7, nick:"rio", number:"78", active:"true"},
+	{tid: 1, pid:8, number:"4", active:"true"},
+	{tid: 1, pid:9, nick:"timmy", number:"25", active:"true"},
+	{tid: 1, pid:10, nick:"lipeä", number:"78", active:"false", ldate:"2016-12-01"},
+	{tid: 1, pid:11, nick:"loser", number:"1", active:"false", ldate:"2017-03-02"},
+	{tid: 2, pid:11, nick:"winner", number:"1"},
+	{tid: 1, pid:10, nick:"lipeä", number:"78", active:"true", jdate:"2017-02-02"}
+];
+
+// Haetaan kaikki joukkueen pelaajat
+	factory.getTeamsPlayers = function(tid) {
+		var l = teamsplayers.length;
+		var players = [];
+		for (var i = 0; i < l; i++) {
+			if (tid == teamsplayers[i].tid){
+				players.push(teamplayers[i]);
+			}
+		}
+		return players;
+	};
+
+//lisää joukkueelle pelaaja
+	factory.addTeamsPlayer = function(newTeamsPlayer) {
+		console.log("new teamsplayer:" + newTeamsPlayer);
+		teamsplayers.push(newTeamsPlayer);
 	};
 
 //listaa kaikki kyseisen joukkueet ottelut, pid=playerid, eid=event id
@@ -342,7 +383,6 @@ var matches = [
 		matches.push(newMatch);
 	};
 
-//ja sitten pois
 	return factory;
 
 });
