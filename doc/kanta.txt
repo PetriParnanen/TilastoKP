@@ -1,35 +1,40 @@
 Database
+Add metadata:
+create_time/user, modify_time/user, delete_time/user
 
-Pelaaja:
-- id: int (pk)
-- joukkue_id: int
-- nimi: string (50)
-- nro: string (2)
 
-PelaajaJoukkue
-- pelaaja_id: int
-- joukkue_id: int
-- aktiivinen: boolean
-- lahto_pvm: date
+Player:
+- id: int (pk)  // uniikki id, j‰rjestelm‰n luoma
+- name: string (50) // pelaajan nimi
 
-Joukkue:
-- id: int (pk)
-- nimi: string (40)
+PlayerTeam
+- player_id: int // liitos player.id kentt‰‰n
+- team_id: int  // liitos team.id kentt‰‰n
+- number: string (2) // Pelaajan peli numero
+- active: boolean  // Onko pelaaja aktiivinen (l‰htenyt tai loukkaantunut)
+- leaving_date: date  // jos l‰htenyt joukkueesta niin l‰htˆ pvm
+* pk: player_id, team_id (primary key, uniikki)
 
-Ottelu:
-- id: int (pk)
-- vastustaja: string (40)
-- pvm: date
+Team:
+- id: int (pk)  // joukkueen uniikki id, j‰rjestelm‰n luoma
+- name: string (40)  // Joukkueen nimi
 
-Tapahtuma:
-- id: int (pk)
-- laji: string (30)
-- kuvaus: string (50)
-- lyhenne: string (10)
+Match:
+- id: int (pk)  // Ottelun uniikki id, j‰rjestelm‰n luoma
+- opposition: string (40)  // vastustajan nimi
+- date: date  // Ottelun pvm
 
-Tapahtumalista:
-- ottelu_id: int
-- pelaaja_id: int
-- tapahtuma_id: int
-- arvo: int
-* pk: ottelu_id, pelaaja_id
+Event:
+- id: int (pk)  // tapahtuman uniikki id, j‰rjestelm‰n luoma
+- sport: string (30)  // lajin teksti
+- desc: string (50)  // Pidempi tarkempi kuvaus tapahtumasta
+- abbr: string (10)  // Lyhempi kuvaus, n‰kyy ottelusivulla
+- order: int  // J‰rjestys, monesko kentt‰ tapahtumien listalla
+- sumfield: string(30)  // lasketaanko kentt‰‰n automaattisesti joku summa muista kentist‰ (default null)
+
+MatchEvent:
+- match_id: int  // liitos match.id kentt‰‰n
+- player_id: int  // liitos player.id kentt‰‰n
+- event_id: int  // liitos event.id kentt‰‰n
+- value: int  // kent‰n arvo
+* pk: match_id, player_id, event_id (primary key, uniikki)
