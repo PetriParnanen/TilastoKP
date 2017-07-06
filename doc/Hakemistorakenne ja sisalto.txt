@@ -9,10 +9,14 @@ TilastoKP
 						- Ohjaa joukkueen tietoja.
 					PlayerController.js
 						- Pelaajan lisääminen ja muokkaaminen.
-					GameController.js
+					MatchController.js
 						- Ottelun ohjaus
 				directives
 				factories
+					- MatchFactory.js
+						- Tietojen välitys käyttöliittymän (kontrollerien kautta) ja tietokannan väillä.
+						- Esimerkiksi pelaajatiedot, tapahtumatiedot, jne.
+						- Käytetään aluksi tätä yhtä factorya ja jos kasvaa liikaa, pilkotaan useammaksi.
 				services
 			views - Näkymät
 				index.html
@@ -23,12 +27,14 @@ TilastoKP
 					- Joukkueet: joukkueiden käsittely (toteutetaan myöhemmin jos aikaa)
 				player_list.html
 					- Pelaajalista
-				start_game.html
+				start_match.html
 					- Ottelun aloitus
-				game.html
+					- Täältä pääsee ottelusivulle (match.html)
+				match.html
 					- Ottelusivu
-				reports.html				
-				
+				reports.html
+					- Edellisten otteluiden näkymät
+					- Täältä pääsee ottelusivulle, joka on muokattu raporttia varten.
 		server - Back end -koodit (NodeJS jne.)
 			
 		

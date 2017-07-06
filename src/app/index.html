@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="ShoppingListApp">
+	<head>
+		<meta charset="utf-8">
+		<script src="./scripts/angular.min.js"></script>  
+		<script src="./scripts/angular-resource.min.js"></script>		
+		<script src="./scripts/angular-route.min.js"></script>
+		<script src="./scripts/main.js"></script>		
+		<script src="./scripts/controllers/TeamController.js"></script>
+		<script src="./scripts/controllers/PlayerController.js"></script>
+		<script src="./scripts/controllers/MatchController.js"></script>
+		<script src="./scripts/factories/factories.js"></script>
+		</head>
+	<body>
+		<h1>Ottelutilastointi</h1>
+		<a href="#/team">Joukkue</a>
+		<a href="#/player_list">Pelaajalista</a>	
+		<a href="#/start_match">Aloita ottelu</a>
+		<a href="#/reports">Raportit</a>
+		<hr>
+		<div ng-view>
+
+		</div>
+	</body>
+</html>
