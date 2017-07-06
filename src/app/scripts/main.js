@@ -1,30 +1,30 @@
-var app = angular.module("ShoppingListApp",["ngRoute","Controllers"]);
+var app = angular.module('matchStatisticsApp',
+                            ['ngRoute','TeamModule']);
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
 }]);
-
-app.config(['$qProvider', function($qProvider) {
-  $qProvider.errorOnUnhandledRejections(false);
-}]);
-
+ 
 app.config(['$routeProvider',
   function($routeProvider) {
-	$routeProvider.when('/shoppinglist', {
-        templateUrl: 'views/shoppinglist.html',
-        controller: 'ListController'
+  $routeProvider.when('/team', {
+        templateUrl: 'views/team.html',
+        controller: 'TeamController'
     }).
-	when('/additem', {
-        templateUrl: 'views/additem.html',
-        controller: 'AddController'
+  when('/player_list', {
+        templateUrl: 'views/player_list.html',
+        controller: 'PlayerController'
     }).
-    when('/finditem', {
-        templateUrl: 'views/details.html',
-        controller: 'ItemController'
+    when('/start_match', {
+        templateUrl: 'views/start_match.html',
+        controller: 'MatchController'
     }).
-   	otherwise({
-		redirectTo: '/'
-	});
+    when('/reports', {
+        templateUrl: 'views/reports.html',
+        controller: 'MatchController'
+    }).
+    otherwise({
+    redirectTo: '/'
+    });
 
 }]);
- 

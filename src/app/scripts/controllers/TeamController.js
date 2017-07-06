@@ -1,3 +1,4 @@
-angular.module('teamController', []).controller('TeamController', function($scope, teamFactory)
+angular.module('TeamModule', []).controller('TeamController', function($scope, teamFactory){
+
 	
 });
