@@ -1,3 +1,9 @@
 <div ng-controller="TeamController">
-Joukkue
+	<h3>Joukkue</h3>
+	<select ng-model="selectedTeam" ng-options="team.name for team in teams">
+		<option value="{{team.id}}">{{team.name}}</option>
+	</select>
+
+	<p><h4>Valinta</h4>id: {{selectedTeam.id}}<br/> name: {{selectedTeam.name}}</p>
+
 </div>
