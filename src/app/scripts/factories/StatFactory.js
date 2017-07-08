@@ -34,20 +34,20 @@ teams = [
 // Listaa lajin tapahtumat, resourcen tullessa haku ehdossa on mukana laji-id
 var events = [
 	{id:1, desc:"Onnistunut 2P heitto", abbr:"O2P", order:"1"},
-	{id:2, desc:"2P heittoyritys", abbr:"H2P", order:"2"},
-	{id:3, desc:"Onnistunut 3P heitto", abbr:"O3P", order:"3"},
-	{id:4, desc:"3P heittoyritys", abbr:"H3P", order:"4"},
-	{id:5, desc:"Onnistunut vapaaheitto", abbr:"O1P", order:"5"},
-	{id:6, desc:"Vapaaheitto yritys", abbr:"H1P", order:"6"},
-	{id:7, desc:"Hyökkäys levypallo", abbr:"HL", order:"7"},
-	{id:8, desc:"Puolustus levypallo", abbr:"PL", order:"8"},
-	{id:9, desc:"Levypallot yhteensä", abbr:"LEV", order:"9",sum:"@7 + @8"},
-	{id:10, desc:"Syötöt", abbr:"S",order:"10"},
-	{id:11, desc:"Menetykset", abbr:"M", order:"11"},
-	{id:12, desc:"Riistot", abbr:"R", order:"12"},
-	{id:13, desc:"Torjunnat", abbr:"T", order:"13"},
-	{id:14, desc:"Virheet", abbr:"V", order:"14"},
-	{id:15, desc:"Pisteet", abbr:"PIST", order:"15",sum:"@1*2+@3*3+@5*1"}
+	{id:2, desc:"2P heittoyritys", abbr:"H2P", order:"5"},
+	{id:3, desc:"Onnistunut 3P heitto", abbr:"O3P", order:"10"},
+	{id:4, desc:"3P heittoyritys", abbr:"H3P", order:"15"},
+	{id:5, desc:"Onnistunut vapaaheitto", abbr:"O1P", order:"20"},
+	{id:6, desc:"Vapaaheitto yritys", abbr:"H1P", order:"25"},
+	{id:7, desc:"Hyökkäys levypallo", abbr:"HL", order:"30"},
+	{id:8, desc:"Puolustus levypallo", abbr:"PL", order:"35"},
+	{id:9, desc:"Levypallot yhteensä", abbr:"LEV", order:"40",sum:"@7 + @8"},
+	{id:10, desc:"Syötöt", abbr:"S",order:"45"},
+	{id:11, desc:"Menetykset", abbr:"M", order:"50"},
+	{id:12, desc:"Riistot", abbr:"R", order:"55"},
+	{id:13, desc:"Torjunnat", abbr:"T", order:"60"},
+	{id:14, desc:"Virheet", abbr:"V", order:"65"},
+	{id:15, desc:"Pisteet", abbr:"PIST", order:"70",sum:"@1*2+@3*3+@5*1"}
 ];
 
 // tapahtumien funktiot
