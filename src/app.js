@@ -112,7 +112,7 @@ app.post("/api/eventlist/sport/:sportid/id:id", function(req,res) {
 	for (var i = 0; i < l; i++){
 		if (sportid == events[i].sportid) {
 			console.log("New event for sport:"+reg.params.sportid);
-			my newevent = {};
+			var newevent = {};
 			newevent.id = req.body.id;
 			newevent.desc = req.body.desc;
 			newevent.abbr = req.body.abbr;
@@ -252,7 +252,7 @@ app.post("/api/playerlist/team:teamid/player:playerid", function(req,res) {
 	var l = teamsplayers.length;
 	for (i = 0; i < l; i++){
 		if (teamsplayers[i].id = tid){
-			teamsplayers[i].players.push(newteamsplayer));
+			teamsplayers[i].players.push(newteamsplayer);
 			return;
 		}
 	}
