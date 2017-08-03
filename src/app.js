@@ -6,15 +6,53 @@ var bodyParser = require("body-parser");
 app.use(express.static(path.join(__dirname,"app")));
 app.use(bodyParser.json());
 
+//Sport api
+var sports = [
+	{id:1, name:"Koripallo"},
+	{id:2, name:"Salibandy"}
+];
+
+//get all sports
+app.get("/api/sportlist", function(req,res){
+	console.log("get all sports");
+	res.send(JSON.stringify(sports));
+});
+
+app.get("/api/sportlist/:id", function(req,res) {
+	console.log("get sport id:"+req.params.id);
+	var id = req.params.id;
+	var l = sports.length;
+	for (var i = 0; i < l; i++) {
+		console.log(sports[i]);
+		if (id == sports[i].id) {
+			res.send(JSON.stringify(sports[i]));
+			return;
+		}
+	}
+	var empty = {};
+	res.send(JSON.stringify(empty));
+});
+
 //team api
 var teams = [
-	{id:1, name:"Skuuppi joukkue"},
-	{id:2, name:"Kikka joukkue"}
+	{id:1, sport_id:"1", name:"Skuuppi joukkue"},
+	{id:2, sport_id:"1", name:"Kikka joukkue"}
 ];
 
 //get all teams
 app.get("/api/teamlist", function(req,res) {
 	console.log("get all teams");
+	var l = teams.length;
+	for (var i = 0; i < l; i++){
+		var laji;
+		var m = sports.length;
+		for (var j = 0; j < m; j++){
+			if(teams[i].sport_id == sports[j].id) {
+				laji = sports[j].name;
+			}
+		}
+		teams[i].laji = laji;
+	}
 	res.send(JSON.stringify(teams));	
 });
 
@@ -40,6 +78,7 @@ app.post("/api/teamlist/:id", function(req,res) {
 	var newitem = {};
 	newteam.id = req.body.id;
 	newteam.name = req.body.name;
+	newteam.sport_id = req.body.sport_id;
 	teams.push(newteam);
 	console.log(newteam);
 });
@@ -66,7 +105,7 @@ var events = [
 	]},
 	{sportid:"2",
 	eventdata: [
-		{id:16, sportid:"2", desc:"Maalit", abbr:"G", order:"1"}
+		{id:16, desc:"Maalit", abbr:"G", order:"1"}
 	]}
 ];
 

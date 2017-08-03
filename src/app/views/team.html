@@ -1,9 +1,6 @@
-<div ng-controller="TeamController">
-	<h3>Joukkue</h3>
-	<select ng-model="selectedTeam" ng-options="team.name for team in teams">
-		<option value="{{team.id}}">{{team.name}}</option>
-	</select>
-
-	<p><h4>Valinta</h4>id: {{selectedTeam.id}}<br/> name: {{selectedTeam.name}}</p>
-
+<div >
+<br />
+<input type="hidden" ng-model="selectedTeam.id" />
+Nimi: <input type="text" ng-model="selectedTeam.name" /><br />
+Laji: {{selectedTeam.laji}}	
 </div>

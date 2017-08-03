@@ -19,6 +19,7 @@ PlayerTeam
 
 Team:
 - id: int (pk)  // joukkueen uniikki id, järjestelmän luoma
+- sportid: int // liitos sport.id:n kenttään
 - name: string (40)  // Joukkueen nimi
 
 Match:
@@ -27,10 +28,14 @@ Match:
 - opponent: string (40)  // vastustajan nimi
 - date: date  // Ottelun pvm
 
+Sport:
+- id: int (pk) // Uniikki id lajille
+- name: String (50) // Lajin nimi
+
 // jos aletaan tukemaan uusia lajeja tai tekemään tästä useampi kielistä niin tämä taulu muuttuu
 Event:
 - id: int (pk)  // tapahtuman uniikki id, järjestelmän luoma
-- sport: string (30)  // lajin teksti
+- sportid: int  // liitos sport.id kenttään
 - description: string (50)  // Pidempi tarkempi kuvaus tapahtumasta
 - abbreviation: string (10)  // Lyhempi kuvaus, näkyy ottelusivulla
 - order: int  // Järjestys, monesko kenttä tapahtumien listalla

@@ -1,5 +1,5 @@
 var app = angular.module('matchStatisticsApp',
-                            ['ngRoute','TeamModule','PlayerModule','MatchModule','StatFactory', 'StatApiFactory']);
+                            ['ngRoute','TeamModule','PlayerModule','MatchModule','StatApiFactory']);
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
@@ -7,10 +7,7 @@ app.config(['$locationProvider', function($locationProvider) {
  
 app.config(['$routeProvider',
   function($routeProvider) {
-  $routeProvider.when('/', {
-        templateUrl: 'views/team.html',
-        controller: 'TeamController'
-    }).
+  $routeProvider.
     when('/team', {
         templateUrl: 'views/team.html',
         controller: 'TeamController'

@@ -1,9 +1,8 @@
-angular.module('TeamModule', []).controller('TeamController', function($scope,TeamItem,$filter){	    
+angular.module('TeamModule', []).controller('TeamController', function($scope,TeamItem,SportItem,$filter){	    
 		//var items = TeamFactory.getTeams();
 		var items = TeamItem.query();
-	    $scope.teams = items;
-	    console.log($scope.teams);
 
+	    $scope.teams = items;
 	   	
 	   	// --- HUOM tämä filtteri ei vielä toimi. Muuttujat keturallaan.
 	    // Näin saadaan valikon ensimmäinen valinta esivalituksi orderBy-filterin mukaisessa järjestyksessä. 
@@ -13,9 +12,9 @@ angular.module('TeamModule', []).controller('TeamController', function($scope,Te
 	    
 	    // HUOM Tämä ei nyt toimi kun vaihdettiin käyttöön StatApiFactory
 	    // Esivalitaan listan ensimmäinen vaihtoehto.	    
-	    $scope.selectedTeam = items[0];
+	    
 
-	    console.log('items[0]: ' + items[0]);
+	    //console.log('items[0]: ' + items[0]);
 
 		// TODO:
 		// Valitun joukkueen id:n säilyminen muihin vieweihin ja sieltä takaisin niin, että valinta säilyy joukkuevalikossa.

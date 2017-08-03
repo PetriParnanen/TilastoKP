@@ -9,7 +9,6 @@
 		<script src="./scripts/controllers/TeamController.js"></script>
 		<script src="./scripts/controllers/PlayerController.js"></script>
 		<script src="./scripts/controllers/MatchController.js"></script>
-		<script src="./scripts/factories/StatFactory.js"></script>
 		<script src="./scripts/factories/StatApiFactory.js"></script>
 		</head>
 	<body>
@@ -19,8 +18,14 @@
 		<a href="#/start_match">Aloita ottelu</a>
 		<a href="#/reports">Raportit</a>
 		<hr>
+			<div ng-controller="TeamController">
+				<b>Joukkue</b><br/>
+				Nimi: 
+					<select ng-model="selectedTeam" ng-options="team.name for team in teams">
+					<option value="{{team.id}}">{{team.name}}</option>
+					</select>  Laji: {{selectedTeam.laji}}
 		<div ng-view>
-
+		</div>
 		</div>
 	</body>
 </html>
