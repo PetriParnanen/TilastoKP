@@ -1,3 +1,9 @@
+# dev JS
+src/app/scripts/angular.js
+src/app/scripts/angular-resource.js
+src/app/scripts/angular-route.js
+src/app/scripts/ui-bootstrap.js
+
 # Logs
 logs
 *.log

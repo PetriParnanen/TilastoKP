@@ -2,30 +2,47 @@
 <html ng-app="matchStatisticsApp">
 	<head>
 		<meta charset="utf-8">
-		<script src="./scripts/angular.min.js"></script>  
-		<script src="./scripts/angular-resource.min.js"></script>		
-		<script src="./scripts/angular-route.min.js"></script>
-		<script src="./scripts/main.js"></script>		
+		<script src="./scripts/angular.js"></script>  
+		<script src="./scripts/angular-resource.js"></script>		
+		<script src="./scripts/angular-route.js"></script>
+		<script src="./scripts/ui-bootstrap.js"></script>
+		<script src="./scripts/main.js"></script>
+		<script src="./scripts/controllers/MainController.js"></script>	
 		<script src="./scripts/controllers/TeamController.js"></script>
 		<script src="./scripts/controllers/PlayerController.js"></script>
 		<script src="./scripts/controllers/MatchController.js"></script>
 		<script src="./scripts/factories/StatApiFactory.js"></script>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 		</head>
 	<body>
-		<h1>Ottelutilastointi</h1>
-		<a href="#/team">Joukkue</a>
-		<a href="#/player_list">Pelaajalista</a>	
-		<a href="#/start_match">Aloita ottelu</a>
-		<a href="#/reports">Raportit</a>
-		<hr>
-			<div ng-controller="TeamController">
-				<b>Joukkue</b><br/>
+		<div ng-controller="MainController">
+		<header>
+			<h1>Ottelutilastointi</h1>
+				<b>Valitse joukkue</b><br/>
 				Nimi: 
-					<select ng-model="selectedTeam" ng-options="team.name for team in teams">
+					<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
 					<option value="{{team.id}}">{{team.name}}</option>
 					</select>  Laji: {{selectedTeam.laji}}
-		<div ng-view>
-		</div>
+			<hr>
+		</header>
+		<table width="600">
+		<tr>
+		<td width="100px" style="background-color: #EEEEEE" valign="top">
+		<nav>
+			<a href="#/team">Joukkue</a><br />	
+			<a href="#/start_match">Aloita ottelu</a><br />
+			<a href="#/reports">Raportit</a>
+		</nav>
+		</td>
+		<td width="500px">
+		<section>
+			<div ng-view>
+			</div>
+			
+		</section>
+		</td>
+		</tr>
+		</table>
 		</div>
 	</body>
 </html>

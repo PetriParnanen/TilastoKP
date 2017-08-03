@@ -8,5 +8,9 @@ fact.factory("SportItem", function($resource) {
 	return $resource("/api/sportlist/:id", {id: '@id'});
 });
 
+fact.factory("TeamPlayersItem", function($resource) {
+	return $resource("/api/playerlist/team/:teamid", {teamid: '@tid'});
+});
+
 
 

@@ -1,6 +1,37 @@
-<div >
+<div ng-controller="TeamController">
 <br />
 <input type="hidden" ng-model="selectedTeam.id" />
-Nimi: <input type="text" ng-model="selectedTeam.name" /><br />
-Laji: {{selectedTeam.laji}}	
+	<script type="text/ng-template" id="playerPopoverTemplate.html">
+		<div>Nimi: {{player.fname}} {{player.lname}}<br />
+		Pelinro: {{player.number}}<br />
+		Liittymispvm: {{player.jdate}}<br />
+		Lähtopvm: {{player.ldate}}</div>
+	</script>
+<table width="100%">
+<tr>
+<td><b>Nimi:</b></td>
+<td>{{selectedTeam.name}}</td>
+</tr>
+<tr>
+<td><b>Laji:</b></td>
+<td>{{selectedTeam.laji}}</td>
+</tr>
+<tr>
+<td valign="top"><b>Pelaajat:</b></td>
+<td>
+<table width="100%">
+<tr ng-repeat="player in players | orderBy:'number/1'">
+<td><span uib-popover-template="'playerPopoverTemplate.html'" popover-trigger="'mouseenter'">{{player.nick}}</span></td>
+<td>{{player.number}}</td>
+<td>Muuta</td>
+<td>Poista</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>Lisää uusi pelaaja</td>
+<td>Lisää uusi joukkue</td>
+</tr>
+</table>
 </div>

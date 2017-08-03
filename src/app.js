@@ -212,14 +212,18 @@ app.get("/api/playerlist/team/:teamid", function(req,res) {
 	var tid = req.params.teamid;
 	var l = teamsplayers.length;
 	for (var i = 0; i < l; i++){
-		if (teamid = teamsplayer[i].tid) {
+		if (tid == teamsplayers[i].tid) {
 			// adding nick if it doesnt exists (firstname)
 			var m = teamsplayers[i].players.length;
 			for (var j = 0; j < m; j++) {
-				if (!teamsplayers[i].players[j].nick) {
-					var n = players.length;
-					for (var k = 0; k < n; k++){
-						teamsplayers[i].players[j].nick = players[k].fname;
+				var n = players.length;
+				for (var k = 0; k < n; k++){
+					if (teamsplayers[i].players[j].pid == players[k].id){
+						teamsplayers[i].players[j].lname = players[k].lname;
+						teamsplayers[i].players[j].fname = players[k].fname;
+						if (!teamsplayers[i].players[j].nick) {
+							teamsplayers[i].players[j].nick = players[k].fname;
+						}
 					}
 				}
 			}
@@ -238,10 +242,10 @@ app.get("/api/playerlist/team/:teamid/player:playerid", function(req,res) {
 	var pid = req.params.playerid;
 	var l = teamsplayers.length;
 	for (var i = 0; i < l; i++){
-		if (teamid = teamsplayers[i].tid) {
+		if (teamid == teamsplayers[i].tid) {
 			var m = teamsplayers[i].players.length;
 			for (var j = 0; j < m; j++){
-				if (teamsplayers[i].players[j].pid = pid){
+				if (teamsplayers[i].players[j].pid == pid){
 					res.send(JSON.stringify(teamsplayers[i].players[j]));
 					return;
 				}
@@ -258,7 +262,7 @@ app.get("/api/player/:playerid", function(req,res) {
 	var pid = req.params.playerid;
 	var l = players.length;
 	for (var i = 0; i < l; i++){
-		if (pid = players[i].id){
+		if (pid == players[i].id){
 			res.send(JSON.stringify(players[i]));
 			return;
 		}
@@ -290,7 +294,7 @@ app.post("/api/playerlist/team:teamid/player:playerid", function(req,res) {
 
 	var l = teamsplayers.length;
 	for (i = 0; i < l; i++){
-		if (teamsplayers[i].id = tid){
+		if (teamsplayers[i].id == tid){
 			teamsplayers[i].players.push(newteamsplayer);
 			return;
 		}
@@ -400,7 +404,7 @@ app.get("/api/matchlist/team/:teamid", function(req,res) {
 	var tid = req.params.teamid;
 	var l = teamsplayers.length;
 	for (var i = 0; i < l; i++){
-		if (teamid = matches[i].tid) {
+		if (teamid == matches[i].tid) {
 			res.send(JSON.stringify(matches[i]));
 			return;
 		}
@@ -416,10 +420,10 @@ app.get("/api/matchlist/team/:teamid/match:matchid", function(req,res) {
 	var mid = req.params.matchid;
 	var l = matches.length;
 	for (var i = 0; i < l; i++){
-		if (tid = matches[i].tid) {
+		if (tid == matches[i].tid) {
 			var m = matches[i].matchdata.length;
 			for (var j = 0; j < m; j++){
-				if (matches[i].matchdata[j].id = mid){
+				if (matches[i].matchdata[j].id == mid){
 					res.send(JSON.stringify(matches[i].matchdata[j]));
 					return;
 				}
