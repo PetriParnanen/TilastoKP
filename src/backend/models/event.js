@@ -1,13 +1,12 @@
 var mongoose = require("mongoose");
 
-
 var schema = mongoose.Schema;
 
 module.exports = mongoose.model("Event", new schema({
-	id:Number,
-	sport_id:Number,
+	sportId: {type: mongoose.Schema.Types.ObjectId, ref: 'Sport'},
 	description:String,
 	abbreviation:String,
 	order:Number,
-	sumfield:String
+	sumfield:String,
+	receiptOnly:Boolean
 }));

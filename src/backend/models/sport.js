@@ -1,9 +1,7 @@
 var mongoose = require("mongoose");
 
+var SportSchema = new mongoose.Schema({
+	name:String,
+});
 
-var schema = mongoose.Schema;
-
-module.exports = mongoose.model("Sport", new schema({
-	id:Number,
-	name:String
-}));
+module.exports = mongoose.model("Sport", SportSchema);

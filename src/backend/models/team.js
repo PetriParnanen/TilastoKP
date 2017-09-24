@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 
+var TeamSchema = new mongoose.Schema({
+	name:String,
+	sportId: {type: mongoose.Schema.Types.ObjectId, ref:'Sport'},
+	sportName:String,
+})
 
-var schema = mongoose.Schema;
-
-module.exports = mongoose.model("Team", new schema({
-	id:Number,
-	name:String	
-}));
+module.exports = mongoose.model("Team", TeamSchema);

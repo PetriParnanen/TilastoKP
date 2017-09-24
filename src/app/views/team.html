@@ -1,37 +1,37 @@
 <div ng-controller="TeamController">
 <br />
 <input type="hidden" ng-model="selectedTeam.id" />
-	<script type="text/ng-template" id="playerPopoverTemplate.html">
-		<div>Nimi: {{player.fname}} {{player.lname}}<br />
-		Pelinro: {{player.number}}<br />
-		Liittymispvm: {{player.jdate}}<br />
-		Lähtopvm: {{player.ldate}}</div>
-	</script>
 <table width="100%">
 <tr>
 <td><b>Nimi:</b></td>
 <td>{{selectedTeam.name}}</td>
+<td><button type="button" class="btn btn.default" ng-click="editTeam()">Vaihda nimi</button></td>
 </tr>
 <tr>
 <td><b>Laji:</b></td>
-<td>{{selectedTeam.laji}}</td>
+<td colspan="3">{{selectedTeam.sportId.name}}</td>
 </tr>
 <tr>
 <td valign="top"><b>Pelaajat:</b></td>
-<td>
+<td colspan="2">
 <table width="100%">
 <tr ng-repeat="player in players | orderBy:'number/1'">
-<td><span uib-popover-template="'playerPopoverTemplate.html'" popover-trigger="'mouseenter'">{{player.nick}}</span></td>
-<td>{{player.number}}</td>
-<td>Muuta</td>
-<td>Poista</td>
+<td width="50%">
+<span ng-if="player.nickname && player.nickname != ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.nickname}}</span>
+<span ng-if="!player.nickname || player.nickname == ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.player_id.firstname}}</span>
+</td>
+<td width="20%">{{player.number}}</td>
+<td width="15%"><button type="button" class="btn btn.default" ng-click="editPlayer(player._id)">Muuta</button></td>
+<td width="15%"><button type="button" class="btn btn.default" ng-click="deletePlayer(player._id)">Poista</button></td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>Lisää uusi pelaaja</td>
-<td>Lisää uusi joukkue</td>
+<td colspan="3" align="center">
+	<button type="button" class="btn btn.default" ng-click="addPlayer()">Lisää uusi pelaaja</button> 
+	<button type="button" class="btn btn.default" ng-click="removeTeam()">Poista joukkue</button></td>
 </tr>
 </table>
+{{form.savePlayer}}
 </div>

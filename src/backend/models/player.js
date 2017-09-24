@@ -1,10 +1,8 @@
 var mongoose = require("mongoose");
 
-
-var schema = mongoose.Schema;
-
-module.exports = mongoose.model("Player", new schema({
-	id:Number,
+var PlayerSchema = new mongoose.Schema({
 	firstname:String,
 	lastname:String	
-}));
+})
+
+module.exports = mongoose.model("Player", PlayerSchema);

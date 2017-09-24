@@ -1,0 +1,36 @@
+<div>
+	<h3>{{modalTitle}}</h3>
+	<form name="form.savePlayer" ng-submit="submitPlayer()">
+<table>
+<tr>
+<td><input type="hidden" ng-model="playerId" />Etunimi:</td>
+<td><input type="text" class="form-control" ng-model="player.firstname" required />
+</td>
+<td>Sukunimi:</td>
+<td><input type="text" class="form-control" ng-model="player.lastname" required />
+</td>
+</tr>
+<tr>
+<td>Kutsumanimi:</td>
+<td><input type="text" class="form-control" ng-model="player.nickname" /></td>
+<td>Pelinumero:</td>
+<td><input type="text" class="form-control" ng-model="player.number" required /></td>
+</tr>
+<tr>
+<td>Liittymispvm:</td>
+<td colspan="2"><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="player.joining_date" is-open="popup2.opened" datepicker-options="playerDateOptions"></td>
+<td><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+</td>
+</tr>
+<tr ng-if="playerId">
+<td>Lähtöpvm:</td>
+<td colspan="2"><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="player.leaving_date" is-open="popup3.opened" datepicker-options="playerDateOptions"></td>
+<td><button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><button type="submit" class="btn btn-primary">Tallenna</button></td>
+<td colspan="2" align="center"><button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></td>
+</tr>
+</table>
+</div>
