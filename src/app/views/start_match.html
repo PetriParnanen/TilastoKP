@@ -1,28 +1,35 @@
 <div ng-controller="MatchController">
-<div ng-controller="PlayerController">
 <H2>Ottelun aloitus</H2>
 Anna vastustaja, pelipäivä ja valitse otteluun osallistuvat pelaajat.<br />
 <table>
 <tr>
 <td>Vastustaja:</td>
-<td><input type="text" ng-model="opponent" /></td>
+<td colspan="2"><input type="text" ng-model="match.opponent" /></td>
 </tr>
 <tr>
 <td>Pelipäivä:</td>
-<td><input type="date" ng-model="matchday" />
+<td><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="match.matchday" is-open="popup2.opened" datepicker-options="matchDayOptions"></td>
+<td><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
 </td>
 </tr>
 <tr>
-<td colspan="2">Valitse pelaajat:</td>
+<td colspan="3">Valitse pelaajat:</td>
 </tr>
-<tr colspan="2">
-<table>
-<tr ng-repeat="player in teamPlayers | orderBy:'player.number'">
-<td>{{player.nick}}</td>
-<td>{{player.number}}</td>
-<td><input type="checkbox" id="{{player.pid}}" /></td>
+<tr colspan="3">
+<table width="100%">
+<tr ng-repeat="player in teamPlayers | orderBy:'number/1'">
+<td width="50%">
+	<span ng-if="player.nickname && player.nickname != ''">{{player.nickname}}</span>
+	<span ng-if="!player.nickname || player.nickname == ''">{{player.player_id.firstname}}</span>
+</td>
+<td width="20%">{{player.number}}</td>
+<td width="30%"><input type="checkbox" id="{{player._id}}" /></td>
 </tr>
 </table>
+</tr>
+<tr>
+<td colspan="3"><button type="button" class="btn btn-default" ng-click="startGame()">Aloita ottelu</button>
+</td>
 </tr>
 </table>
 </div>

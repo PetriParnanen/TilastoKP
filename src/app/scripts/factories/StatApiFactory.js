@@ -41,6 +41,11 @@ angular.module('StatApiFactory', [])
 			.then(function(response){ return response.data; }, function(error){ console.log("UT ERROR " + error)});
 	};
 
+	statFactory.removeTeam = function(id){
+		return $http.delete(apiServer + "/teamlist/" + id)
+			.then(function(response){ return response.data; }, function(error){ console.log("RD ERROR " + error)});
+	}
+
 	statFactory.getTeamPlayers = function(id) {
 		return $http.get(apiServer + "/playerlist/team/" + id)
 			.then(function(response){ return response.data; }, function(error){ console.log("GTPs ERROR " + error)});
@@ -60,6 +65,11 @@ angular.module('StatApiFactory', [])
 		return $http.post(apiServer + "/playerlist/team/" + id, playerData)
 			.then(function(response){ return response.data; }, function(error){ console.log("ATP ERROR " + error)});
 	};
+
+	statFactory.removeTeamPlayer = function(teamId, playerId) {
+		return $http.delete(apiServer + "/playerlist/team/" + teamId + "/" + playerId)
+			.then(function(response){ return response.data; }, function(error){ console.log("DTP ERROR " + error)});
+	}
 
 	return statFactory;
 }]);

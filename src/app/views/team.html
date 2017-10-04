@@ -22,7 +22,7 @@
 </td>
 <td width="20%">{{player.number}}</td>
 <td width="15%"><button type="button" class="btn btn.default" ng-click="editPlayer(player._id)">Muuta</button></td>
-<td width="15%"><button type="button" class="btn btn.default" ng-click="deletePlayer(player._id)">Poista</button></td>
+<td width="15%"><button type="button" class="btn btn.default" ng-click="removePlayer(player._id)">Poista</button></td>
 </tr>
 </table>
 </td>
@@ -30,7 +30,7 @@
 <tr>
 <td colspan="3" align="center">
 	<button type="button" class="btn btn.default" ng-click="addPlayer()">Lisää uusi pelaaja</button> 
-	<button type="button" class="btn btn.default" ng-click="removeTeam()">Poista joukkue</button></td>
+	<button type="button" class="btn btn.default" ng-click="removeTeam(selectedTeam.id)">Poista joukkue</button></td>
 </tr>
 </table>
 {{form.savePlayer}}

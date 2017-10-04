@@ -53,6 +53,15 @@ router.route('/:teamId')
 				res.status(200).send(team);
 			});
 		});
+	})
+	//delete
+	.delete(function(req, res){
+		console.log("Delete team id:"+req.params.teamId);
+		TeamModel.findByIdAndRemove(req.params.teamId, function(err){
+			if(err)
+				res.status(500).send(err);
+			res.status(200).send({"message":"Team removed"});
+		});
 	});
 
 module.exports = router;

@@ -1,6 +1,6 @@
 angular.module('TeamModule', []).controller('TeamController', 
-    ['$scope', 'statFactory', '$uibModal',  '$route',
-        function($scope,statFactory,$uibModal,$route){
+    ['$scope', 'statFactory', '$uibModal',  '$route', '$window',
+        function($scope,statFactory,$uibModal,$route, $window){
 
     refreshPlayers();
 
@@ -104,6 +104,26 @@ angular.module('TeamModule', []).controller('TeamController',
             console.log('Dismissed');
         });
     };
+
+    //remove team
+    $scope.removeTeam = function () {
+        statFactory.removeTeam($scope.selectedTeam._id)
+            .then(function(){
+                $window.location.href = "/";
+            }, function(error){
+                console.log("Could not remove team");
+            });
+    }
+
+    //remove player
+    $scope.removePlayer = function (playerId) {
+        statFactory.removeTeamPlayer($scope.selectedTeam._id, playerId)
+            .then(function(){
+                refreshPlayers();
+            }, function() {
+                console.log("Player removal failed");
+            });
+    }
 
 }]);
 	

@@ -116,7 +116,7 @@ router.route('/team/:teamId/:playerId')
 	})
 	//update player data
 	.put(function(req, res){
-		console.log("Updating player id " + req.params.playerId + "in team id " + req.params.teamId);
+		console.log("Updating player id " + req.params.playerId + " in team id " + req.params.teamId);
 		TeamPlayerModel.findById(req.params.playerId, function(err, teamplayer){
 			if(err)
 				return res.status(500).send(err);
@@ -145,6 +145,28 @@ router.route('/team/:teamId/:playerId')
 				if(err)
 					return res.status(500).send(err)
 				res.status(200).send(teamplayer);
+			});
+		});
+	})
+	// Delete player
+	.delete(function(req, res){
+		console.log("Delete player id " + req.params.playerId + " in team id "+req.params.teamId);
+		var pid = "";
+		TeamPlayerModel.findById(req.params.playerId, function(err, teamplayer){
+			if(err)
+				return res.status(500).send(err);
+
+			pid = teamplayer.player_id;
+		});
+		TeamPlayerModel.findByIdAndRemove(req.params.playerId, function(err){
+			if (err)
+				return res.status(500).send(err);
+
+			PlayerModel.findByIdAndRemove(pid, function(err){
+				if(err)
+					return res.status(500).send(err);
+
+				res.status(200).send({"message":"Player removed"});
 			});
 		});
 	});
