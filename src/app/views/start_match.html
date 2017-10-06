@@ -4,11 +4,11 @@ Anna vastustaja, pelipäivä ja valitse otteluun osallistuvat pelaajat.<br />
 <table>
 <tr>
 <td>Vastustaja:</td>
-<td colspan="2"><input type="text" ng-model="match.opponent" /></td>
+<td colspan="2"><input type="text" ng-model="match.opponent" required /></td>
 </tr>
 <tr>
 <td>Pelipäivä:</td>
-<td><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="match.matchday" is-open="popup2.opened" datepicker-options="matchDayOptions"></td>
+<td><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="match.matchday" is-open="popup2.opened" datepicker-options="matchDayOptions" required></td>
 <td><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
 </td>
 </tr>
@@ -23,12 +23,12 @@ Anna vastustaja, pelipäivä ja valitse otteluun osallistuvat pelaajat.<br />
 	<span ng-if="!player.nickname || player.nickname == ''">{{player.player_id.firstname}}</span>
 </td>
 <td width="20%">{{player.number}}</td>
-<td width="30%"><input type="checkbox" id="{{player._id}}" /></td>
+<td width="30%"><input type="checkbox" id="{{player._id}}" ng-model="match.players[player._id][player.number]" /></td>
 </tr>
 </table>
 </tr>
 <tr>
-<td colspan="3"><button type="button" class="btn btn-default" ng-click="startGame()">Aloita ottelu</button>
+<td colspan="3" align="center"><button type="button" class="btn btn-default" ng-click="startGame()">Aloita ottelu</button>
 </td>
 </tr>
 </table>

@@ -69,7 +69,12 @@ angular.module('StatApiFactory', [])
 	statFactory.removeTeamPlayer = function(teamId, playerId) {
 		return $http.delete(apiServer + "/playerlist/team/" + teamId + "/" + playerId)
 			.then(function(response){ return response.data; }, function(error){ console.log("DTP ERROR " + error)});
-	}
+	};
+
+	statFactory.getSportEvents = function(sportId){
+		return $http.get(apiServer + "/sportlist/event/" + sportId)
+			.then(function(response){ return response.data; }, function(error){ console.log("GSE ERROR " + error)});
+	};
 
 	return statFactory;
 }]);

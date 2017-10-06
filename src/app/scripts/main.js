@@ -1,5 +1,6 @@
 var app = angular.module('matchStatisticsApp',
-            ['ngRoute', 'ui.bootstrap', 'MainModule','TeamModule','SaveTeamModule','PlayerModule','MatchModule','StatApiFactory']);
+            ['ngRoute', 'ui.bootstrap', 'MainModule','TeamModule','SaveTeamModule','PlayerModule',
+                'MatchModule', 'LiveMatchModule', 'StatApiFactory']);
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');

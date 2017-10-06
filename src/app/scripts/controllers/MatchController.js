@@ -9,6 +9,10 @@ angular.module('MatchModule', []).controller('MatchController',
             console.log("ERR:"+error);
         });
 
+    $scope.match = {
+    	players:{}
+    };
+
     //datepicker stuff
 	$scope.today = function(){
 		$scope.jdate = new Date();
@@ -28,5 +32,35 @@ angular.module('MatchModule', []).controller('MatchController',
 		opened: false
 	};
 	//end of datepicker stuff
+
+	// Start game
+	$scope.startGame = function () {
+		var modalInstance = $uibModal.open({
+            templateUrl: './views/matchPopup.html',
+            controller: 'LiveMatchController',
+            scope: $scope,
+            resolve: {
+                saveGame: function () {
+                    return $scope.saveGame;
+                },
+                modalTitle: function() {
+                	return 'Tallenna ottelu';
+                },
+                matchData: function() {
+                	return $scope.match;
+                },
+                sportId: function() {
+                	return $scope.selectedTeam.sportId._id;
+                }
+            }
+        });
+
+		modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+            console.log($scope.selected);
+        }, function () {
+            console.log('Dismissed');
+        });
+    };
 
 }]);
