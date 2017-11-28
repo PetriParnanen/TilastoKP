@@ -9,7 +9,6 @@ angular.module('PlayerModule', []).controller('PlayerController',
 	if($scope.playerId){
 		statFactory.getTeamPlayer($scope.teamId, $scope.playerId)
 			.then(function(data) {
-				console.log(data);
 				$scope.player = {};
 				$scope.player.firstname=data.player_id.firstname;
 				$scope.player.lastname=data.player_id.lastname;

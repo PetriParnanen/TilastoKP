@@ -71,9 +71,24 @@ angular.module('StatApiFactory', [])
 			.then(function(response){ return response.data; }, function(error){ console.log("DTP ERROR " + error)});
 	};
 
-	statFactory.getSportEvents = function(sportId){
+	statFactory.getSportEvents = function(sportId) {
 		return $http.get(apiServer + "/sportlist/event/" + sportId)
 			.then(function(response){ return response.data; }, function(error){ console.log("GSE ERROR " + error)});
+	};
+
+	statFactory.addMatch = function(teamId, matchData) {
+		return $http.post(apiServer + "/matchlist/team/" + teamId, matchData)
+			.then(function(response){ return response.data; }, function(error){ console.log("AM ERROR " + error)});
+	};
+
+	statFactory.getTeamMatches = function(teamId) {
+		return $http.get(apiServer + "/matchlist/team/" + teamId)
+			.then(function(response){ return response.data; }, function(error){ console.log("GM ERROR " + error)});
+	};
+
+	statFactory.getTeamMatch = function(teamId, matchId) {
+		return $http.get(apiServer + "/matchlist/team/" + teamId + "/" + matchId)
+			.then(function(response){ return response.data; }, function(error){ console.log("GTM ERROR " + error)});
 	};
 
 	return statFactory;

@@ -24,7 +24,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 			.then(function(data) {
 				$scope.sports = data;
 				if ($scope.sportId){
-					console.log("setting dropdowan");
+					console.log("setting dropdown");
 				} else {
 					$scope.selectedSport = data[0];
 				}

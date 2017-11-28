@@ -1,14 +1,14 @@
 angular.module('LiveMatchModule', []).controller('LiveMatchController', 
-	['$scope', 'statFactory', '$uibModalInstance', 'saveGame', 'modalTitle', 'matchData', 'sportId',
-	function($scope, statFactory, $uibModalInstance, saveGame, modalTitle, matchData, sportId){
+	['$scope', 'statFactory', '$uibModalInstance', 'saveGame', 'modalTitle', 'matchData', 'sportId', 'teamId',
+	function($scope, statFactory, $uibModalInstance, saveGame, modalTitle, matchData, sportId, teamId){
 
 	$scope.matchData = matchData;
 	$scope.sportId = sportId;
+	$scope.teamId = teamId;
 	$scope.matchData.finalPlayers = [];
 	$scope.players = {};
 
 	$scope.handleClick = function(evt, pid, eid) {
-		console.log(evt + " " + pid + " " + eid);
 		switch(evt.which){
 			case 1: 
 				$scope.players[pid][eid]++;
@@ -17,6 +17,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 				break;
 			case 3:
 				$scope.players[pid][eid]--;
+				if ($scope.players[pid][eid]<0){ $scope.players[pid][eid]=0};
 				break;
 			default:
 				alert("WHat, strange mouse");
@@ -51,8 +52,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
     	$scope.match.opponent = $scope.matchData.opponent;
     	$scope.match.matchday = $scope.matchData.matchday;
     	$scope.match.players = $scope.players;
-    	console.log($scope.match);
-        //statFactory.addMatch($scope.match);
+        statFactory.addMatch($scope.teamId, $scope.match);
         $uibModalInstance.close('Match saved');
     };
 

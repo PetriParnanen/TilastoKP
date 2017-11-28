@@ -51,13 +51,15 @@ angular.module('MatchModule', []).controller('MatchController',
                 },
                 sportId: function() {
                 	return $scope.selectedTeam.sportId._id;
+                },
+                teamId: function() {
+                    return $scope.selectedTeam._id
                 }
             }
         });
 
 		modalInstance.result.then(function (selectedItem) {
             $scope.selected = selectedItem;
-            console.log($scope.selected);
         }, function () {
             console.log('Dismissed');
         });

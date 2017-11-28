@@ -1,3 +1,21 @@
-<div ng-controller="MatchController">
+<div ng-controller="RaportController">
 Otteluraportit
+<br />
+<input type="hidden" ng-model="selectedTeam.id" />
+<table width="100%">
+<tr>
+<td><b>Nimi:</b></td>
+<td>{{selectedTeam.name}}</td>
+</tr>
+<tr>
+<td colspan="2">Klikkaamalla vastustajan nimeä saa ottelun tiedot esiin</td>
+</tr>
+<tr>
+<td>Ottelu pvm</td>
+<td>Vastustaja</td>
+<tr ng-repeat="match in matches | orderBy:'date'">
+<td ng-click="openMatch(match._id)">{{match.date | date:"dd.MM.yyyy" }}</td>
+<td ng-click="openMatch(match._id)">{{match.opponent}}</td>
+</tr>
+</table>
 </div>

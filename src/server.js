@@ -38,6 +38,9 @@ router.use('/teamlist', teamRouter);
 //player
 var playerRouter = require('./backend/routes/playerRouter');
 router.use('/playerlist', playerRouter);
+//match
+var matchRouter = require('./backend/routes/matchRouter');
+router.use('/matchlist', matchRouter);
 
 app.use('/api', router);
 

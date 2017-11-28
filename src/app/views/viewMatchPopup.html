@@ -1,0 +1,30 @@
+<div ng-init="initMatchData()">
+	<h3>{{modalTitle}}</h3>
+<table width="100%">
+<tr>
+<td width="50%">Vastustaja: {{matchData.opponent}}</td>
+<td width="50%">Ottelupvm: {{matchData.date | date:"dd.MM.yyyy"}}</td>
+</tr>
+<tr>
+<td colspan="2">
+<table width="100%">
+<tr>
+<td style="padding: 5px">Pelaaja</td>
+<td style="padding: 5px">Pelinro</td>
+<td style="padding: 5px" ng-repeat="event in sportEvents | orderBy:'order'">{{event.abbreviation}}</td>
+</tr>
+<tr ng-repeat="player in matchData.players">
+<td>{{player.nickname}}</td>
+<td>{{player.number}}</td>
+<td ng-repeat="event in sportEvents | orderBy:'order'">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align="right"><button type="button" class="btn btn-primary" ng-lick="cancel()">Tallenna</button></td>
+<td align="left"><button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></td>
+</tr>
+</table>
+</div>

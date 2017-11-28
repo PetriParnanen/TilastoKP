@@ -1,6 +1,6 @@
 var app = angular.module('matchStatisticsApp',
             ['ngRoute', 'ui.bootstrap', 'MainModule','TeamModule','SaveTeamModule','PlayerModule',
-                'MatchModule', 'LiveMatchModule', 'StatApiFactory']);
+                'MatchModule', 'LiveMatchModule', 'RaportModule', 'RaportMatchModule', 'StatApiFactory']);
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
@@ -19,7 +19,7 @@ app.config(['$routeProvider',
     }).
     when('/reports', {
         templateUrl: 'views/reports.html',
-        controller: 'MatchController'
+        controller: 'RaportController'
     }).
     otherwise({
     redirectTo: '/'

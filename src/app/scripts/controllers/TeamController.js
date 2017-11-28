@@ -8,9 +8,10 @@ angular.module('TeamModule', []).controller('TeamController',
 		statFactory.getTeamPlayers($scope.selectedTeam._id)
             .then(function(data) {
                 $scope.players = data;
-		}, function(error){
-            console.log("ERR:"+error);
-        });
+		    }, function(error){
+                console.log("ERR:"+error);
+            }
+        );
 	};
 
 	$scope.$on("changeContent", function() {
@@ -98,7 +99,6 @@ angular.module('TeamModule', []).controller('TeamController',
 
         modalInstance.result.then(function (selectedItem) {
             $scope.selected = selectedItem;
-            console.log($scope.selected);
             refreshPlayers();
         }, function () {
             console.log('Dismissed');
