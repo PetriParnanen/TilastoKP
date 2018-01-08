@@ -1,3 +1,11 @@
+﻿SEURAAVANA:
+- jsonPath:llä yksittäisen ottelun tilaston tarkennus
+- kirjautuminen
+- tekstit omaan kirjasto tiedostoihin.
+- Tarkistuksien lisääminen ja muutenkin toiminnan tarkistaminen (ainakin 1 promise virhe, jota ei lokaalissa saa näkyviin, mutta muuten voisi ilmestyä. Tämä siis kun lisätään uusi joukkue)
+
+
+Yleistä ajatuksen juoksua, jota kait voisi määrittelyksikin kutsua:
 - Tietokanta
 	- taulujen rakenteen suunnittelu
 	- Kannan luonti

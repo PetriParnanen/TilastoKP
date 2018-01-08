@@ -2,7 +2,7 @@ Projektiryhmä: Petri Pärnänen, Jere Veijalainen
 
 Projektissa tehtävän sovelluksen kuvaus
 
-Koripallo-ottelun tilastointi
+Koripallo-ottelun tilastointi (ps. järjestelmä tulee muidenkin lajien lisäämistä, mutta lähdetään koripallosta)
 
 Koripallojoukkue haluaisi tilastoida ottelun tapahtumat ja säilyttää useamman ottelun tilastot. Tapahtumien kirjaaminen tapahtuisi reaaliaikaisesti ottelun aikana selainkäyttöisellä sovelluksella. Tilastoitavat tiedot; per pelaaja, on sisään ja ohi menneet heitot (vapaa-, 2-pisteen ja 3-pisteen), levypallot (puolustus ja hyökkäys), virheet, pallon riistot, menetykset ja heiton torjunnat. Ottelun jälkeen tiedot tallennetaan. Järjestelmästä voi hakea aikaisempien otteluiden tiedot ja saada raportti kaikista kauden otteluista. Tämä sovellus tulisi joukkueiden omaan käyttöön valmennuksen avuksi ja pelaajien uteliaisuuden tyydyttämiseksi.
 

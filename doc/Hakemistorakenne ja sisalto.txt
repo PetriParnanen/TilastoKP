@@ -1,40 +1,102 @@
-TilastoKP
+﻿TilastoKP
 	doc - Dokumentaatio		
-	src - Kähdekoodit
+	src - Lähdekoodit
+		
 		app - kaikki AngularJS + front end -koodit
 			css - Tyylitiedostot
 			scripts - AngularJS-koodit. Jos jotain alihakemistoa ei tarvita, poistetaan myöhemmin.
+				Käytettävät ulkoiset moduulit:
+					- angular-resource
+					- angular-route
+					- angular-local_fi-fi
+					- ui-bootstrap
+						- popup:ien ja päivämäärä kenttien hallinta
+					- ng-jsonpath
+						- ottelu tilastojen läpikäyminen jsonpath:llä.
 				controllers
+					MainController.js
+						- Ylin; enimmäkseen hallitsee joukkuepudotusvalikkoa
 					TeamController.js
 						- Ohjaa joukkueen tietoja.
+					SaveTeamController.js
+						- Joukkue popup: Lisääminen ja muokkaus. 
 					PlayerController.js
-						- Pelaajan lisääminen ja muokkaaminen.
+						- Pelaaja popup: lisääminen ja muokkaus.
 					MatchController.js
 						- Ottelun ohjaus
+					LiveMatchController.js
+						- Ottelu popup: Uuden ottelun tilastointi
+					RaportController.js
+						- Raportit sivu. Mahdollisten raporttien listaus
+					RaportMatchController.js
+						- Yksittäisen otteluraportin popup.
+					
 				directives
+					-Ei ole
 				factories
-					- MatchFactory.js
+					- StatApiFactory.js
 						- Tietojen välitys käyttöliittymän (kontrollerien kautta) ja tietokannan väillä.
 						- Esimerkiksi pelaajatiedot, tapahtumatiedot, jne.
 						- Käytetään aluksi tätä yhtä factorya ja jos kasvaa liikaa, pilkotaan useammaksi.
 				services
+					-Ei ole
 			views - Näkymät
 				index.html
 					- Etusivu
+					- Joukkue valinta, uuden joukkueen luonti (addTeamPopup) -nappi ja linkit näkymiin.
 					- Näytetään kaikkien muiden sivujen yhteydessä paitsi ottelusivulla (game.html)
+				addTeamPopup.html
+					- Popup, jolla voidaan luoda uusi joukkue
 				team.html
-					- Joukkuen nimen tulostus (joukkuevalikko myöhemmin jos aikaa)
-					- Joukkueet: joukkueiden käsittely (toteutetaan myöhemmin jos aikaa)
-				player_list.html
-					- Pelaajalista
+					- Joukkuen nimi ja laji.
+						- Mahdollisuus muokata nimeä. Lajia ei voi vaihtaa. Sotkisi jo tallennetut ottelut.
+					- Lista joukkueen pelaajista (nimi ja nro).
+						- Hover näyttää kaikki pelaajan tiedot tiedot (showPlayerPopup.html)
+						- Mahdollisuus poistaa tai muokata pelaajan tietoja.
+							- Poisto tehdään merkitsemällä joukkueesta lähtöpvm.
+						-Mahdollisuus lisätä uusi pelaaja
+				addPlayerPopup.html
+					- Käytetään uuden pelaajan luomisessa (liitetään aina aktiiviseen joukkueeseen)
+					- Tai käytetään pelaajan tietojen muokkaamisessa
+				showPlayerPopup.html
+					- Käytetään vain pelaajan koko tietojen näyttämiseen, kun hiirtä pidetään team sivulla pelaajan tietojen kohdalla
 				start_match.html
 					- Ottelun aloitus
-					- Täältä pääsee ottelusivulle (match.html)
-				match.html
+					- Täältä pääsee ottelusivulle (matchPopup.html)
+				matchPopup.html
 					- Ottelusivu
+					- Ottelun tilastoja voi lisätä vasemman hiiren painalluksella ja vähentää oikealla (ei alle 0:n).
 				reports.html
-					- Edellisten otteluiden näkymät
-					- Täältä pääsee ottelusivulle, joka on muokattu raporttia varten.
+					- Edellisten otteluiden tilastot
+					- Voi päästä katselamaan yksittäisen ottelun tilastoja (viewMatchPopup.html)
+				viewMathcPopup.html
+					- Näyttää yksittäisen ottelun tiedot (ei voi muokata, ehkäpä myöhemmin voi)
 		server - Back end -koodit (NodeJS jne.)
+			models - mongodb taulut
+				sport.js
+					-Laji. Nimi tällä hetkellä
+				team.js
+					-joukkueen tiedot
+				player.js
+					-pelaajan tiedot
+				playerteam.js
+					-joukkue ja pelaaja yhdistäminen
+				event.js
+					-ottelutapahtumat lajeittain
+				match.js
+					-ottelun metatiedot (pvm, joukkueet)
+				matchevent.js
+					-yksittäisen ottelun 1 pelaajan tapahtumat ottelun aikana
+			
+			routes - api rajapinta kyselyt
+				sportRouter.js
+					- laji kyselyt
+				teamRouter.js
+					- joukkueen tietoihin liittyvät kyselyt
+				playerRouter.js
+					- Pelaajan tietoihin liittyvät kyselyt
+				matchRouter.js
+					- Ottelun tietoihin liittyvät kyselyt
+				
 			
 		

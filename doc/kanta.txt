@@ -1,6 +1,6 @@
-Database
+﻿Database
 Add metadata:
-create_time/user, modify_time/user, delete_time/user
+create_time/user, modify_time/user, delete_time/user?
 
 
 Player:
@@ -24,9 +24,14 @@ Team:
 
 Match:
 - id: int (pk)  // Ottelun uniikki id, järjestelmän luoma
-- tid: int // ottelun kirjaa pitävä joukkue
+- team_id: int // ottelun kirjaa pitävä joukkue
 - opponent: string (40)  // vastustajan nimi
 - date: date  // Ottelun pvm
+- players (ottelun pelaajat):lista
+	- player_id: Pelaajan id
+	- events (pelaajn tapahtumat ottelussa):lista
+		- event_id: tapahtuman id
+		- value: montako kyseistä tapahtumaa oli pelaajalla ottelussa
 
 Sport:
 - id: int (pk) // Uniikki id lajille
@@ -40,8 +45,9 @@ Event:
 - abbreviation: string (10)  // Lyhempi kuvaus, näkyy ottelusivulla
 - order: int  // Järjestys, monesko kenttä tapahtumien listalla
 - sumfield: string(30)  // lasketaanko kenttään automaattisesti joku summa muista kentistä (default null)
+- receiptOnly: boolean // Näytetäänkö kenttä vain raporteissa. Yleensä summa kenttä, joka vaan vie turhaan tilaa
 
-MatchEvent:
+MatchEvent (ei tarvita kun laitettu match tauluun nämä):
 - match_id: int  // liitos match.id kenttään
 - player_id: int  // liitos player.id kenttään
 - event_id: int  // liitos event.id kenttään

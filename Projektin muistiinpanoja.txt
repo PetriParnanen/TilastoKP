@@ -1,4 +1,4 @@
-Projektiryhmä: Jarkko Lehto, Mohammed el Uharani, Petri Pärnänen, Jere Veijalainen
+﻿Projektiryhmä: Petri Pärnänen
 Ryhmän nimi: ?
 Projektin nimi: KPTilasto
 Projektin kuvaus: Koripallo-ottelun tilastojen merkintä.
