@@ -17,14 +17,14 @@
 <td>{{player.nickname}}</td>
 <td>{{player.number}}</td>
 <td ng-repeat="event in sportEvents | orderBy:'order'">
+{{( (matchData.players | filter: {player_id: player.player_id})[0].events | filter: {event_id: event._id})[0].value}}
 </td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td align="right"><button type="button" class="btn btn-primary" ng-lick="cancel()">Tallenna</button></td>
-<td align="left"><button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></td>
+<td colspan="2" align="center"><button type="button" class="btn btn-warning" ng-click="cancel()">Palaa</button></td>
 </tr>
 </table>
 </div>

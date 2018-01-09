@@ -11,8 +11,7 @@
 					- angular-local_fi-fi
 					- ui-bootstrap
 						- popup:ien ja päivämäärä kenttien hallinta
-					- ng-jsonpath
-						- ottelu tilastojen läpikäyminen jsonpath:llä.
+
 				controllers
 					MainController.js
 						- Ylin; enimmäkseen hallitsee joukkuepudotusvalikkoa

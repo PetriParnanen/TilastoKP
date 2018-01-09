@@ -1,6 +1,6 @@
 angular.module('RaportMatchModule', []).controller('RaportMatchController', 
-	['$scope', 'statFactory', '$uibModalInstance', 'modalTitle', 'matchId', 'sportId', 'teamId', 'matchData',
-	function($scope, statFactory, $uibModalInstance, modalTitle, matchId, sportId, teamId, matchData){
+	['$scope', 'statFactory', '$uibModalInstance', 'modalTitle', 'matchId', 'sportId', 'teamId', 'matchData', '$filter',
+	function($scope, statFactory, $uibModalInstance, modalTitle, matchId, sportId, teamId, matchData, $filter){
 
 	$scope.matchId = matchId;
 	$scope.sportId = sportId;
@@ -15,4 +15,8 @@ angular.module('RaportMatchModule', []).controller('RaportMatchController',
 		}
 	);
 
+	$scope.cancel = function() {
+        $uibModalInstance.dismiss('cancel');
+    }
+    
 }]);
