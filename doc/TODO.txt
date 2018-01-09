@@ -1,5 +1,4 @@
 ﻿SEURAAVANA:
-- jsonPath:llä yksittäisen ottelun tilaston tarkennus
 - kirjautuminen
 - tekstit omaan kirjasto tiedostoihin.
 - Tarkistuksien lisääminen ja muutenkin toiminnan tarkistaminen (ainakin 1 promise virhe, jota ei lokaalissa saa näkyviin, mutta muuten voisi ilmestyä. Tämä siis kun lisätään uusi joukkue)
