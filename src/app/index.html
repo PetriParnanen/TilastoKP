@@ -17,48 +17,48 @@
 		<script src="./scripts/controllers/RaportController.js"></script>
 		<script src="./scripts/controllers/RaportMatchController.js"></script>
 		<script src="./scripts/factories/StatApiFactory.js"></script>
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link href="./css/tilastokp.css" rel="stylesheet">
 		</head>
 	<body>
 		<div ng-controller="MainController">
 		<header>
 			<h1>Ottelutilastointi</h1>
 				<b>Valitse joukkue</b><br/>
-				<table width="100%">
-				<tr>
-				<td width="70%">
+				<div class="headTable">
+				<div class="headTableRow">
+				<div class="headTableTeam">
 				Nimi: 
 					<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
 					<option value="{{team.id}}">{{team.name}}</option>
 					</select>  
 					Laji: {{selectedTeam.sportId.name}}
-				</td>
-				<td width="30%">
-					<button type="button" class="btn btn.default" ng-click="addTeam()">Luo joukkue</button>
-				</td>
-				</tr>
-				</table>
-			<hr>
+				</div>
+				<div class="headTableNewTeam">
+					<button type="button" class="btn btn-default" ng-click="addTeam()">Luo joukkue</button>
+				</div>
+				</div>
+				</div>
+				<hr>
 		</header>
-		<table width="800">
-		<tr>
-		<td width="150px" style="background-color: #EEEEEE" valign="top">
+		<div class="contentTable">
+		<div class="headTableRow">
+		<div class="contentTableNav">
 		<nav>
 			<a href="#/team">Joukkue tiedot</a><br />	
 			<a href="#/start_match">Aloita ottelu</a><br />
 			<a href="#/reports">Raportit</a>
 			<!--<a href="#/logout">Kirjaudu ulos</a> -->
 		</nav>
-		</td>
-		<td width="650px">
+		</div>
+		<div class="contentTableSection">
 		<section>
 			<div ng-view>
-			</div>
-			
+			</div>			
 		</section>
-		</td>
-		</tr>
-		</table>
+		</div>
+		</div>
+		</div>
 		</div>
 	</body>
 </html>

@@ -1,22 +1,20 @@
 <div>
 	<h3>{{modalTitle}}</h3>
 	<form name="form.saveTeam" ng-submit="submitTeam()">
-<table>
-<tr>
-<td><input type="hidden" ng-model="teamId" />Nimi:</td>
-<td><input type="text" class="form-control" ng-model="team.name" required />
-</td>
-<td>Laji:</td>
-<td ng-if="!teamId">
+<div class="addTeamTable">
+<div class="tableRow">
+<div class="addTeamTableCell"><input type="hidden" ng-model="teamId" />Nimi:</div>
+<div class="addTeamTableCell"><input type="text" class="form-control" ng-model="team.name" required /></div>
+<div class="addTeamTableCell">Laji:</div>
+<div class="addTeamTableCell" ng-if="!teamId">
 	<select ng-model="team.selectedSport" ng-options="sport.name for sport in sports">
 		<option value="{{sport.id}}">{{sport.name}}</option>
-	</select>  
-<td ng-if="teamId">{{team.sportText}}</td>
-</td>
-</tr>
-<tr>
-<td colspan="2" align="center"><button type="submit" class="btn btn-primary">Tallenna</button></td>
-<td colspan="2" align="center"><button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></td>
-</tr>
-</table>
+	</select>
+</div>
+<div class="addTeamTableCell" ng-if="teamId">{{team.sportText}}</div>
+</div>
+</div>
+<div class="tableCenter"><button type="submit" class="btn btn-primary">Tallenna</button>
+<button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></div>
+</form>
 </div>

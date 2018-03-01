@@ -1,21 +1,20 @@
 <div ng-controller="RaportController">
-Otteluraportit
+<h2>Otteluraportit</h2>
+Klikkaamalla vastustajan nimeä saa ottelun tiedot esiin<br/>
 <br />
 <input type="hidden" ng-model="selectedTeam.id" />
-<table width="100%">
-<tr>
-<td><b>Nimi:</b></td>
-<td>{{selectedTeam.name}}</td>
-</tr>
-<tr>
-<td colspan="2">Klikkaamalla vastustajan nimeä saa ottelun tiedot esiin</td>
-</tr>
-<tr>
-<td>Ottelu pvm</td>
-<td>Vastustaja</td>
-<tr ng-repeat="match in matches | orderBy:'date'">
-<td ng-click="openMatch(match._id)">{{match.date | date:"dd.MM.yyyy" }}</td>
-<td ng-click="openMatch(match._id)">{{match.opponent}}</td>
-</tr>
-</table>
+<div class="reportTable">
+<div class="headTableRow">
+<div class="reportHeader"><b>Nimi:</b></div>
+<div class="reportValue">{{selectedTeam.name}}</div>
+</div>
+<div class="headTableRow">
+<div class="reportHeader"><b>Ottelu pvm</b></div>
+<div class="reportValue"><b>Vastustaja</b></div>
+</div>
+<div class="headTableRow" ng-repeat="match in matches | orderBy:'date'">
+<div class="reportHeader" ng-click="openMatch(match._id)">{{match.date | date:"dd.MM.yyyy" }}</div>
+<div class="reportValue" ng-click="openMatch(match._id)">{{match.opponent}}</div>
+</div>
+</div>
 </div>

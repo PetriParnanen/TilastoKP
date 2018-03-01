@@ -1,0 +1,91 @@
+/* Inner stylesheet */
+
+.headTable, .teamTable, .matchTable {
+	display: block;
+	width: 100%;
+}
+.headTableRow {
+	clear: both;
+}
+.headTableTeam {
+	float: left;
+	width: 70%;
+}
+.headTableNewTeam {
+	float: right;
+	width: 30%;
+}
+.contentTable {
+	display: block;
+	width: 800px;
+}
+.contentTableNav {
+	float: left;
+	width: 150px;
+	background-color: #EEEEEE;
+	vertical-align: top;
+}
+.contentTableSection {
+	float: left;
+	width: 650px;
+}
+.teamHeader, .matchHeader, .reportHeader {
+	float: left;
+	width: 30%;
+}
+.teamValue, .matchValue, .reportValue {
+	float: left;
+	width: 30%;
+	display: inline;
+}
+.teamEditTeam {
+	display: inline;
+}
+.teamValuePlayers, .matchValuePlayers {
+	float: left;
+	width: 70%;
+}
+.teamPlayerName, .matchPlayerName {
+	float: left;
+	width: 35%;
+}
+.teamPlayerNro, .matchPlayerNro {
+	display: inline;
+	float: left;
+	width: 15%;
+}
+.teamPlayerButton, .matchPlayerBox {
+	display: inline;
+	width: 10%;
+}
+.addPlayerTable, .addTeamTable {
+	display: table;
+}
+.tableRow {
+	display: table-row;
+}
+.addPlayerTableCell, .addTeamTableCell {
+	display: table-cell;
+	padding: 2px;
+}
+.tableCenter {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.matchPopupTable {
+	display: table;
+	width: 100%;
+}
+.matchPopupHeaderCell {
+	display: table-cell;
+	width: 50%;
+}
+.matchPopupTableCell {
+	display: table-cell;
+	padding: 5px;
+}
+hr {
+	width: 100%;
+	margin-bottom: 0px;
+}

@@ -1,30 +1,24 @@
 <div ng-init="initMatchData()">
 	<h3>{{modalTitle}}</h3>
-<table width="100%">
-<tr>
-<td width="50%">Vastustaja: {{matchData.opponent}}</td>
-<td width="50%">Ottelupvm: {{matchData.date | date:"dd.MM.yyyy"}}</td>
-</tr>
-<tr>
-<td colspan="2">
-<table width="100%">
-<tr>
-<td style="padding: 5px">Pelaaja</td>
-<td style="padding: 5px">Pelinro</td>
-<td style="padding: 5px" ng-repeat="event in sportEvents | orderBy:'order'">{{event.abbreviation}}</td>
-</tr>
-<tr ng-repeat="player in matchData.players">
-<td>{{player.nickname}}</td>
-<td>{{player.number}}</td>
-<td ng-repeat="event in sportEvents | orderBy:'order'">
+<div class="matchPopupTable">
+<div class="tableRow">
+<div class="matchPopupHeaderCell"><b>Vastustaja:</b> {{matchData.opponent}}</div>
+<div class="matchPopupHeaderCell"><b>Ottelupvm:</b> {{matchData.date | date:"dd.MM.yyyy"}}</div>
+</div>
+</div>
+<div class="matchPopupTable">
+<div class="tableRow">
+<div class="matchPopupTableCell"><b>Pelaaja</b></div>
+<div class="matchPopupTableCell"><b>Pelinro</b></div>
+<div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'"><b>{{event.abbreviation}}</b></div>
+</div>
+<div class="tableRow" ng-repeat="player in matchData.players">
+<div class="matchPopupTableCell">{{player.nickname}}</div>
+<div class="matchPopupTableCell">{{player.number}}</div>
+<div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'">
 {{( (matchData.players | filter: {player_id: player.player_id})[0].events | filter: {event_id: event._id})[0].value}}
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td colspan="2" align="center"><button type="button" class="btn btn-warning" ng-click="cancel()">Palaa</button></td>
-</tr>
-</table>
+</div>
+</div>
+</div>
+<div class="tableCenter"><button type="button" class="btn btn-warning" ng-click="cancel()">Palaa</button></div>
 </div>

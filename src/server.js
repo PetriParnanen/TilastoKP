@@ -66,15 +66,6 @@ app.post("/register", function(req,res){
     });
 });
 
-app.use("/api", function(req,res,next){
-    if (req.headers.token == "user123"){
-        req.session.params = req.headers;
-        next();
-    } else {
-        res.status(403).send({"Message":"Not allowed"});
-    }
-});
-
 // handles calls to api path
 var router = express.Router();
 
@@ -86,8 +77,14 @@ router.use(function(req, res, next){
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Pragma,Cache-Control,If-Modified-Since');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Pragma,Cache-Control,If-Modified-Since', 'token');
 
+    //if (req.headers.token == "user123"){
+    //    req.session.params = req.headers;
+    //    next;
+    //} else {
+    //    res.status(403).send({"Message":"Not allowed"});
+    //}
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
     //res.setHeader('Access-Control-Allow-Credentials', true);

@@ -1,36 +1,29 @@
 <div ng-controller="MatchController">
 <H2>Ottelun aloitus</H2>
 Anna vastustaja, pelipäivä ja valitse otteluun osallistuvat pelaajat.<br />
-<table>
-<tr>
-<td>Vastustaja:</td>
-<td colspan="2"><input type="text" ng-model="match.opponent" required /></td>
-</tr>
-<tr>
-<td>Pelipäivä:</td>
-<td><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="match.matchday" is-open="popup2.opened" datepicker-options="matchDayOptions" required></td>
-<td><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
-</td>
-</tr>
-<tr>
-<td colspan="3">Valitse pelaajat:</td>
-</tr>
-<tr colspan="3">
-<table width="100%">
-<tr ng-repeat="player in teamPlayers | orderBy:'number/1'">
-<td width="50%">
+<div class="matchTable">
+<div class="headTableRow">
+<div class="matchHeader">Vastustaja:</div>
+<div class="matchValue"><input type="text" ng-model="match.opponent" required /></div>
+</div>
+<div class="headTableRow">
+<div class="matchHeader">Pelipäivä:</div>
+<div class="matchValue"><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="match.matchday" is-open="popup2.opened" datepicker-options="matchDayOptions" required /></div>
+<div class="matchValue"><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button></div>
+<div class="headTableRow">
+<div class="matchHeader">Valitse pelaajat:</div>
+<div class="matchValuePlayers">
+<div class="matchPlayer" ng-repeat="player in teamPlayers | orderBy:'number/1'">
+<div class="matchPlayerName">
 	<span ng-if="player.nickname && player.nickname != ''">{{player.nickname}}</span>
 	<span ng-if="!player.nickname || player.nickname == ''">{{player.player_id.firstname}}</span>
-</td>
-<td width="20%">{{player.number}}</td>
-<td width="30%"><input type="checkbox" id="{{player._id}}" ng-model="match.players[player._id][player.number]" /></td>
-</tr>
-</table>
-</tr>
-<tr>
-<td colspan="3" align="center"><button type="button" class="btn btn-default" ng-click="startGame()">Aloita ottelu</button>
-</td>
-</tr>
-</table>
 </div>
+<div class="matchPlayerNro">{{player.number}}</div>
+<div class="matchPlayerBox"><input type="checkbox" id="{{player._id}}" ng-model="match.players[player._id][player.number]" /></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tableCenter"><button type="button" class="btn btn-default" ng-click="startGame()">Aloita ottelu</button></div>
 </div>

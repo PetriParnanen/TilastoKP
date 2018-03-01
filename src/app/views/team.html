@@ -1,37 +1,32 @@
 <div ng-controller="TeamController">
 <br />
 <input type="hidden" ng-model="selectedTeam.id" />
-<table width="100%">
-<tr>
-<td><b>Nimi:</b></td>
-<td>{{selectedTeam.name}}</td>
-<td><button type="button" class="btn btn.default" ng-click="editTeam()">Vaihda nimi</button></td>
-</tr>
-<tr>
-<td><b>Laji:</b></td>
-<td colspan="3">{{selectedTeam.sportId.name}}</td>
-</tr>
-<tr>
-<td valign="top"><b>Pelaajat:</b></td>
-<td colspan="2">
-<table width="100%">
-<tr ng-repeat="player in players | orderBy:'number/1'">
-<td width="50%">
+<div class="teamTable">
+<div class="headTableRow">
+<div class="teamHeader"><b>Nimi:</b></div>
+<div class="teamValue">{{selectedTeam.name}}</div>
+<div class="teamEditTeam"><button type="button" class="btn btn-default" ng-click="editTeam()">Vaihda nimi</button></div>
+</div>
+<div class="headTableRow">
+<div class="teamHeader"><b>Laji:</b></div>
+<div class="teamValue">{{selectedTeam.sportId.name}}</div>
+</div>
+<div class="headTableRow">
+<div class="teamHeader"><b>Pelaajat:</b></div>
+<div class="teamValuePlayers">
+<div class="teamPlayer" ng-repeat="player in players | orderBy:'number/1'">
+<div class="teamPlayerName">
 <span ng-if="player.nickname && player.nickname != ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.nickname}}</span>
 <span ng-if="!player.nickname || player.nickname == ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.player_id.firstname}}</span>
-</td>
-<td width="20%">{{player.number}}</td>
-<td width="15%"><button type="button" class="btn btn.default" ng-click="editPlayer(player._id)">Muuta</button></td>
-<td width="15%"><button type="button" class="btn btn.default" ng-click="removePlayer(player._id)">Poista</button></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td colspan="3" align="center">
-	<button type="button" class="btn btn.default" ng-click="addPlayer()">Lisää uusi pelaaja</button> 
-	<button type="button" class="btn btn.default" ng-click="removeTeam(selectedTeam.id)">Poista joukkue</button></td>
-</tr>
-</table>
+</div>
+<div class="teamPlayerNro">{{player.number}}</div>
+<div class="teamPlayerButton"><button type="button" class="btn btn-default" ng-click="editPlayer(player._id)">Muuta</button></div>
+<div class="teamPlayerButton"><button type="button" class="btn btn-default" ng-click="removePlayer(player._id)">Poista</button></div>
+</div>
+</div>
+<div class="tableCenter">
+	<button type="button" class="btn btn-default" ng-click="addPlayer()">Lisää uusi pelaaja</button> 
+	<button type="button" class="btn btn-default" ng-click="removeTeam(selectedTeam.id)">Poista joukkue</button>
+</div>
 {{form.savePlayer}}
 </div>
