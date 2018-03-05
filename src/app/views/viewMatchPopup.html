@@ -2,15 +2,19 @@
 	<h3>{{modalTitle}}</h3>
 <div class="matchPopupTable">
 <div class="tableRow">
-<div class="matchPopupHeaderCell"><b>Vastustaja:</b> {{matchData.opponent}}</div>
-<div class="matchPopupHeaderCell"><b>Ottelupvm:</b> {{matchData.date | date:"dd.MM.yyyy"}}</div>
+<div class="matchPopupHeaderCell"><b>{{ 'REPORT.OPPONENT' | translate }}:</b> {{matchData.opponent}}</div>
+<div class="matchPopupHeaderCell"><b>{{ 'REPORT.DATE' | translate }}:</b> {{matchData.date | date:"dd.MM.yyyy"}}</div>
 </div>
 </div>
 <div class="matchPopupTable">
 <div class="tableRow">
-<div class="matchPopupTableCell"><b>Pelaaja</b></div>
-<div class="matchPopupTableCell"><b>Pelinro</b></div>
-<div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'"><b>{{event.abbreviation}}</b></div>
+<div class="matchPopupTableCell"><b>{{ 'REPORT.PLAYER' | translate }}</b></div>
+<div class="matchPopupTableCell"><b>{{ 'REPORT.NRO' | translate }}</b></div>
+<div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'">
+<span uib-tooltip="{{ 'SPORT.'+sportName+'.'+event.abbreviation+'.DESC' | translate }}">
+<b>{{ 'SPORT.'+sportName+'.'+event.abbreviation | translate }}</b>
+</span>
+</div>
 </div>
 <div class="tableRow" ng-repeat="player in matchData.players">
 <div class="matchPopupTableCell">{{player.nickname}}</div>

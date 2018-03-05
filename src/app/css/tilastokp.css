@@ -10,10 +10,12 @@
 .headTableTeam {
 	float: left;
 	width: 70%;
+	padding: 1px;
 }
 .headTableNewTeam {
 	float: right;
 	width: 30%;
+	padding: 1px;
 }
 .contentTable {
 	display: block;
@@ -22,6 +24,7 @@
 .contentTableNav {
 	float: left;
 	width: 150px;
+	height: 500px;
 	background-color: #EEEEEE;
 	vertical-align: top;
 }

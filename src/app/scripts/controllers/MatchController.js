@@ -2,12 +2,20 @@ angular.module('MatchModule', []).controller('MatchController',
 	['$scope', 'statFactory', '$uibModal', '$route',
 		function($scope, statFactory, $uibModal, $route){
 
-	statFactory.getTeamPlayers($scope.selectedTeam._id)
-    	.then(function(data) {
-        	$scope.teamPlayers = data;
-		}, function(error){
-            console.log("ERR:"+error);
+    refreshMatchPlayers();
+
+	function refreshMatchPlayers(){
+        statFactory.getTeamPlayers($scope.selectedTeam._id)
+    	   .then(function(data) {
+                $scope.teamPlayers = data;
+	       }, function(error){
+                console.log("ERR:"+error);
         });
+    }
+
+    $scope.$on("changeContent", function() {
+        refreshMatchPlayers();
+    });
 
     $scope.match = {
     	players:{}
@@ -35,6 +43,7 @@ angular.module('MatchModule', []).controller('MatchController',
 
 	// Start game
 	$scope.startGame = function () {
+        console.log($scope.selectedTeam);
 		var modalInstance = $uibModal.open({
             templateUrl: './views/matchPopup.html',
             controller: 'LiveMatchController',
@@ -51,6 +60,9 @@ angular.module('MatchModule', []).controller('MatchController',
                 },
                 sportId: function() {
                 	return $scope.selectedTeam.sportId._id;
+                },
+                sportName: function() {
+                    return $scope.selectedTeam.sportId.name;
                 },
                 teamId: function() {
                     return $scope.selectedTeam._id

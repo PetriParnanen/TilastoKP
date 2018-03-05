@@ -1,4 +1,4 @@
-<div>Nimi: {{player.player_id.firstname}} {{player.player_id.lastname}}<br />
-	Pelinro: {{player.number}}<br />
-	Liittymispvm: {{player.joining_date | date:"dd.MM.yyyy"}}<br />
-	Lähtopvm: {{player.leaving_date | date:"dd.MM.yyyy"}}</div>
+<div>{{ 'PLAYER.NAME' | translate }}: {{player.player_id.firstname}} {{player.player_id.lastname}}<br />
+	{{ 'PLAYER.NUMBER' | translate }}: {{player.number}}<br />
+	{{ 'PLAYER.JOIN' | translate }}: {{player.joining_date | date:"dd.MM.yyyy"}}<br />
+	{{ 'PLAYER.LEAVING' | translate }}: {{player.leaving_date | date:"dd.MM.yyyy"}}</div>

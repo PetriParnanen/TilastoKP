@@ -1,17 +1,17 @@
 <div ng-controller="MatchController">
-<H2>Ottelun aloitus</H2>
-Anna vastustaja, pelipäivä ja valitse otteluun osallistuvat pelaajat.<br />
+<H2>{{ 'MATCH.START' | translate }}</H2>
+{{ 'MATCH.START_HELP' | translate }}<br />
 <div class="matchTable">
 <div class="headTableRow">
-<div class="matchHeader">Vastustaja:</div>
+<div class="matchHeader">{{ 'MATCH.OPPONENT' | translate }}:</div>
 <div class="matchValue"><input type="text" ng-model="match.opponent" required /></div>
 </div>
 <div class="headTableRow">
-<div class="matchHeader">Pelipäivä:</div>
+<div class="matchHeader">{{ 'MATCH.DATE' | translate }}:</div>
 <div class="matchValue"><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="match.matchday" is-open="popup2.opened" datepicker-options="matchDayOptions" required /></div>
 <div class="matchValue"><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button></div>
 <div class="headTableRow">
-<div class="matchHeader">Valitse pelaajat:</div>
+<div class="matchHeader">{{ 'MATCH.PLAYERS' | translate }}:</div>
 <div class="matchValuePlayers">
 <div class="matchPlayer" ng-repeat="player in teamPlayers | orderBy:'number/1'">
 <div class="matchPlayerName">
@@ -25,5 +25,5 @@ Anna vastustaja, pelipäivä ja valitse otteluun osallistuvat pelaajat.<br />
 </div>
 </div>
 </div>
-<div class="tableCenter"><button type="button" class="btn btn-default" ng-click="startGame()">Aloita ottelu</button></div>
+<div class="tableCenter"><button type="button" class="btn btn-default" ng-click="startGame()">{{ 'MATCH.START_BUTTON' | translate }}</button></div>
 </div>

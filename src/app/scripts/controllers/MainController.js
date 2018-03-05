@@ -1,6 +1,6 @@
 angular.module('MainModule', []).controller('MainController', 
-	['$scope', 'statFactory', '$uibModal', '$route',
-		function($scope, statFactory, $uibModal, $route){
+	['$scope', 'statFactory', '$uibModal', '$route', '$translate',
+		function($scope, statFactory, $uibModal, $route, $translate){
 	
 	getTeams();
 
@@ -23,6 +23,10 @@ angular.module('MainModule', []).controller('MainController',
 		});
 	};
 
+	$scope.changeLanguage = function (langKey) {
+    	$translate.use(langKey);
+  	};
+
 	$scope.changeContent = function() {
 		$scope.$broadcast("changeContent");
 	};
@@ -41,7 +45,7 @@ angular.module('MainModule', []).controller('MainController',
                     return $scope.saveTeam;
                 },
                 modalTitle: function() {
-                	return 'Luo uusi joukkue';
+                	return 'INDEX.CREATE_TEAM';
                 },
                 teamId: function() {
                 	return false;

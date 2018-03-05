@@ -7,6 +7,8 @@
 		<script src="./scripts/angular-route.min.js"></script>
 		<script src="./scripts/angular-locale_fi-fi.js"></script>
 		<script src="./scripts/ui-bootstrap.min.js"></script>
+		<script src="./scripts/angular-translate.js"></script>
+		<script src="./scripts/angular-translate-loader-static-files.js"></script>
 		<script src="./scripts/main.js"></script>
 		<script src="./scripts/controllers/MainController.js"></script>	
 		<script src="./scripts/controllers/TeamController.js"></script>
@@ -17,25 +19,33 @@
 		<script src="./scripts/controllers/RaportController.js"></script>
 		<script src="./scripts/controllers/RaportMatchController.js"></script>
 		<script src="./scripts/factories/StatApiFactory.js"></script>
-		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<link href="./css/tilastokp.css" rel="stylesheet">
 		</head>
 	<body>
 		<div ng-controller="MainController">
 		<header>
-			<h1>Ottelutilastointi</h1>
-				<b>Valitse joukkue</b><br/>
+			<h1>{{ 'INDEX.TITLE' | translate }}</h1>
 				<div class="headTable">
 				<div class="headTableRow">
 				<div class="headTableTeam">
-				Nimi: 
+				<b>{{ 'INDEX.CHOOSE_TEAM' | translate }}</b>
+				</div>
+				<div class="headTableNewTeam">
+					<button ng-click="changeLanguage('FI')" translate="BUTTON_LANG_FI"></button>
+					<button ng-click="changeLanguage('EN')" translate="BUTTON_LANG_EN"></button>
+				</div>
+				<div class="headTable">
+				<div class="headTableRow">
+				<div class="headTableTeam">
+				{{ 'INDEX.NAME' | translate }}: 
 					<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
 					<option value="{{team.id}}">{{team.name}}</option>
 					</select>  
-					Laji: {{selectedTeam.sportId.name}}
+					{{ 'INDEX.SPORT' | translate }}: {{ 'SPORT.'+selectedTeam.sportId.name | translate }}
 				</div>
 				<div class="headTableNewTeam">
-					<button type="button" class="btn btn-default" ng-click="addTeam()">Luo joukkue</button>
+					<button type="button" class="btn btn-default" ng-click="addTeam()">{{ 'INDEX.CREATE_TEAM' | translate }}</button>
 				</div>
 				</div>
 				</div>
@@ -45,9 +55,9 @@
 		<div class="headTableRow">
 		<div class="contentTableNav">
 		<nav>
-			<a href="#/team">Joukkue tiedot</a><br />	
-			<a href="#/start_match">Aloita ottelu</a><br />
-			<a href="#/reports">Raportit</a>
+			<a href="#/team">{{ 'INDEX.TEAM' | translate }}</a><br />	
+			<a href="#/start_match">{{ 'INDEX.MATCH' | translate }}</a><br />
+			<a href="#/reports">{{ 'INDEX.REPORT' | translate}}</a>
 			<!--<a href="#/logout">Kirjaudu ulos</a> -->
 		</nav>
 		</div>

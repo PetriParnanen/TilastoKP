@@ -50,6 +50,9 @@ angular.module('RaportModule', []).controller('RaportController',
         	        			sportId: function() {
             	    				return $scope.selectedTeam.sportId._id;
                 				},
+                				sportName: function() {
+                					return $scope.selectedTeam.sportId.name;
+                				},
                 				teamId: function() {
                     				return $scope.selectedTeam._id;
                 				},

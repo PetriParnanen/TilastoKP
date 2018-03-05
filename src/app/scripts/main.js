@@ -1,9 +1,17 @@
 var app = angular.module('matchStatisticsApp',
             ['ngRoute', 'ui.bootstrap', 'MainModule','TeamModule','SaveTeamModule','PlayerModule',
-                'MatchModule', 'LiveMatchModule', 'RaportModule', 'RaportMatchModule', 'StatApiFactory']);
+                'MatchModule', 'LiveMatchModule', 'RaportModule', 'RaportMatchModule', 'StatApiFactory',
+                'pascalprecht.translate']);
 
-app.config(['$locationProvider', function($locationProvider) {
-  $locationProvider.hashPrefix('');
+app.config(['$locationProvider', '$translateProvider', function($locationProvider, $translateProvider) {
+    $locationProvider.hashPrefix('');
+
+    $translateProvider.registerAvailableLanguageKeys(['fi','en']);
+    $translateProvider.useStaticFilesLoader({
+        prefix: "resource/locale_",
+        suffix: ".json"
+    });
+    $translateProvider.preferredLanguage("FI");
 }]);
  
 app.config(['$routeProvider',

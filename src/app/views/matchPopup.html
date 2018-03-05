@@ -3,14 +3,18 @@
 	<form name="form.saveMatch" ng-submit="submitMatch()">
 <div class="matchPopupTable">
 <div class="tableRow">
-<div class="matchPopupHeaderCell"><b>Vastustaja:</b> {{matchData.opponent}}</div>
-<div class="matchPopupHeaderCell"><b>Ottelupvm:</b> {{matchData.matchday | date:"dd.MM.yyyy"}}</div>
+<div class="matchPopupHeaderCell"><b>{{ 'MATCH.OPPONENT' | translate }}:</b> {{matchData.opponent}}</div>
+<div class="matchPopupHeaderCell"><b>{{ 'MATCH.DATE' | translate }}:</b> {{matchData.matchday | date:"dd.MM.yyyy"}}</div>
 </div>
 </div>
 <div class="matchPopupTable">
 <div class="tableRow">
-<div class="matchPopupTableCell"><b>Pelinro:</b></div>
-<div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'"><b>{{event.abbreviation}}</b></div>
+<div class="matchPopupTableCell"><b>{{ 'MATCH.NUMBER' | translate }}:</b></div>
+<div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'">
+<span uib-tooltip="{{ 'SPORT.'+sportName+'.'+event.abbreviation+'.DESC' | translate }}">
+<b>{{ 'SPORT.'+sportName+'.'+event.abbreviation | translate }}</b>
+</span>
+</div>
 </div>
 <div class="tableRow" ng-repeat="player in matchData.finalPlayers | orderBy:'number/1'">
 <div class="matchPopupTableCell">{{player.number}}</div>
@@ -19,7 +23,7 @@
 </div>
 </div>
 </div>
-<div class="tableCenter"><button type="submit" class="btn btn-primary">Tallenna</button>
-<button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></div>
+<div class="tableCenter"><button type="submit" class="btn btn-primary">{{ 'BUTTON_SAVE' | translate }}</button>
+<button type="button" class="btn btn-warning" ng-click="cancel()">{{ 'BUTTON_CANCEL' | translate }}</button></div>
 </form>
 </div>

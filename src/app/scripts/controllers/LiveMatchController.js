@@ -1,9 +1,10 @@
 angular.module('LiveMatchModule', []).controller('LiveMatchController', 
-	['$scope', 'statFactory', '$uibModalInstance', 'saveGame', 'modalTitle', 'matchData', 'sportId', 'teamId',
-	function($scope, statFactory, $uibModalInstance, saveGame, modalTitle, matchData, sportId, teamId){
+	['$scope', 'statFactory', '$uibModalInstance', 'saveGame', 'modalTitle', 'matchData', 'sportId', 'sportName', 'teamId',
+	function($scope, statFactory, $uibModalInstance, saveGame, modalTitle, matchData, sportId, sportName, teamId){
 
 	$scope.matchData = matchData;
 	$scope.sportId = sportId;
+	$scope.sportName = sportName;
 	$scope.teamId = teamId;
 	$scope.matchData.finalPlayers = [];
 	$scope.players = {};

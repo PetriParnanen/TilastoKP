@@ -1,9 +1,10 @@
 angular.module('RaportMatchModule', []).controller('RaportMatchController', 
-	['$scope', 'statFactory', '$uibModalInstance', 'modalTitle', 'matchId', 'sportId', 'teamId', 'matchData', '$filter',
-	function($scope, statFactory, $uibModalInstance, modalTitle, matchId, sportId, teamId, matchData, $filter){
+	['$scope', 'statFactory', '$uibModalInstance', 'modalTitle', 'matchId', 'sportId', 'sportName', 'teamId', 'matchData', '$filter',
+	function($scope, statFactory, $uibModalInstance, modalTitle, matchId, sportId, sportName, teamId, matchData, $filter){
 
 	$scope.matchId = matchId;
 	$scope.sportId = sportId;
+	$scope.sportName = sportName;
 	$scope.teamId = teamId;
 	$scope.matchData = matchData;
 

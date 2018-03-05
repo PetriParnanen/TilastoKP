@@ -5,6 +5,7 @@ angular.module('TeamModule', []).controller('TeamController',
     refreshPlayers();
 
 	function refreshPlayers(){
+        console.log("updating players");
 		statFactory.getTeamPlayers($scope.selectedTeam._id)
             .then(function(data) {
                 $scope.players = data;
@@ -29,7 +30,7 @@ angular.module('TeamModule', []).controller('TeamController',
                     return $scope.savePlayer;
                 },
                 modalTitle: function() {
-                	return 'Luo uusi pelaaja';
+                	return 'TEAM.ADD_PLAYER';
                 },
                 teamId: function() {
                 	return $scope.selectedTeam._id;
@@ -59,7 +60,7 @@ angular.module('TeamModule', []).controller('TeamController',
                     return $scope.saveTeam;
                 },
                 modalTitle: function() {
-                    return 'Muuta joukkueen nimi';
+                    return 'TEAM.EDIT_TEAM';
                 },
                 teamId: function() {
                     return $scope.selectedTeam._id;
@@ -68,7 +69,7 @@ angular.module('TeamModule', []).controller('TeamController',
         });
 
         modalInstance.result.then(function (selectedItem) {
-            $scope.selected=selectedItem;
+            $scope.selected = selectedItem;
             $scope.$emit("updateTeams", selectedItem); // have to update current id
         }, function () {
             console.log('Dismissed');
@@ -86,7 +87,7 @@ angular.module('TeamModule', []).controller('TeamController',
                     return $scope.savePlayer;
                 },
                 modalTitle: function() {
-                    return 'Luo uusi pelaaja';
+                    return 'TEAM.EDIT_PLAYER';
                 },
                 teamId: function() {
                     return $scope.selectedTeam._id;

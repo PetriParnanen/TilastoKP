@@ -1,31 +1,31 @@
 <div>
-	<h3>{{modalTitle}}</h3>
+	<h3>{{ modalTitle | translate }}</h3>
 	<form name="form.savePlayer" ng-submit="submitPlayer()">
 <div class="addPlayerTable">
 <div class="tableRow">
-<div class="addPlayerTableCell"><input type="hidden" ng-model="playerId" />Etunimi:</div>
+<div class="addPlayerTableCell"><input type="hidden" ng-model="playerId" />{{ 'PLAYER.FIRSTNAME' | translate }}:</div>
 <div class="addPlayerTableCell"><input type="text" class="form-control" ng-model="player.firstname" required /></div>
-<div class="addPlayerTableCell">Sukunimi:</div>
+<div class="addPlayerTableCell">{{ 'PLAYER.LASTNAME' | translate }}:</div>
 <div class="addPlayerTableCell"><input type="text" class="form-control" ng-model="player.lastname" required /></div>
 </div>
 <div class="tableRow">
-<div class="addPlayerTableCell">Kutsumanimi:</div>
+<div class="addPlayerTableCell">{{ 'PLAYER.NICKNAME' | translate }}:</div>
 <div class="addPlayerTableCell"><input type="text" class="form-control" ng-model="player.nickname" /></div>
-<div class="addPlayerTableCell">Pelinumero:</div>
+<div class="addPlayerTableCell">{{ 'PLAYER.SHIRTNUMBER' | translate }}:</div>
 <div class="addPlayerTableCell"><input type="text" class="form-control" ng-model="player.number" required /></div>
 </div>
 <div class="tableRow">
-<div class="addPlayerTableCell">Liittymispvm:</div>
+<div class="addPlayerTableCell">{{ 'PLAYER.JOIN' | translate }}:</div>
 <div class="addPlayerTableCell"><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="player.joining_date" is-open="popup2.opened" datepicker-options="playerDateOptions"></div>
 <div class="addPlayerTableCell"><button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button></div>
 </div>
 <div class="tableRow" ng-if="playerId">
-<div class="addPlayerTableCell">Lähtöpvm:</div>
+<div class="addPlayerTableCell">{{ 'PLAYER.LEAVING' | translate }}:</div>
 <div class="addPlayerTableCell"><input type="text" class="form-control" uib-datepicker-popup="d!.M!.yyyy" ng-model="player.leaving_date" is-open="popup3.opened" datepicker-options="playerDateOptions"></div>
 <div class="addPlayerTableCell"><button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button></div>
 </div>
 </div>
-<div class="tableCenter"><button type="submit" class="btn btn-primary">Tallenna</button>
-<button type="button" class="btn btn-warning" ng-click="cancel()">Peruuta</button></div>
+<div class="tableCenter"><button type="submit" class="btn btn-primary">{{ 'BUTTON_SAVE' | translate }}</button>
+<button type="button" class="btn btn-warning" ng-click="cancel()">{{ 'BUTTON_CANCEL' | translate }}</button></div>
 </form>
 </div>

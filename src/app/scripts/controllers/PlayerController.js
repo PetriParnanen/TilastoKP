@@ -55,11 +55,14 @@ angular.module('PlayerModule', []).controller('PlayerController',
     $scope.submitPlayer = function() {
     	console.log($scope.player);
     	if ($scope.playerId){
-    		statFactory.updateTeamPlayer($scope.selectedTeam._id, $scope.playerId, $scope.player);
+    		statFactory.updateTeamPlayer($scope.selectedTeam._id, $scope.playerId, $scope.player)
+    			.then(function(){ $uibModalInstance.close('Player saved'); },
+    				function(error) {console.log(error)});
     	} else {
-        	statFactory.addTeamPlayer($scope.selectedTeam._id, $scope.player);
+        	statFactory.addTeamPlayer($scope.selectedTeam._id, $scope.player)
+        		.then(function(){ $uibModalInstance.close('Player saved'); },
+        			function(error) {console.log(error)});
         }
-        $uibModalInstance.close('Player saved');
     };
 
     $scope.cancel = function() {
