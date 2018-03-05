@@ -1,2 +1,8 @@
 #ignore npm generated files
 /node_modules/*
+/app/scripts/angular-resource.js
+/app/scripts/angular-route.js
+/app/scripts/angular.js
+/app/scripts/angular-translate.js
+/app/scripts/angular-translate-loader-static-files.js
+/app/scripts/ui-bootstrap.js
