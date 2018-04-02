@@ -1,11 +1,8 @@
 var mongoose = require("mongoose");
 
-
-var schema = mongoose.Schema;
-
-module.exports = mongoose.model("Match", new schema({
-	team_id:{type: mongoose.Schema.Types.ObjectId, ref:'Team'},
-	opponent:String,
+var MatchSchema = new mongoose.Schema({
+	team_id:{ type: mongoose.Schema.Types.ObjectId, ref:'Team', required: true },
+	opponent:{ type: String, required: true},
 	date:Date,
 	players: [{
 		player_id: {type: mongoose.Schema.Types.ObjectId, ref:'Player'},
@@ -14,4 +11,6 @@ module.exports = mongoose.model("Match", new schema({
 			value:Number
 		}]
 	}]
-}));
+});
+
+module.exports = mongoose.model("Match", MatchSchema);

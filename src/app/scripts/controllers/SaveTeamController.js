@@ -10,8 +10,8 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 		statFactory.getTeam(teamId)
 			.then(function(data) {
 				$scope.team = {};
-				$scope.team.name = data.name;
-				$scope.team.sportText = data.sportId.name;
+				$scope.team.name = data.data.name;
+				$scope.team.sportText = data.data.sportId.name;
 			}, function(error){
 				console.log("Could not load team");
 		});
@@ -22,11 +22,11 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 	function getSports(){
 		statFactory.getSports()
 			.then(function(data) {
-				$scope.sports = data;
+				$scope.sports = data.data;
 				if ($scope.sportId){
 					console.log("setting dropdown");
 				} else {
-					$scope.selectedSport = data[0];
+					$scope.selectedSport = data.data[0];
 				}
 			}, function(error){
 				console.log("Could not load sports");
@@ -39,11 +39,11 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
     $scope.submitTeam = function() {
     	if ($scope.teamId){
     		statFactory.updateTeam($scope.teamId, $scope.team)
-    			.then(function(responce) { $uibModalInstance.close({"selected":responce._id}); }, 
+    			.then(function(responce) { $uibModalInstance.close({"selected":responce.data._id}); }, 
     				function(error) {console.log(error)});
     	} else {
         	statFactory.addTeam($scope.team)
-        		.then(function(responce) { $uibModalInstance.close({"selected":responce._id}); }, 
+        		.then(function(responce) { $uibModalInstance.close({"selected":responce.data._id}); }, 
         			function(error) {console.log(error)});
         }; 
     };

@@ -10,7 +10,7 @@ angular.module('RaportMatchModule', []).controller('RaportMatchController',
 
 	statFactory.getSportEvents($scope.sportId)
 		.then(function(data){
-			$scope.sportEvents = data;
+			$scope.sportEvents = data.data;
 		}, function(error){
 				console.log(error);
 		}

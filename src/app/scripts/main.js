@@ -1,7 +1,7 @@
 var app = angular.module('matchStatisticsApp',
             ['ngRoute', 'ui.bootstrap', 'MainModule','TeamModule','SaveTeamModule','PlayerModule',
-                'MatchModule', 'LiveMatchModule', 'RaportModule', 'RaportMatchModule', 'StatApiFactory',
-                'pascalprecht.translate']);
+                'InnerModule', 'LoginModule', 'MatchModule', 'LiveMatchModule', 
+                'RaportModule','RaportMatchModule', 'StatApiFactory', 'UserFactory', 'pascalprecht.translate']);
 
 app.config(['$locationProvider', '$translateProvider', function($locationProvider, $translateProvider) {
     $locationProvider.hashPrefix('');

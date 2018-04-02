@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var SportSchema = new mongoose.Schema({
-	name:String,
+	name:{ type: String, required: true },
 });
 
 module.exports = mongoose.model("Sport", SportSchema);

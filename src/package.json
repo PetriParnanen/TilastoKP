@@ -9,12 +9,13 @@
   "author": "Erno",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "connect-mongo": "^1.3.2",
     "express": "^4.15.3",
+    "express-session": "^1.15.5",
     "jsonwebtoken": "^7.4.1",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.0",
-    "express-session": "^1.15.5"
+    "mongoose": "^4.11.0"
   }
 }

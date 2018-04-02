@@ -7,7 +7,7 @@ angular.module('RaportModule', []).controller('RaportController',
 	function refreshMatches(){
 		statFactory.getTeamMatches($scope.selectedTeam._id)
 			.then(function(data) {
-				$scope.matches = data;
+				$scope.matches = data.data;
 			}, function(error){
 				console.log("ERR "+error);
 			}
@@ -22,10 +22,10 @@ angular.module('RaportModule', []).controller('RaportController',
 		var matchData = {};
 		statFactory.getTeamPlayers($scope.selectedTeam._id)
     		.then(function(players) {
-        		$scope.teamPlayers = players;
+        		$scope.teamPlayers = players.data;
         		statFactory.getTeamMatch($scope.teamId, matchId)
 					.then(function(match){
-						matchData = match;
+						matchData = match.data;
 						for(var i = 0; i < matchData.players.length; i++){
 							for(var j = 0; j < $scope.teamPlayers.length; j++){
 								if ($scope.teamPlayers[j]._id == matchData.players[i].player_id){

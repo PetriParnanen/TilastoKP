@@ -10,12 +10,12 @@ angular.module('PlayerModule', []).controller('PlayerController',
 		statFactory.getTeamPlayer($scope.teamId, $scope.playerId)
 			.then(function(data) {
 				$scope.player = {};
-				$scope.player.firstname=data.player_id.firstname;
-				$scope.player.lastname=data.player_id.lastname;
-				$scope.player.nickname=data.nickname;
-				$scope.player.number=data.number;
-				$scope.player.joining_date=new Date(data.joining_date);
-				$scope.player.leaving_date=new Date(data.leaving_date);
+				$scope.player.firstname=data.data.player_id.firstname;
+				$scope.player.lastname=data.data.player_id.lastname;
+				$scope.player.nickname=data.data.nickname;
+				$scope.player.number=data.data.number;
+				$scope.player.joining_date=new Date(data.data.joining_date);
+				$scope.player.leaving_date=new Date(data.data.leaving_date);
 			}, function(error){
 				console.log("Could not load team");
 			});

@@ -1,4 +1,17 @@
 {
+	"LOGIN.TITLE": "Kirjautuminen ja rekisteröinti",
+	"LOGIN.USERNAME": "Käyttäjätunnus",
+	"LOGIN.PASSWORD": "Salasana",
+	"LOGIN.BUTTON_LOGIN": "Kirjaudu",
+	"LOGIN.BUTTON_REGISTER": "Rekisteröi",
+	"LOGIN.GIVE_DATA": "Käyttäjätunnus ja salasana ovat molemmat pakollisia",
+	"LOGIN.REG_SUCCESS": "Käyttäjä rekisteröity onnistuneesti",
+	"DB.ERR.NOUSER": "Väärä tunnus tai salasana",
+	"DB.ERR.EMPTYUSERORPW": "Käyttäjätunnus ja salasana ovat molemmat pakollisia",
+	"DB.ERR.DOUBLEUSER": "Käyttäjätunnus on jo olemassa",
+	"DB.ERR.DBERROR": "Jokin hajosi",
+	"DB.ERR.NOUSER": "Väärä tunnus tai salasana",
+
 	"BUTTON_LANG_FI": "Suomi",
 	"BUTTON_LANG_EN": "Englanti",
 	"BUTTON_SAVE": "Tallenna",
@@ -12,6 +25,7 @@
 	"INDEX.TEAM": "Joukkue tiedot",
 	"INDEX.MATCH": "Aloita ottelu",
 	"INDEX.REPORT": "Raportit",
+	"INDEX.LOGOUT": "Kirjaudu ulos",
 
 	"TEAM.NAME": "Nimi",
 	"TEAM.SPORT": "Laji",

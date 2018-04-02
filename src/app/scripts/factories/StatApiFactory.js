@@ -13,82 +13,68 @@ angular.module('StatApiFactory', [])
 	}])
 	.factory('statFactory', ['$http', function($http){
 
-	var apiServer = 'http://localhost:3000/api';
 	var statFactory = {};
 
+	var apiServer = 'http://localhost:3000/api';
+
 	statFactory.getSports = function() {
-		return $http.get(apiServer + "/sportlist")
-			.then(function(response){ return response.data; }, function(error){ console.log("GS ERROR " + error)});
+		return $http.get(apiServer + "/sportlist");
 	};
 
 	statFactory.getTeams = function() {
-		return $http.get(apiServer + "/teamlist")
-			.then(function(response){ return response.data; }, function(error){ console.log("GTs ERROR " + error)});
+		return $http.get(apiServer + "/teamlist");
 	};
 
 	statFactory.getTeam = function(id) {
-		return $http.get(apiServer + "/teamlist/" + id)
-			.then(function(response){ return response.data; }, function(error){ console.log("GT ERROR " + error)});
+		return $http.get(apiServer + "/teamlist/" + id);
 	};
 
 	statFactory.addTeam = function(teamData) {
-		return $http.post(apiServer + "/teamlist", teamData)
-			.then(function(response){ return response.data; }, function(error){ console.log("AT ERROR " + error)});
+		return $http.post(apiServer + "/teamlist", teamData);
 	};
 
 	statFactory.updateTeam = function(id, teamData) {
-		return $http.put(apiServer + "/teamlist/" + id, teamData)
-			.then(function(response){ return response.data; }, function(error){ console.log("UT ERROR " + error)});
+		return $http.put(apiServer + "/teamlist/" + id, teamData);
 	};
 
 	statFactory.removeTeam = function(id){
-		return $http.delete(apiServer + "/teamlist/" + id)
-			.then(function(response){ return response.data; }, function(error){ console.log("RD ERROR " + error)});
+		return $http.delete(apiServer + "/teamlist/" + id);
 	}
 
 	statFactory.getTeamPlayers = function(id) {
-		return $http.get(apiServer + "/playerlist/team/" + id)
-			.then(function(response){ return response.data; }, function(error){ console.log("GTPs ERROR " + error)});
+		return $http.get(apiServer + "/playerlist/team/" + id);
 	};
 
 	statFactory.getTeamPlayer = function(teamId, playerId) {
-		return $http.get(apiServer + "/playerlist/team/" + teamId + "/" + playerId)
-			.then(function(response){ return response.data; }, function(error){ console.log("GTP ERROR " + error)});
+		return $http.get(apiServer + "/playerlist/team/" + teamId + "/" + playerId);
 	};
 
 	statFactory.updateTeamPlayer = function(teamId, playerId, playerData) {
-		return $http.put(apiServer + "/playerlist/team/" + teamId + "/" + playerId, playerData)
-			.then(function(response){ return response.data; }, function(error){ console.log("UTP ERROR "+ error)});
+		return $http.put(apiServer + "/playerlist/team/" + teamId + "/" + playerId, playerData);
 	};
 
 	statFactory.addTeamPlayer = function(id, playerData) {
-		return $http.post(apiServer + "/playerlist/team/" + id, playerData)
-			.then(function(response){ return response.data; }, function(error){ console.log("ATP ERROR " + error)});
+		return $http.post(apiServer + "/playerlist/team/" + id, playerData);
 	};
 
 	statFactory.removeTeamPlayer = function(teamId, playerId) {
-		return $http.delete(apiServer + "/playerlist/team/" + teamId + "/" + playerId)
-			.then(function(response){ return response.data; }, function(error){ console.log("DTP ERROR " + error)});
+		return $http.delete(apiServer + "/playerlist/team/" + teamId + "/" + playerId);
 	};
 
 	statFactory.getSportEvents = function(sportId) {
-		return $http.get(apiServer + "/sportlist/event/" + sportId)
-			.then(function(response){ return response.data; }, function(error){ console.log("GSE ERROR " + error)});
+		return $http.get(apiServer + "/sportlist/event/" + sportId);
 	};
 
 	statFactory.addMatch = function(teamId, matchData) {
-		return $http.post(apiServer + "/matchlist/team/" + teamId, matchData)
-			.then(function(response){ return response.data; }, function(error){ console.log("AM ERROR " + error)});
+		return $http.post(apiServer + "/matchlist/team/" + teamId, matchData);
 	};
 
 	statFactory.getTeamMatches = function(teamId) {
-		return $http.get(apiServer + "/matchlist/team/" + teamId)
-			.then(function(response){ return response.data; }, function(error){ console.log("GM ERROR " + error)});
+		return $http.get(apiServer + "/matchlist/team/" + teamId);
 	};
 
 	statFactory.getTeamMatch = function(teamId, matchId) {
-		return $http.get(apiServer + "/matchlist/team/" + teamId + "/" + matchId)
-			.then(function(response){ return response.data; }, function(error){ console.log("GTM ERROR " + error)});
+		return $http.get(apiServer + "/matchlist/team/" + teamId + "/" + matchId);
 	};
 
 	return statFactory;

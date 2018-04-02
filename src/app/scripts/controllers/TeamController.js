@@ -8,7 +8,7 @@ angular.module('TeamModule', []).controller('TeamController',
         console.log("updating players");
 		statFactory.getTeamPlayers($scope.selectedTeam._id)
             .then(function(data) {
-                $scope.players = data;
+                $scope.players = data.data;
 		    }, function(error){
                 console.log("ERR:"+error);
             }

@@ -7,7 +7,7 @@ angular.module('MatchModule', []).controller('MatchController',
 	function refreshMatchPlayers(){
         statFactory.getTeamPlayers($scope.selectedTeam._id)
     	   .then(function(data) {
-                $scope.teamPlayers = data;
+                $scope.teamPlayers = data.data;
 	       }, function(error){
                 console.log("ERR:"+error);
         });

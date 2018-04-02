@@ -1,0 +1,26 @@
+<div class="page-header"><h3>{{ 'LOGIN.TITLE' | translate }}</h3></div>
+<div ng-controller="LoginController">
+
+<div class="jumbotron text-center" ng-show="regLoading">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+</div>
+
+<div class="row show-hide-message" ng-show="regStatus=='success'">
+	<div class="alert alert-success">{{ message | translate }}</div>
+</div>
+<div class="row show-hide-message" ng-show="regStatus=='error'">
+	<div class="alert alert-danger">{{ message | translate }}</div>
+</div>
+
+<form>
+	<label>{{ 'LOGIN.USERNAME' | translate }}</label>
+	<input class="form-control" type="text" name="username" ng-model="user.username" />
+	<br/>
+	<label> {{ 'LOGIN.PASSWORD' | translate }}</label>
+	<input class="form-control" type="password" name="password" ng-model="user.password" />
+	<div class="tableCenter">
+	<button type="button" class="btn btn-primary" ng-click="login()">{{ 'LOGIN.BUTTON_LOGIN' | translate}}</button>
+	<button type="button" class="btn btn-default" ng-click="register()">{{ 'LOGIN.BUTTON_REGISTER' | translate}}</button>
+	</div>
+</form>
+</div>

@@ -1,4 +1,17 @@
 {
+	"LOGIN.TITLE": "User Login and Registeration",
+	"LOGIN.USERNAME": "Username",
+	"LOGIN.PASSWORD": "Password",
+	"LOGIN.BUTTON_LOGIN": "Login",
+	"LOGIN.BUTTON_REGISTER": "Register",
+	"LOGIN.GIVE_DATA": "Username and password both are mandatory",
+	"LOGIN.REG_SUCCESS": "User registered succesfully",
+	"DB.ERR.NOUSER": "Incorrect username or password",
+	"DB.ERR.EMPTYUSERORPW": "Username and password both are mandatory",
+	"DB.ERR.DOUBLEUSER": "Username allready exists",
+	"DB.ERR.DBERROR": "Something went wrong",
+	"DB.ERR.NOUSER": "Wrong username or password",
+
 	"BUTTON_LANG_FI": "Finnish",
 	"BUTTON_LANG_EN": "English",
 	"BUTTON_SAVE": "Save",
@@ -12,6 +25,7 @@
 	"INDEX.TEAM": "Team information",
 	"INDEX.MATCH": "Start match",
 	"INDEX.REPORT": "Reports",
+	"INDEX.LOGOUT": "Logout",
 
 	"TEAM.NAME": "Name",
 	"TEAM.SPORT": "Sport",
