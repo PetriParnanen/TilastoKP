@@ -17,7 +17,7 @@ router.route('/')
 			res.status(200).send(players);
 		});
 	})
-	//add new player (this does not add to a team)
+	//add new player (this does not add to a team, so it's right now not used)
 	.post(function(req, res){
 		console.log("saving new player");
 		var player = new PlayerModel();

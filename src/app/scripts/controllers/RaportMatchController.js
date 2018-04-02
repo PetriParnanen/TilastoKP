@@ -8,6 +8,7 @@ angular.module('RaportMatchModule', []).controller('RaportMatchController',
 	$scope.teamId = teamId;
 	$scope.matchData = matchData;
 
+	// fetch events for sport
 	statFactory.getSportEvents($scope.sportId)
 		.then(function(data){
 			$scope.sportEvents = data.data;

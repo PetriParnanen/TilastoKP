@@ -6,6 +6,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 	$scope.sportId = "";
 	$scope.teamId = teamId;
 
+	// if team id exists fetch data for that team
 	if(teamId){
 		statFactory.getTeam(teamId)
 			.then(function(data) {
@@ -17,6 +18,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 		});
 	};
 
+	// get all existing sports
 	getSports();
 
 	function getSports(){
@@ -36,6 +38,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 	//form savings
     $scope.form = {};
 
+    // save team data. I team id given then update else create new
     $scope.submitTeam = function() {
     	if ($scope.teamId){
     		statFactory.updateTeam($scope.teamId, $scope.team)

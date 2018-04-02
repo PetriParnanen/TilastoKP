@@ -1,9 +1,10 @@
 angular.module('LoginModule', []).controller('LoginController', 
-	['$scope', 'userFactory',
-		function($scope, userFactory){
+	['$scope', 'userFactory', 'userToken', 
+		function($scope, userFactory, userToken){
 
 	$scope.form = {};
 
+	//registration
 	$scope.register = function(){
 		console.log("register");
 		$scope.regStatus = false;
@@ -27,9 +28,9 @@ angular.module('LoginModule', []).controller('LoginController',
 		}
 	};
 
+	//login
 	$scope.login = function(){
 		console.log("Login");
-		console.log($scope.user);
 		if ($scope.user == null || $scope.user.username == null || $scope.user.username == '' || $scope.user.password == null || $scope.user.password == ''){
 			$scope.regStatus = 'error';
 			$scope.message = 'LOGIN.GIVE_DATA';
@@ -37,10 +38,11 @@ angular.module('LoginModule', []).controller('LoginController',
 			$scope.regLoading = true;
 			$scope.message = '';
 			userFactory.login($scope.user)
-				.then( function(){
-					$scope.$emit('LoggedIn');
+				.then( function(data){
+					userToken.setToken(data.data.token);
 					console.log("logged in");
 					$scope.regStatus = '';
+					$scope.$emit('LoggedIn');
 				}, function(error){
 					$scope.regLoading = false;
 					$scope.message = error.data.message;

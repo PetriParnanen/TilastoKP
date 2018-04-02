@@ -9,6 +9,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 	$scope.matchData.finalPlayers = [];
 	$scope.players = {};
 
+	// handles addition or removal of value in form
 	$scope.handleClick = function(evt, pid, eid) {
 		switch(evt.which){
 			case 1: 
@@ -26,6 +27,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 		}
 	};
 
+	// get all events for sport
 	statFactory.getSportEvents($scope.sportId)
 		.then(function(data){
 			$scope.sportEvents = data.data;
@@ -33,6 +35,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 				console.log(error);
 		});
 
+	// reshapes data before opening the form
 	angular.forEach(matchData.players, function(value, key){
 		var myKey = Object.getOwnPropertyNames(value)[0];
 		var myValue = value[myKey];
@@ -49,6 +52,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 	//form savings
     $scope.form = {};
 
+    // saves match
     $scope.submitMatch = function() {
     	$scope.match.opponent = $scope.matchData.opponent;
     	$scope.match.matchday = $scope.matchData.matchday;

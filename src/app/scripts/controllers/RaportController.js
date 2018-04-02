@@ -4,6 +4,7 @@ angular.module('RaportModule', []).controller('RaportController',
 
 	refreshMatches();
 
+	// fetches all team matches
 	function refreshMatches(){
 		statFactory.getTeamMatches($scope.selectedTeam._id)
 			.then(function(data) {
@@ -14,10 +15,12 @@ angular.module('RaportModule', []).controller('RaportController',
 		)
 	};
 
+	// if inner controller tells that the team have chanced
 	$scope.$on("changeContent", function() {
 		refreshMatches();
 	});
 
+	// open saved match
 	$scope.openMatch = function(matchId) {
 		var matchData = {};
 		statFactory.getTeamPlayers($scope.selectedTeam._id)

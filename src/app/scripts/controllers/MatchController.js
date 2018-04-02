@@ -4,6 +4,7 @@ angular.module('MatchModule', []).controller('MatchController',
 
     refreshMatchPlayers();
 
+    // fetches teams players
 	function refreshMatchPlayers(){
         statFactory.getTeamPlayers($scope.selectedTeam._id)
     	   .then(function(data) {
@@ -13,6 +14,7 @@ angular.module('MatchModule', []).controller('MatchController',
         });
     }
 
+    // if in inner team is chanced then data on this page need to chance
     $scope.$on("changeContent", function() {
         refreshMatchPlayers();
     });

@@ -2,8 +2,11 @@ angular.module('InnerModule', []).controller('InnerController',
 	['$scope', 'statFactory', '$uibModal', '$route',
 		function($scope, statFactory, $uibModal, $route){
 	
+	$scope.message = '';
+	$scope.userStatus = '';
 	getTeams();
 
+	// fething all teams for user
 	function getTeams(teamId){
 		statFactory.getTeams()
 			.then(function(data) {
@@ -24,18 +27,22 @@ angular.module('InnerModule', []).controller('InnerController',
 		});
 	};
 
+	// tell other controllers that they need to chance data
 	$scope.changeContent = function() {
 		$scope.$broadcast("changeContent");
 	};
 
+	// other controllers will tell when team data need updating
 	$scope.$on("updateTeams", function(event, data) {
 		getTeams(data);
 	});
 
+	// logout scream
 	$scope.logout = function() {
 		$scope.$emit('LoggingOut');
 	}
 
+	// create new team for user
 	$scope.addTeam = function () {
 		var modalInstance = $uibModal.open({
             templateUrl: './views/addTeamPopup.html',

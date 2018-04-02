@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var session = require("express-session");
 var mongoStore = require("connect-mongo")(session);
 var User = require('./backend/models/user');
+var jwt = require('jsonwebtoken');
+var secret = 'ThisIsSecret';
 
 //morgan is logging help. Logs all requests.
 //var morgan = require('morgan');
@@ -27,19 +29,25 @@ app.use(session({
 }));
 
 app.use(function(req, res, next){
+
+    // FOR CORS
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Pragma,Cache-Control,If-Modified-Since', 'token');
-
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Content-type,Pragma,Cache-Control,If-Modified-Since,Accept,x-access-token');
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
-    //res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Credentials', true);
 
-    next();
+    if (req.method == 'OPTIONS'){ // this is for cors option request
+        console.log('options'); 
+        res.status(200).send({});
+    } else {
+        next();
+    }
 });
 
 app.post("/login", function(req,res){
@@ -50,17 +58,19 @@ app.post("/login", function(req,res){
         } else {
             User.findOne({ "username":req.body.username }, function(err,user){
                 if(err) {
-                    res.status(404).send({"Message":"DB.ERR.DBERROR"});
+                    res.status(404).send({"message":"DB.ERR.DBERROR"});
                 };
-
                 if (!user){
-                    res.status(403).send({"Message":"DB.ERR.NOUSER"});
+                    res.status(403).send({"message":"DB.ERR.NOUSER"});
                 } else if (user) {
                     var validPasswd = user.checkPassword(req.body.password);
                     if (!validPasswd) {
                         res.status(403).send({"message":"DB.ERR.NOUSER"});
                     } else {
-                        res.status(200).json({"uname":user.username, "token":"user123"});
+                        console.log(user.username);
+                        var token = jwt.sign({ username: user.username }, secret, { expiresIn: '1h' });
+                        console.log(token);
+                        res.status(200).send({"uname":user.username, "token":token});
                     }
                 }
             });
@@ -77,6 +87,10 @@ app.post("/logout", function(req, res){
         }
     });
 
+app.post("/me", function(req, res){
+    res.status(200).send(req.decoded);
+});
+
 app.post("/register", function(req,res){
         console.log("register: "+req.body.username);
 
@@ -91,7 +105,6 @@ app.post("/register", function(req,res){
         } else {
             temp.save(function(err,item){
                 if (err) {
-                    console.log(err);
                     res.status(409).send({"message":"DB.ERR.DOUBLEUSER"});
                 } else {
                     res.status(200).send({"username":item.username, "id":item._id});
@@ -104,21 +117,28 @@ app.post("/register", function(req,res){
 var router = express.Router();
 
 router.use(function(req, res, next){
-
-    //if (req.headers.token == "user123"){
-    //    req.session.params = req.headers;
-    //    next;
-    //} else {
-    //    res.status(403).send({"Message":"Not allowed"});
-    //}
+    var token = req.headers['x-access-token'];
+    if (token){
+        jwt.verify(token, secret, function(err, decoded){
+            if (err) {
+                res.status(403).send({"message":"DB.ERR.WRONGTOKEN"});
+            } else {
+                req.decoded = decoded; // user name 
+                next();
+            }
+        });
+        //req.session.params = req.headers;
+    } else {
+        res.status(403).send({"message":"DB.ERR.NOTALLOWED"});
+    }
 
 	console.log('some stuff');
-	next();
 });
 
 router.get('/', function(req, res){
 	res.json({message: 'Api here'});
 });
+
 //routes
 // Sport
 var sportRouter = require('./backend/routes/sportRouter');
@@ -132,6 +152,11 @@ router.use('/playerlist', playerRouter);
 //match
 var matchRouter = require('./backend/routes/matchRouter');
 router.use('/matchlist', matchRouter);
+
+//who is user
+router.post("/me", function(req, res){
+    res.status(200).send(req.decoded);
+});
 
 app.use('/api', router);
 

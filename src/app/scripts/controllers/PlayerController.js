@@ -6,6 +6,7 @@ angular.module('PlayerModule', []).controller('PlayerController',
 	$scope.playerId = playerId;
 	$scope.teamId = teamId;
 
+	// if player exists then fetch player data
 	if($scope.playerId){
 		statFactory.getTeamPlayer($scope.teamId, $scope.playerId)
 			.then(function(data) {
@@ -52,6 +53,7 @@ angular.module('PlayerModule', []).controller('PlayerController',
 	//form savings
     $scope.form = {};
 
+    // save player (if exists then updata else add new player)
     $scope.submitPlayer = function() {
     	console.log($scope.player);
     	if ($scope.playerId){

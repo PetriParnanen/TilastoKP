@@ -1,38 +1,39 @@
 <div ng-controller="InnerController">
-			<div class="headTable">
-			<div class="headTableRow">
+
+	<div class="headTable">
+		<div class="headTableRow">
 			<div class="headTableTeam"><b>{{ 'INDEX.CHOOSE_TEAM' | translate }}</b></div>
-			<div class="headTable">
+		<div class="headTable">
 			<div class="headTableRow">
-			<div class="headTableTeam">
-				{{ 'INDEX.NAME' | translate }}: 
-				<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
-					<option value="{{team.id}}">{{team.name}}</option>
-				</select>  
-				{{ 'INDEX.SPORT' | translate }}: {{ 'SPORT.'+selectedTeam.sportId.name | translate }}
-			</div>
+				<div class="headTableTeam">
+					{{ 'INDEX.NAME' | translate }}: 
+					<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
+						<option value="{{team.id}}">{{team.name}}</option>
+					</select>  
+					{{ 'INDEX.SPORT' | translate }}: {{ 'SPORT.'+selectedTeam.sportId.name | translate }}
+				</div>
 			<div class="headTableNewTeam">
 				<button type="button" class="btn btn-default" ng-click="addTeam()">{{ 'INDEX.CREATE_TEAM' | translate }}</button>
 			</div>
-			</div>
-			</div>
-			<hr>
+		</div>
+	</div>
+	<hr>
 	<div class="contentTable">
-	<div class="headTableRow">
-	<div class="contentTableNav">
-	<nav>
-		<a href="#/team">{{ 'INDEX.TEAM' | translate }}</a><br />	
-		<a href="#/start_match">{{ 'INDEX.MATCH' | translate }}</a><br />
-		<a href="#/reports">{{ 'INDEX.REPORT' | translate }}</a><br />
-		<a href="#/logout" ng-click="logout()">{{ 'INDEX.LOGOUT' | translate }}</a>
-	</nav>
-	</div>
-	<div class="contentTableSection">
-	<section>
-		<div ng-view>
-		</div>			
-	</section>
-	</div>
-	</div>
+		<div class="headTableRow">
+			<div class="contentTableNav">
+				<nav>
+				<a href="#/team">{{ 'INDEX.TEAM' | translate }}</a><br />	
+				<a href="#/start_match">{{ 'INDEX.MATCH' | translate }}</a><br />
+				<a href="#/reports">{{ 'INDEX.REPORT' | translate }}</a><br />
+				<a href="#/logout" ng-click="logout()">{{ 'INDEX.LOGOUT' | translate }}</a>
+				</nav>
+			</div>
+			<div class="contentTableSection">
+				<section>
+				<div ng-view>
+				</div>			
+				</section>
+			</div>
+		</div>
 	</div>
 </div>

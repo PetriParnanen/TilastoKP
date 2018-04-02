@@ -5,10 +5,12 @@ var TeamModel = require('../models/team.js');
 //TEAMS
 //at some point teams per user is needed
 router.route('/')
-	//get all teams (later quite useless, cause will use more teams per user)
+	//get all teams for user
 	.get(function(req, res){
 		console.log("get all teams");
-		TeamModel.find().populate('sportId').exec(function (err, teams){
+		var user = req.decoded.username; // getting user data from token
+		console.log(user);
+		TeamModel.find({ user: user }).populate('sportId').exec(function (err, teams){
 			if (err)
 				res.status(500).send(err);
 			res.status(200).send(teams);
@@ -18,6 +20,7 @@ router.route('/')
 	.post(function(req, res){
 		console.log("Saving new team");
 		var team = new TeamModel();
+		team.user = req.decoded.username;
 		team.name = req.body.name;
 		team.sportId = req.body.selectedSport._id;
 		team.save(function(err){

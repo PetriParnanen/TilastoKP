@@ -4,6 +4,7 @@ angular.module('TeamModule', []).controller('TeamController',
 
     refreshPlayers();
 
+    // refreshes team list
 	function refreshPlayers(){
         console.log("updating players");
 		statFactory.getTeamPlayers($scope.selectedTeam._id)
@@ -15,11 +16,12 @@ angular.module('TeamModule', []).controller('TeamController',
         );
 	};
 
+    // if team changed in inner controller, refresh player list
 	$scope.$on("changeContent", function() {
 		refreshPlayers();
 	});
 
-    // Add new player
+    // Add new player to team
 	$scope.addPlayer = function () {
 		var modalInstance = $uibModal.open({
             templateUrl: './views/addPlayerPopup.html',

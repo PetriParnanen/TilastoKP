@@ -11,6 +11,8 @@
 	"DB.ERR.DOUBLEUSER": "Username allready exists",
 	"DB.ERR.DBERROR": "Something went wrong",
 	"DB.ERR.NOUSER": "Wrong username or password",
+	"DB.ERR.WRONGTOKEN": "User has lost login information. Please logout and resign to fix this",
+	"DB.ERR.NOTALLOWED": "User has lost login information. Please logout and resign to fix this",
 
 	"BUTTON_LANG_FI": "Finnish",
 	"BUTTON_LANG_EN": "English",
