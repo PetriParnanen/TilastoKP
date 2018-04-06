@@ -8,9 +8,8 @@ angular.module('InnerModule', []).controller('InnerController',
 
 	// fething all teams for user
 	function getTeams(teamId){
-		statFactory.getTeams()
+		statFactory.fetchApiData('team', 'get')
 			.then(function(data) {
-				console.log(data);
 				$scope.teams = data.data;
 				if (teamId) {
 					var m = data.data.length;
@@ -23,7 +22,7 @@ angular.module('InnerModule', []).controller('InnerController',
 					$scope.selectedTeam = data.data[0];
 				}
 			}, function(error){
-				console.log("Could not load teams");
+				console.log(error);
 		});
 	};
 

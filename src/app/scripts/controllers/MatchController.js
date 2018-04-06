@@ -6,7 +6,7 @@ angular.module('MatchModule', []).controller('MatchController',
 
     // fetches teams players
 	function refreshMatchPlayers(){
-        statFactory.getTeamPlayers($scope.selectedTeam._id)
+        statFactory.fetchApiData('teamPlayer', 'get', {'teamId':$scope.selectedTeam._id})
     	   .then(function(data) {
                 $scope.teamPlayers = data.data;
 	       }, function(error){
@@ -45,7 +45,6 @@ angular.module('MatchModule', []).controller('MatchController',
 
 	// Start game
 	$scope.startGame = function () {
-        console.log($scope.selectedTeam);
 		var modalInstance = $uibModal.open({
             templateUrl: './views/matchPopup.html',
             controller: 'LiveMatchController',

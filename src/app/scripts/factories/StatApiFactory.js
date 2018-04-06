@@ -12,194 +12,66 @@ angular.module('StatApiFactory', [])
     	$httpProvider.defaults.headers.common['Pragma'] = 'no-cache';
     	$httpProvider.defaults.headers.common['Content-type'] = 'application/json';
 	}])
-	.factory('statFactory', ['$http', '$window', 'userToken', function($http, $window, userToken){
+	.factory('statFactory', ['$http', '$window', 'userToken', '$q', function($http, $window, userToken, $q){
 
 	var statFactory = {};
 	var apiServer = 'http://localhost:3000/api';
 
-	// get all sports
-	statFactory.getSports = function() {
-		var token = userToken.getToken();
-		return $http({ 
-			method: 'get',
-			url: apiServer + '/sportlist',
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
+	// topic is used to create url, method is connection method
+	// data is a json message that have to include fields to generate url and data part if something needs to be send to api
+	statFactory.fetchApiData = function(topic, method, data) {
+		if (!topic) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+		if (!method) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
 
-	// get all users teams
-	statFactory.getTeams = function() {
 		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/teamlist',
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
+		var url = apiServer;
+		switch(topic) {
+			case 'sports':
+				url += '/sportlist';
+				break;
+			case 'team':
+				url += '/teamlist';
+				break;
+			case 'teamId':
+				if (!('teamId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				url += '/teamlist/' + data.teamId;
+				break;
+			case 'teamPlayer':
+				if (!('teamId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				url += '/playerlist/team/' + data.teamId;
+				break;
+			case 'teamPlayerId':
+				if (!('teamId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				if (!('playerId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				url += '/playerlist/team/' + data.teamId + '/' + data.playerId;
+				break;
+			case 'sportEvent':
+				if (!('sportId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				url += '/sportlist/event/' + data.sportId;
+				break;
+			case 'teamMatch':
+				if (!('teamId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				url += '/matchlist/team/' + data.teamId;
+				break;
+			case 'teamMatchId':
+				if (!('teamId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				if (!('matchId' in data)) { return $q.reject('DB.ERR.INCORRECTFETCHREQUEST') };
+				url += '/matchlist/team/' + data.teamId + '/' + data.matchId;
+				break;
+			default:
+				return $q.reject('DB.ERR.INCORRECTFETCHREQUEST');
+				break;
+		};
 
-	// get one team info
-	statFactory.getTeam = function(id) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/teamlist/' + id,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
+		var http_request = {};
 
-	// Add team to user
-	statFactory.addTeam = function(teamData) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'post',
-			url: apiServer + '/teamlist',
-			headers: {
-				'x-access-token': token
-			},
-			data: teamData
-		});
-	};
-
-	// update teams info
-	statFactory.updateTeam = function(id, teamData) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'put',
-			url: apiServer + '/teamlist/' + id,
-			headers: {
-				'x-access-token': token
-			},
-			data: teamData
-		});
-	};
-
-	// remove team (does remove from database)
-	statFactory.removeTeam = function(id){
-		var token = userToken.getToken();
-		return $http({
-			method: 'delete',
-			url: apiServer + '/teamlist/' + id,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
-
-	// get all players on team
-	statFactory.getTeamPlayers = function(id) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/playerlist/team/' + id,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
-
-	// get one players ingo (need to know the team he is in)
-	statFactory.getTeamPlayer = function(teamId, playerId) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/playerlist/team/' + teamId + '/' + playerId,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
-
-	// updates players data
-	statFactory.updateTeamPlayer = function(teamId, playerId, playerData) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'put',
-			url: apiServer + '/playerlist/team/' + teamId + '/' + playerId,
-			headers: {
-				'x-access-token': token
-			},
-			data: playerData
-		});
-	};
-
-	// add player to team
-	statFactory.addTeamPlayer = function(id, playerData) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'post',
-			url: apiServer + '/playerlist/team/' + id,
-			headers: {
-				'x-access-token': token
-			},
-			data: playerData
-		});
-	};
-
-	//remove player from team (and delete's from database)
-	statFactory.removeTeamPlayer = function(teamId, playerId) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'delete',
-			url: apiServer + '/playerlist/team/' + teamId + '/' + playerId,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
-
-	// get all events tied to a sport
-	statFactory.getSportEvents = function(sportId) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/sportlist/event/' + sportId,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
-
-	// add new match
-	statFactory.addMatch = function(teamId, matchData) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'post',
-			url: apiServer + '/matchlist/team/' + teamId,
-			headers: {
-				'x-access-token': token
-			},
-			data: matchData
-		});
-	};
-
-	// get all matches for a team
-	statFactory.getTeamMatches = function(teamId) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/matchlist/team/' + teamId,
-			headers: {
-				'x-access-token': token
-			}
-		});
-	};
-
-	// get one match for team
-	statFactory.getTeamMatch = function(teamId, matchId) {
-		var token = userToken.getToken();
-		return $http({
-			method: 'get',
-			url: apiServer + '/matchlist/team/' + teamId + '/' + matchId,
-			headers: {
-				'x-access-token': token
-			}
-		});
+		http_request['url'] = url;
+		http_request['method'] = method;
+		http_request['headers'] = {'x-access-token': token};
+		if (data && data.data) {
+			http_request['data'] = data.data;
+		};
+		return $http(http_request);
 	};
 
 	return statFactory;

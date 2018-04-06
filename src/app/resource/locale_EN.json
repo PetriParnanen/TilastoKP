@@ -13,6 +13,7 @@
 	"DB.ERR.NOUSER": "Wrong username or password",
 	"DB.ERR.WRONGTOKEN": "User has lost login information. Please logout and resign to fix this",
 	"DB.ERR.NOTALLOWED": "User has lost login information. Please logout and resign to fix this",
+	"DB.ERR.INCORRECTFETCHREQUEST": "Something wrong is system. Blame coder",
 
 	"BUTTON_LANG_FI": "Finnish",
 	"BUTTON_LANG_EN": "English",

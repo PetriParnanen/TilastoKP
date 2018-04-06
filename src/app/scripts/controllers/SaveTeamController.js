@@ -8,7 +8,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 
 	// if team id exists fetch data for that team
 	if(teamId){
-		statFactory.getTeam(teamId)
+		statFactory.fetchApiData('teamId', 'get', {'teamId': teamId})
 			.then(function(data) {
 				$scope.team = {};
 				$scope.team.name = data.data.name;
@@ -22,7 +22,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 	getSports();
 
 	function getSports(){
-		statFactory.getSports()
+		statFactory.fetchApiData('sports', 'get')
 			.then(function(data) {
 				$scope.sports = data.data;
 				if ($scope.sportId){
@@ -41,11 +41,11 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
     // save team data. I team id given then update else create new
     $scope.submitTeam = function() {
     	if ($scope.teamId){
-    		statFactory.updateTeam($scope.teamId, $scope.team)
+    		statFactory.fetchApiData('teamId', 'put', {'teamId': $scope.teamId, 'data':$scope.team})
     			.then(function(responce) { $uibModalInstance.close({"selected":responce.data._id}); }, 
     				function(error) {console.log(error)});
     	} else {
-        	statFactory.addTeam($scope.team)
+    		statFactory.fetchApiData('team', 'post', {'data':$scope.team})
         		.then(function(responce) { $uibModalInstance.close({"selected":responce.data._id}); }, 
         			function(error) {console.log(error)});
         }; 

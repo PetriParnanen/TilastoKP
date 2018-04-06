@@ -6,7 +6,6 @@ angular.module('MainModule', []).controller('MainController',
 	$scope.isLoggedIn = false;
 
 	if (userFactory.isLoggedIn()){
-		console.log('user is logged in');
 		$scope.isLoggedIn = true;
 	};
 

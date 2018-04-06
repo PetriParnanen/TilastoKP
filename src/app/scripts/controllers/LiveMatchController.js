@@ -28,7 +28,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 	};
 
 	// get all events for sport
-	statFactory.getSportEvents($scope.sportId)
+	statFactory.fetchApiData('sportEvent', 'get', {'sportId':$scope.sportId})
 		.then(function(data){
 			$scope.sportEvents = data.data;
 		}, function(error){
@@ -57,7 +57,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
     	$scope.match.opponent = $scope.matchData.opponent;
     	$scope.match.matchday = $scope.matchData.matchday;
     	$scope.match.players = $scope.players;
-        statFactory.addMatch($scope.teamId, $scope.match);
+    	statFactory.fetchApiData('teamMatch', 'post', {'teamId':$scope.teamId, 'data':$scope.match});
         $uibModalInstance.close('Match saved');
     };
 

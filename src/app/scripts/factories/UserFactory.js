@@ -51,8 +51,6 @@ angular.module('UserFactory', [])
 
 	// sets new value to token to localstorage. if empty removes token
 	userTokenFactory.setToken = function(token) {
-		console.log("UF token");
-		console.log(token);
 		if (token){
 			$window.localStorage.setItem('token', token);
 		} else {

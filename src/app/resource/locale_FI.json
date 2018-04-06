@@ -13,6 +13,7 @@
 	"DB.ERR.NOUSER": "Väärä tunnus tai salasana",
 	"DB.ERR.WRONGTOKEN": "Käyttäjältä on hävinnyt kirjautumistiedot. Ole hyvä ja kirjaudu uudestaan",
 	"DB.ERR.NOTALLOWED": "Käyttäjältä on hävinnyt kirjautumistiedot. Ole hyvä ja kirjaudu uudestaan",
+	"DB.ERR.INCORRECTFETCHREQUEST": "Jokin vikana. Koodaajan vika",
 
 	"BUTTON_LANG_FI": "Suomi",
 	"BUTTON_LANG_EN": "Englanti",

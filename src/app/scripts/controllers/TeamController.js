@@ -6,8 +6,7 @@ angular.module('TeamModule', []).controller('TeamController',
 
     // refreshes team list
 	function refreshPlayers(){
-        console.log("updating players");
-		statFactory.getTeamPlayers($scope.selectedTeam._id)
+        statFactory.fetchApiData('teamPlayer', 'get', { 'teamId':$scope.selectedTeam._id })
             .then(function(data) {
                 $scope.players = data.data;
 		    }, function(error){
@@ -110,7 +109,7 @@ angular.module('TeamModule', []).controller('TeamController',
 
     //remove team
     $scope.removeTeam = function () {
-        statFactory.removeTeam($scope.selectedTeam._id)
+        statFactory.fetchApiData('teamId', 'delete', { 'teamId':$scope.selectedTeam._id })
             .then(function(){
                 $window.location.href = "/";
             }, function(error){
@@ -120,7 +119,7 @@ angular.module('TeamModule', []).controller('TeamController',
 
     //remove player
     $scope.removePlayer = function (playerId) {
-        statFactory.removeTeamPlayer($scope.selectedTeam._id, playerId)
+        statFactory.fetchApiData('teamPlayerId', 'delete', { 'teamId':$scope.selectedTeam._id, 'playerId': playerId })
             .then(function(){
                 refreshPlayers();
             }, function() {

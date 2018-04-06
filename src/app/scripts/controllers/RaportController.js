@@ -6,7 +6,7 @@ angular.module('RaportModule', []).controller('RaportController',
 
 	// fetches all team matches
 	function refreshMatches(){
-		statFactory.getTeamMatches($scope.selectedTeam._id)
+		statFactory.fetchApiData('teamMatch', 'get', {'teamId':$scope.selectedTeam._id})
 			.then(function(data) {
 				$scope.matches = data.data;
 			}, function(error){
@@ -23,10 +23,10 @@ angular.module('RaportModule', []).controller('RaportController',
 	// open saved match
 	$scope.openMatch = function(matchId) {
 		var matchData = {};
-		statFactory.getTeamPlayers($scope.selectedTeam._id)
+		statFactory.fetchApiData('teamPlayer', 'get', {'teamId':$scope.selectedTeam._id})
     		.then(function(players) {
         		$scope.teamPlayers = players.data;
-        		statFactory.getTeamMatch($scope.teamId, matchId)
+        		statFactory.fetchApiData('teamMatchId', 'get', {'teamId':$scope.teamId, 'matchId': matchId})
 					.then(function(match){
 						matchData = match.data;
 						for(var i = 0; i < matchData.players.length; i++){

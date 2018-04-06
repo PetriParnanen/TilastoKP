@@ -8,7 +8,7 @@ angular.module('PlayerModule', []).controller('PlayerController',
 
 	// if player exists then fetch player data
 	if($scope.playerId){
-		statFactory.getTeamPlayer($scope.teamId, $scope.playerId)
+		statFactory.fetchApiData('teamPlayerId', 'get', { 'teamId':$scope.teamId, 'playerId':$scope.playerId })
 			.then(function(data) {
 				$scope.player = {};
 				$scope.player.firstname=data.data.player_id.firstname;
@@ -55,13 +55,12 @@ angular.module('PlayerModule', []).controller('PlayerController',
 
     // save player (if exists then updata else add new player)
     $scope.submitPlayer = function() {
-    	console.log($scope.player);
     	if ($scope.playerId){
-    		statFactory.updateTeamPlayer($scope.selectedTeam._id, $scope.playerId, $scope.player)
+    		statFactory.fetchApiData('teamPlayerId', 'put', { 'teamId':$scope.selectedTeam._id, 'playerId':$scope.playerId, 'data':$scope.player })
     			.then(function(){ $uibModalInstance.close('Player saved'); },
     				function(error) {console.log(error)});
     	} else {
-        	statFactory.addTeamPlayer($scope.selectedTeam._id, $scope.player)
+        	statFactory.fetchApiData('teamPlayer', 'post', { 'teamId':$scope.selectedTeam._id, 'data':$scope.player })
         		.then(function(){ $uibModalInstance.close('Player saved'); },
         			function(error) {console.log(error)});
         }
