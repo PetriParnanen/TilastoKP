@@ -7,6 +7,25 @@ i.glyphicon{display:block}
 
 span.input-group-addon{padding: 0px;}
 
+div.greyish{background-color: #ECF0F1}
+
+div.whiteish{background-color: #FFFFFF}
+
+button.round-button {
+    border: none;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    border-radius: 50%;
+}
+
+button.odd{background-color: #4CAF50}
+button.even{background-color: #E74C3C}
+
 .headTable, .teamTable, .matchTable {
 	display: block;
 	width: 100%;
@@ -93,7 +112,7 @@ span.input-group-addon{padding: 0px;}
 }
 .matchPopupTableCell {
 	display: table-cell;
-	padding: 5px;
+	padding: 1px;
 }
 hr {
 	width: 100%;

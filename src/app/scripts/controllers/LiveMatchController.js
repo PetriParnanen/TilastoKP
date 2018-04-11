@@ -1,6 +1,6 @@
 angular.module('LiveMatchModule', []).controller('LiveMatchController', 
-	['$scope', 'statFactory', '$uibModalInstance', 'saveGame', 'modalTitle', 'matchData', 'sportId', 'sportName', 'teamId',
-	function($scope, statFactory, $uibModalInstance, saveGame, modalTitle, matchData, sportId, sportName, teamId){
+	['$scope', 'statFactory', '$uibModalInstance', 'saveGame', 'modalTitle', 'matchData', 'sportId', 'sportName', 'teamId', '$window', 
+	function($scope, statFactory, $uibModalInstance, saveGame, modalTitle, matchData, sportId, sportName, teamId, $window){
 
 	$scope.matchData = matchData;
 	$scope.sportId = sportId;
@@ -8,9 +8,11 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 	$scope.teamId = teamId;
 	$scope.matchData.finalPlayers = [];
 	$scope.players = {};
+	$scope.counter = 0;
 
 	// handles addition or removal of value in form
 	$scope.handleClick = function(evt, pid, eid) {
+		$scope.counter++;
 		switch(evt.which){
 			case 1: 
 				$scope.players[pid][eid]++;
@@ -22,7 +24,7 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
 				if ($scope.players[pid][eid]<0){ $scope.players[pid][eid]=0};
 				break;
 			default:
-				alert("WHat, strange mouse");
+				alert("What, strange mouse");
 				break;
 		}
 	};
@@ -57,12 +59,19 @@ angular.module('LiveMatchModule', []).controller('LiveMatchController',
     	$scope.match.opponent = $scope.matchData.opponent;
     	$scope.match.matchday = $scope.matchData.matchday;
     	$scope.match.players = $scope.players;
-    	statFactory.fetchApiData('teamMatch', 'post', {'teamId':$scope.teamId, 'data':$scope.match});
-        $uibModalInstance.close('Match saved');
+    	statFactory.fetchApiData('teamMatch', 'post', {'teamId':$scope.teamId, 'data':$scope.match})
+    		.then( function(responce) {
+    			$uibModalInstance.close('Match saved');
+    			$scope.$emit("showInnerMessage", {status: 'success', message: 'MATCH.SAVESUCCESS' });
+    		}, function(error){
+    			$scope.matchPopupMessage = 'DB.ERR.NOSAVE';
+    		});
     };
 
     $scope.cancel = function() {
-        $uibModalInstance.dismiss('cancel');
+    	if($scope.counter == 0 || $window.confirm("are you sure")){
+        	$uibModalInstance.dismiss('cancel');
+        }
     }
 
 }]);

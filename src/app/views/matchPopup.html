@@ -16,10 +16,11 @@
 </span>
 </div>
 </div>
-<div class="tableRow" ng-repeat="player in matchData.finalPlayers | orderBy:'number/1'">
+<div class="tableRow" ng-class-odd="'greyish'" ng-class-even="'whiteish'" ng-repeat="player in matchData.finalPlayers | orderBy:'number/1'">
 <div class="matchPopupTableCell">{{player.number}}</div>
 <div class="matchPopupTableCell" ng-repeat="event in sportEvents | orderBy:'order'">
-<span style="cursor: pointer; border: 1px solid black; padding: 5px" ng-init="players[player.id][event._id] = 0" ng-mousedown="handleClick($event, player.id, event._id)" oncontextmenu='return false'>{{players[player.id][event._id]}}</span>
+<button type="button" class="round-button" ng-class="$even ? 'odd' : 'even'" ng-init="players[player.id][event._id] = 0" ng-mousedown="handleClick($event, player.id, event._id)" oncontextmenu="return false">
+	{{players[player.id][event._id]}}</button>
 </div>
 </div>
 </div>

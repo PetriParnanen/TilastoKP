@@ -3,6 +3,7 @@ angular.module('MatchModule', []).controller('MatchController',
 		function($scope, statFactory, $uibModal, $route){
 
     refreshMatchPlayers();
+    $scope.$emit('showInnerMessage');
 
     // fetches teams players
 	function refreshMatchPlayers(){
@@ -18,10 +19,6 @@ angular.module('MatchModule', []).controller('MatchController',
     $scope.$on("changeContent", function() {
         refreshMatchPlayers();
     });
-
-    $scope.match = {
-    	players:{}
-    };
 
     //datepicker stuff
 	$scope.today = function(){
@@ -45,37 +42,48 @@ angular.module('MatchModule', []).controller('MatchController',
 
 	// Start game
 	$scope.startGame = function () {
-		var modalInstance = $uibModal.open({
-            templateUrl: './views/matchPopup.html',
-            controller: 'LiveMatchController',
-            scope: $scope,
-            resolve: {
-                saveGame: function () {
-                    return $scope.saveGame;
-                },
-                modalTitle: function() {
-                	return 'Tallenna ottelu';
-                },
-                matchData: function() {
-                	return $scope.match;
-                },
-                sportId: function() {
-                	return $scope.selectedTeam.sportId._id;
-                },
-                sportName: function() {
-                    return $scope.selectedTeam.sportId.name;
-                },
-                teamId: function() {
-                    return $scope.selectedTeam._id
+        console.log($scope.match);
+        if ($scope.match == null ||
+            $scope.match.matchday == null || $scope.match.matchday == '' ||
+            $scope.match.opponent == null || $scope.match.opponent == '' ||
+            $scope.match.players == undefined){
+            $scope.$emit('showInnerMessage', {status: 'error', message: 'MATCH.NOMANDATORY'});
+        } else {
+            $scope.$emit('showInnerMessage');
+	        var modalInstance = $uibModal.open({
+                templateUrl: './views/matchPopup.html',
+                controller: 'LiveMatchController',
+                scope: $scope,
+                backdrop: 'static',
+                kayboard: false,
+                size: 'lg',
+                resolve: {
+                    saveGame: function () {
+                        return $scope.saveGame;
+                    },
+                    modalTitle: function() {
+                	   return 'Tallenna ottelu';
+                    },
+                    matchData: function() {
+                	   return $scope.match;
+                    },
+                    sportId: function() {
+                	   return $scope.selectedTeam.sportId._id;
+                    },
+                    sportName: function() {
+                        return $scope.selectedTeam.sportId.name;
+                    },
+                    teamId: function() {
+                        return $scope.selectedTeam._id
+                    }
                 }
-            }
-        });
+            });
 
-		modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
-            console.log('Dismissed');
-        });
-    };
-
+		    modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                console.log('Dismissed');
+            });
+        };
+    }
 }]);
