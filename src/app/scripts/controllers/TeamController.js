@@ -3,6 +3,7 @@ angular.module('TeamModule', []).controller('TeamController',
         function($scope,statFactory,$uibModal,$route, $window){
 
     refreshPlayers();
+    $scope.$emit('showInnerMessage');
 
     // refreshes team list
 	function refreshPlayers(){
@@ -10,7 +11,7 @@ angular.module('TeamModule', []).controller('TeamController',
             .then(function(data) {
                 $scope.players = data.data;
 		    }, function(error){
-                console.log("ERR:"+error);
+                $scope.$emit('showInnerMessage', {status: 'error', message: 'DB.ERR.DBERROR'});
             }
         );
 	};
@@ -26,6 +27,8 @@ angular.module('TeamModule', []).controller('TeamController',
             templateUrl: './views/addPlayerPopup.html',
             controller: 'PlayerController',
             scope: $scope,
+            backdrop: 'static',
+            keyboard: false,
             resolve: {
                 savePlayer: function () {
                     return $scope.savePlayer;
@@ -56,6 +59,8 @@ angular.module('TeamModule', []).controller('TeamController',
             templateUrl: './views/addTeamPopup.html',
             controller: 'SaveTeamController',
             scope: $scope,
+            backdrop: 'static',
+            keyboard: false,
             resolve: {
                 saveTeam: function () {
                     return $scope.saveTeam;
@@ -83,6 +88,8 @@ angular.module('TeamModule', []).controller('TeamController',
             templateUrl: './views/addPlayerPopup.html',
             controller: 'PlayerController',
             scope: $scope,
+            backdrop: 'static',
+            keyboard: false,
             resolve: {
                 savePlayer: function () {
                     return $scope.savePlayer;
@@ -111,9 +118,11 @@ angular.module('TeamModule', []).controller('TeamController',
     $scope.removeTeam = function () {
         statFactory.fetchApiData('teamId', 'delete', { 'teamId':$scope.selectedTeam._id })
             .then(function(){
+                $scope.$emit('showInnerMessage', {status: 'success', message: 'TEAM.REMOVESUCCESS'});
                 $window.location.href = "/";
             }, function(error){
-                console.log("Could not remove team");
+                console.log("Team removal failed");
+                $scope.$emit('showInnerMessage', {status: 'error', message: 'DB.ERR.DBERROR'});
             });
     }
 
@@ -121,8 +130,10 @@ angular.module('TeamModule', []).controller('TeamController',
     $scope.removePlayer = function (playerId) {
         statFactory.fetchApiData('teamPlayerId', 'delete', { 'teamId':$scope.selectedTeam._id, 'playerId': playerId })
             .then(function(){
+                $scope.$emit('showInnerMessage', {status: 'success', message: 'PLAYER.REMOVESUCCESS'});
                 refreshPlayers();
             }, function() {
+                $scope.$emit('showInnerMessage', {status: 'error', message: 'DB.ERR.DBERROR'});
                 console.log("Player removal failed");
             });
     }

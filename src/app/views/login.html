@@ -1,10 +1,9 @@
-<div class="page-header"><h3>{{ 'LOGIN.TITLE' | translate }}</h3></div>
 <div ng-controller="LoginController">
+<div class="page-header"><h3>{{ 'LOGIN.TITLE' | translate }}</h3></div>
 
 <div class="jumbotron text-center" ng-show="regLoading">
 	<span class="glyphicon glyphicon-repeat spinner"></span>
 </div>
-
 <div class="row show-hide-message" ng-show="regStatus=='success'">
 	<div class="alert alert-success">{{ message | translate }}</div>
 </div>

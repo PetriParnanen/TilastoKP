@@ -1,39 +1,31 @@
 <div ng-controller="InnerController">
 
-	<div class="headTable">
-		<div class="headTableRow">
-			<div class="headTableTeam"><b>{{ 'INDEX.CHOOSE_TEAM' | translate }}</b></div>
-		<div class="headTable">
-			<div class="headTableRow">
-				<div class="headTableTeam">
-					{{ 'INDEX.NAME' | translate }}: 
-					<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
-						<option value="{{team.id}}">{{team.name}}</option>
-					</select>  
-					{{ 'INDEX.SPORT' | translate }}: {{ 'SPORT.'+selectedTeam.sportId.name | translate }}
-				</div>
-			<div class="headTableNewTeam">
-				<button type="button" class="btn btn-default" ng-click="addTeam()">{{ 'INDEX.CREATE_TEAM' | translate }}</button>
-			</div>
-		</div>
+<div class="page-header"><h3>{{ 'INDEX.CHOOSE_TEAM' | translate }}</h3>
+
+<div class="row show-hide-message" ng-show="innerMesStatus=='success'">
+	<div class="alert alert-success">{{ innerMessage | translate }}</div>
+</div>
+<div class="row show-hide-message" ng-show="innerMesStatus=='error'">
+	<div class="alert alert-danger">{{ innerMessage | translate }}</div>
+</div> 
+
+<div class="row">
+	<div class="col-md-6">
+		{{ 'INDEX.NAME' | translate }}:
+		<select ng-model="selectedTeam" ng-options="team.name for team in teams" ng-change="changeContent()">
+			<option value="{{team.id}}">{{team.name}}</option>
+		</select>
+		{{ 'INDEX.SPORT' | translate }}: {{ 'SPORT.'+selectedTeam.sportId.name | translate }}
 	</div>
-	<hr>
-	<div class="contentTable">
-		<div class="headTableRow">
-			<div class="contentTableNav">
-				<nav>
-				<a href="#/team">{{ 'INDEX.TEAM' | translate }}</a><br />	
-				<a href="#/start_match">{{ 'INDEX.MATCH' | translate }}</a><br />
-				<a href="#/reports">{{ 'INDEX.REPORT' | translate }}</a><br />
-				<a href="#/logout" ng-click="logout()">{{ 'INDEX.LOGOUT' | translate }}</a>
-				</nav>
-			</div>
-			<div class="contentTableSection">
-				<section>
-				<div ng-view>
-				</div>			
-				</section>
-			</div>
-		</div>
-	</div>
+	<div class="col-md-6"><p class="text-right">
+		<button type="button" class="btn btn-success" ng-click="addTeam()">{{ 'INDEX.CREATE_TEAM' | translate }}</button>
+	</p></div>
+</div>
+
+<div class="container">
+	<section>
+		<div ng-view></div>			
+	</section>
+</div>
+
 </div>

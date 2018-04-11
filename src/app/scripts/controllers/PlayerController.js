@@ -5,6 +5,7 @@ angular.module('PlayerModule', []).controller('PlayerController',
 	$scope.modalTitle = modalTitle;
 	$scope.playerId = playerId;
 	$scope.teamId = teamId;
+	$scope.$emit('showInnerMessage');
 
 	// if player exists then fetch player data
 	if($scope.playerId){
@@ -15,8 +16,8 @@ angular.module('PlayerModule', []).controller('PlayerController',
 				$scope.player.lastname=data.data.player_id.lastname;
 				$scope.player.nickname=data.data.nickname;
 				$scope.player.number=data.data.number;
-				$scope.player.joining_date=new Date(data.data.joining_date);
-				$scope.player.leaving_date=new Date(data.data.leaving_date);
+				$scope.player.joining_date=(data.data.joining_date?new Date(data.data.joining_date):null);
+				$scope.player.leaving_date=(data.data.leaving_date?new Date(data.data.leaving_date):null);
 			}, function(error){
 				console.log("Could not load team");
 			});
@@ -55,6 +56,17 @@ angular.module('PlayerModule', []).controller('PlayerController',
 
     // save player (if exists then updata else add new player)
     $scope.submitPlayer = function() {
+    	console.log($scope.player);
+    	if ($scope.player == null || 
+    		$scope.player.firstname == null || $scope.player.firstname == '' ||
+    		$scope.player.lastname == null || $scope.player.lastname == '' ||
+    		$scope.player.number == null || $scope.player.number == ''){
+    		$scope.playerPopupMessage = 'PLAYER.ERR.MANDATORYCHECK';
+    	} else if (!($scope.player.number.match(/^[0-9]{1,2}$/))){
+    		$scope.playerPopupMessage = 'PLAYER.ERR.INVSHIRTNUMBER';
+    	} else
+    	{
+
     	if ($scope.playerId){
     		statFactory.fetchApiData('teamPlayerId', 'put', { 'teamId':$scope.selectedTeam._id, 'playerId':$scope.playerId, 'data':$scope.player })
     			.then(function(){ $uibModalInstance.close('Player saved'); },
@@ -64,6 +76,7 @@ angular.module('PlayerModule', []).controller('PlayerController',
         		.then(function(){ $uibModalInstance.close('Player saved'); },
         			function(error) {console.log(error)});
         }
+    }
     };
 
     $scope.cancel = function() {

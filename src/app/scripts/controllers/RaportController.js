@@ -3,6 +3,7 @@ angular.module('RaportModule', []).controller('RaportController',
 		function($scope, statFactory, $uibModal, $route){
 
 	refreshMatches();
+	$scope.$emit('showInnerMessage');
 
 	// fetches all team matches
 	function refreshMatches(){
@@ -43,6 +44,8 @@ angular.module('RaportModule', []).controller('RaportController',
             				templateUrl: './views/viewMatchPopup.html',
             				controller: 'RaportMatchController',
            		 			scope: $scope,
+           		 			backdrop: 'static',
+           		 			kayboard: false,
     	        			resolve: {
         	       				modalTitle: function() {
             	    				return 'Ottelun tilastot';

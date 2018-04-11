@@ -1,5 +1,12 @@
 /* Inner stylesheet */
 
+label{display:block}
+.control-label{padding-top:20px}
+
+i.glyphicon{display:block}
+
+span.input-group-addon{padding: 0px;}
+
 .headTable, .teamTable, .matchTable {
 	display: block;
 	width: 100%;

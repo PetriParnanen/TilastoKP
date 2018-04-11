@@ -1,32 +1,37 @@
 <div ng-controller="TeamController">
 <br />
+
 <input type="hidden" ng-model="selectedTeam.id" />
-<div class="teamTable">
-<div class="headTableRow">
-<div class="teamHeader"><b>{{ 'TEAM.NAME' | translate }}:</b></div>
-<div class="teamValue">{{selectedTeam.name}}</div>
-<div class="teamEditTeam"><button type="button" class="btn btn-default" ng-click="editTeam()">{{ 'TEAM.EDIT_TEAM' | translate }}</button></div>
+
+<div class="row">
+	<div class="col-md-2"><b>{{ 'TEAM.NAME' | translate }}</b></div>
+	<div class="col-md-2">{{selectedTeam.name}}</div>
+	<div class="col-md-2"><button type="button" class="btn btn-primary" ng-click="editTeam()">{{ 'TEAM.EDIT_TEAM' | translate }}</button></div>
 </div>
-<div class="headTableRow">
-<div class="teamHeader"><b>{{ 'TEAM.SPORT' | translate }}:</b></div>
-<div class="teamValue">{{ 'SPORT.'+selectedTeam.sportId.name | translate }}</div>
+<div class="row">
+	<div class="col-md-2"><b>{{ 'TEAM.SPORT' | translate }}</b></div>
+	<div class="col-md-2">{{ 'SPORT.'+selectedTeam.sportId.name | translate }}</div>
 </div>
-<div class="headTableRow">
-<div class="teamHeader"><b>{{ 'TEAM.PLAYERS' | translate }}:</b></div>
-<div class="teamValuePlayers">
-<div class="teamPlayer" ng-repeat="player in players | orderBy:'number/1'">
-<div class="teamPlayerName">
-<span ng-if="player.nickname && player.nickname != ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.nickname}}</span>
-<span ng-if="!player.nickname || player.nickname == ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.player_id.firstname}}</span>
+<div class="row">
+	<div class="col-md-2"><b>{{ 'TEAM.PLAYERS' | translate }}</b></div>
+	<div class="col-md-6">
+		<div class="row" ng-repeat="player in players | orderBy:'number/1'">
+			<div class="col-md-6">
+				<span ng-if="player.nickname && player.nickname != ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.nickname}}</span>
+				<span ng-if="!player.nickname || player.nickname == ''" uib-popover-template="'./views/showPlayerPopup.html'" popover-trigger="'mouseenter'">{{player.player_id.firstname}}</span>
+			</div>
+			<div class="col-md-2">{{player.number}}</div>
+			<div class="col-md-2"><button type="button" class="btn btn-primary" ng-click="editPlayer(player._id)">{{ 'TEAM.EDIT_PLAYER' | translate }}</button></div>
+			<div class="col-md-2"><button type="button" class="btn btn-warning" ng-click="removePlayer(player._id)">{{ 'TEAM.REMOVE_PLAYER' | translate }}</button></div>
+		</div>
+	</div>
 </div>
-<div class="teamPlayerNro">{{player.number}}</div>
-<div class="teamPlayerButton"><button type="button" class="btn btn-default" ng-click="editPlayer(player._id)">{{ 'TEAM.EDIT_PLAYER' | translate }}</button></div>
-<div class="teamPlayerButton"><button type="button" class="btn btn-default" ng-click="removePlayer(player._id)">{{ 'TEAM.REMOVE_PLAYER' | translate }}</button></div>
+<div class="row">
+	<p class="text-center">
+		<button type="button" class="btn btn-success" ng-click="addPlayer()">{{ 'TEAM.ADD_PLAYER' | translate }}</button> 
+		<button type="button" class="btn btn-warning" ng-click="removeTeam(selectedTeam.id)">{{ 'TEAM.REMOVE_TEAM' | translate }}</button>
+	</p>
 </div>
-</div>
-<div class="tableCenter">
-	<button type="button" class="btn btn-default" ng-click="addPlayer()">{{ 'TEAM.ADD_PLAYER' | translate }}</button> 
-	<button type="button" class="btn btn-default" ng-click="removeTeam(selectedTeam.id)">{{ 'TEAM.REMOVE_TEAM' | translate }}</button>
-</div>
+
 {{form.savePlayer}}
 </div>

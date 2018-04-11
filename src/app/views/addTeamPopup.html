@@ -1,20 +1,29 @@
-<div>
-	<h3>{{ modalTitle | translate }}</h3>
-	<form name="form.saveTeam" ng-submit="submitTeam()">
-<div class="addTeamTable">
-<div class="tableRow">
-<div class="addTeamTableCell"><input type="hidden" ng-model="teamId" />{{ 'INDEX.NAME' | translate }}:</div>
-<div class="addTeamTableCell"><input type="text" class="form-control" ng-model="team.name" required /></div>
-<div class="addTeamTableCell">{{ 'INDEX.SPORT' | translate }}:</div>
-<div class="addTeamTableCell" ng-if="!teamId">
-	<select ng-model="team.selectedSport" ng-options="'SPORT.'+sport.name | translate for sport in sports">
-		<option value="{{sport.id}}"></option>
-	</select>
-</div>
-<div class="addTeamTableCell" ng-if="teamId">{{ 'SPORT.'+team.sportText | translate }}</div>
-</div>
-</div>
-<div class="tableCenter"><button type="submit" class="btn btn-primary">{{ 'BUTTON_SAVE' | translate }}</button>
-<button type="button" class="btn btn-warning" ng-click="cancel()">{{ 'BUTTON_CANCEL' | translate }}</button></div>
+<div class="page-header"><h3>{{ modalTitle | translate }}</h3></div>
+
+<form name="form.saveTeam" ng-submit="submitTeam()">
+	<div class="form-row show-hide-message" ng-show="teamPopupMessage">
+		<div class="alert alert-danger">{{ teamPopupMessage | translate }}</div>
+	</div>
+	<input type="hidden" ng-model="teamId" />
+	<div class="form-row">
+		<div class="form-group">
+			<label>{{ 'INDEX.NAME' | translate }}</label>
+			<input type="text" name="teamName" class="form-control" ng-model="team.name" />
+		</div>
+		<div class="form-group">
+			<label>{{ 'INDEX.SPORT' | translate }}</label>
+			<p ng-if="!teamId">
+				<select name="teamSport" class="form-control select-inline" ng-model="team.selectedSport" ng-options="'SPORT.'+sport.name | translate for sport in sports">
+					<option value="{{sport.id}}"></option>
+				</select>
+			</p>
+			<p class="form-control-static" ng-if="teamId">{{ 'SPORT.'+team.sportText | translate }}</p>
+		</div>
+	</div>
+	<div class="form-row">
+	<p class="text-center">
+		<button type="submit" class="btn btn-primary">{{ 'BUTTON_SAVE' | translate }}</button>
+		<button type="button" class="btn btn-warning" ng-click="cancel()">{{ 'BUTTON_CANCEL' | translate }}</button>
+	</p>
+	</div>
 </form>
-</div>

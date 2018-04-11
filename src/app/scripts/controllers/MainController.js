@@ -16,9 +16,13 @@ angular.module('MainModule', []).controller('MainController',
 
 	// sniff other controllers if they yell log out. if so then empty token
 	$scope.$on('LoggingOut', function() {
+		logout();
+	});
+
+	$scope.logout = function() {
 		userToken.setToken();
 		$scope.isLoggedIn = false;
-	})
+	};
 
 	// if user chances language, then chance texts
 	$scope.changeLanguage = function (langKey) {

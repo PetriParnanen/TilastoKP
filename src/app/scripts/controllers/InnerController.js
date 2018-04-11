@@ -4,6 +4,8 @@ angular.module('InnerModule', []).controller('InnerController',
 	
 	$scope.message = '';
 	$scope.userStatus = '';
+	//$scope.innerMesStatus = '';
+	//$scope.innerMessage = '';
 	getTeams();
 
 	// fething all teams for user
@@ -22,12 +24,15 @@ angular.module('InnerModule', []).controller('InnerController',
 					$scope.selectedTeam = data.data[0];
 				}
 			}, function(error){
-				console.log(error);
+				$scope.innerMesStatus='error';
+				$scope.innerMessage='DB.ERR.DBERROR';
 		});
 	};
 
 	// tell other controllers that they need to chance data
 	$scope.changeContent = function() {
+		$scope.innerMesStatus = '';
+		$scope.innerMessage = '';
 		$scope.$broadcast("changeContent");
 	};
 
@@ -39,7 +44,18 @@ angular.module('InnerModule', []).controller('InnerController',
 	// logout scream
 	$scope.logout = function() {
 		$scope.$emit('LoggingOut');
-	}
+	};
+
+	// print message out if needed
+	$scope.$on("showInnerMessage", function(event, data){
+		if (data){
+			$scope.innerMessage = data.message;
+			$scope.innerMesStatus = data.status;
+		} else {
+			$scope.innerMessage = '';
+			$scope.innerMesStatus = '';
+		}
+	});
 
 	// create new team for user
 	$scope.addTeam = function () {
@@ -47,6 +63,8 @@ angular.module('InnerModule', []).controller('InnerController',
             templateUrl: './views/addTeamPopup.html',
             controller: 'SaveTeamController',
             scope: $scope,
+            backdrop: 'static',
+            keyboard: false,
             resolve: {
                 saveTeam: function () {
                     return $scope.saveTeam;
