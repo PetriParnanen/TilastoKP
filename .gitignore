@@ -3,6 +3,8 @@ src/app/scripts/angular.js
 src/app/scripts/angular-resource.js
 src/app/scripts/angular-route.js
 src/app/scripts/ui-bootstrap.js
+src/app/css/bootstrap*
+src/app/fonts/*
 
 # Logs
 logs
