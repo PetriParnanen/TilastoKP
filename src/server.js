@@ -31,7 +31,12 @@ app.use(session({
 app.use(function(req, res, next){
 
     // FOR CORS
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+    let allowedOrigins = ['http://localhost:3001', 'http://localhost:8000'];
+    let origin = req.headers.origin;
+    if (allowedOrigins.indexOf(origin) > -1){
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
