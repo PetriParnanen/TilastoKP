@@ -19,10 +19,13 @@ router.route('/')
 	// save new team
 	.post(function(req, res){
 		console.log("Saving new team");
+		console.log(req.body);
 		var team = new TeamModel();
 		team.user = req.decoded.username;
 		team.name = req.body.name;
-		team.sportId = req.body.selectedSport._id;
+		team.sportId = req.body.sport;
+
+		console.log(team);
 		team.save(function(err){
 			if(err)
 				res.status(500).send(err);

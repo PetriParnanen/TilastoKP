@@ -45,6 +45,7 @@ angular.module('SaveTeamModule', []).controller('SaveTeamController',
 
     // save team data. I team id given then update else create new
     $scope.submitTeam = function() {
+    	$scope.team.sport = $scope.team.selectedSport._id;
     	if ($scope.team == null || $scope.team.name == null || $scope.team.name == '' || 
     		(!($scope.teamId) && $scope.team.selectedSport == null)){
     		$scope.teamPopupMessage = 'TEAM.ERR.NAMESPORTMANDATORY';

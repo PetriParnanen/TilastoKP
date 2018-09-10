@@ -47,10 +47,11 @@ app.use(function(req, res, next){
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-    if (req.method == 'OPTIONS'){ // this is for cors option request
+    if (req.method.match(/options/i)){ // this is for cors option request
         console.log('options'); 
         res.status(200).send({});
     } else {
+        console.log(req.url);
         next();
     }
 });
@@ -123,6 +124,7 @@ var router = express.Router();
 
 router.use(function(req, res, next){
     var token = req.headers['x-access-token'];
+    console.log("router: "+token);
     if (token){
         jwt.verify(token, secret, function(err, decoded){
             if (err) {
